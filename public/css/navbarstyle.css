@@ -13,6 +13,12 @@
   text-decoration: none;
 }
 
+#currentDate {
+  color: black;
+  float: left;
+  height: 50px;
+}
+
 .dropdown {
   float: left;
   overflow: hidden;
