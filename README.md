@@ -18,5 +18,6 @@
 2. Rename `db-credentials.php.example` to `db-credentials.php`.
 3. Assign appropriate values to variables in `db-credentials.php`.
 
-**Note**: `db-credentials.php` is already in .gitignore and will be ignored in subsequent commits.
+**Note**: `db-credentials.php` is already in `.gitignore` and will be ignored in subsequent commits.
+
 **Warning**: Never store credentials on GitHub.
