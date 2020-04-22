@@ -8,33 +8,64 @@
         <link href='https://fonts.googleapis.com/css?family=Cinzel Decorative' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     </head>
     
-    <body>
+    <body onload="hotel_div_generate();">
 
         <section class="hotel-modal">
-            <div class="container">
-
-                <div class="col-md-4">
-                    <div class = "hotel-div">
-                        <h1>
-                            <span class="franchise">Franchise</span>
-                            <span class="hotel-name">Hoteeeeel naaaaaaame</span>
-                        </h1>
-                        <p class="hotel-descript"> Location : i street , j ave</p>
-                        <div class="button-padding">
-                            <a class="button button-text" href="#">Visit Us</a>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-             
-                </div>
-            </div>
+            <div class="container" id = "id"></div>
           </section>
 
     </body>
+    
+    <script>
+        function hotel_div_generate(){
+
+            var col_div = document.createElement('div');
+            col_div.className = 'col-md-4';
+            
+            var hotel_div = document.createElement('div');
+            hotel_div.classList.add("hotel-div");
+
+            var title = document.createElement('h1');
+            var franchise = document.createElement('span');
+            franchise.className = 'franchise';
+            var hotel = document.createElement('span');
+            hotel.className = 'hotel-name';
+
+            // franchise name and hotel name 
+            franchise.innerText = "Franchise Testing";
+            hotel.innerText = "HOOOOOOOTel Naaaame";
+        
+            title.appendChild(franchise);
+            title.appendChild(hotel);
+
+            // ( i , j ) locations
+            var des = document.createElement('p');
+            des.className = 'hotel-descript';
+            des.innerText = "Location : i street , j ave";
+           
+            // Visit Us button 
+            var btn_padding = document.createElement('div');
+            btn_padding.className ='button-padding';
+            var btn = document.createElement('a');
+            btn.className ="button button-text";
+            btn.href = "#"
+            btn.innerHTML ="Visit Us";
+            btn_padding.appendChild(btn);
+
+            col_div.appendChild(hotel_div);
+            hotel_div.appendChild(title);
+            hotel_div.appendChild(des);
+            hotel_div.appendChild(btn_padding);
+
+            document.getElementById('id').appendChild(col_div);
+        }
+    </script>
+
 </html>
