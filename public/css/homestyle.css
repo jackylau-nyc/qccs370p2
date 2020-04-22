@@ -1,0 +1,76 @@
+body{
+    font-family: 'Arapey';
+    background-image:linear-gradient(rgba(242, 242, 242,.2),rgba(242, 242, 242,.2)),url(../img/homebg.jpg);
+    background-attachment:fixed;
+    background-position:center;
+    background-size:cover
+}
+
+.hotel-modal{
+    margin-top:5rem;
+    margin-bottom:5rem;
+}
+
+.hotel-div{
+    background-color:rgba(255,255,255,.80);
+    margin-bottom: 15px;
+    padding-top: 10px;
+    position:relative
+}
+
+.franchise{
+    font-family: 'Dancing Script';
+    display:block;
+    font-size:22px;
+    font-weight:Bold;
+    text-align: center;
+}
+
+.hotel-name{
+    font-family: 'Cinzel Decorative';
+    padding-top: 10px;
+    display:block;
+    font-size: 32px;
+    font-weight:Normal;
+    text-align: center;
+}
+
+.hotel-descript{
+    font-family: 'Arapey';
+    display:block;
+    font-size:20px;
+    font-weight:Normal;
+    text-align: center;
+}
+
+.button-padding{
+    padding-top:1.5rem;
+    padding-bottom:1.5rem;
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+.button{
+    box-shadow:0 3px 3px 0 rgba(33,37,41,.2);
+    background-color:#33adff;
+    border-color:#33adff;
+    padding-top:1.5rem;
+    padding-bottom:1.5rem;
+    padding-left:2rem;
+    padding-right:2rem
+}
+
+.button-text{
+    font-family: 'Arapey';
+    display:block;
+    font-weight:normal;
+    font-size:2rem;
+    text-align: center;
+    color:#ffffff
+}
+
+.button:active,.button:focus,.button:hover{
+    background-color:#a6a6a6;
+    border-color:#a6a6a6;
+    color:#ffffff;
+}
