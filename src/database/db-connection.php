@@ -1,4 +1,5 @@
 <?php
+    require 'db-credentials.php';
 
     function openConnection() {
         $connection = new mysqli($dbHost, $dbUser, $dbPass,$dbInstance, $port);

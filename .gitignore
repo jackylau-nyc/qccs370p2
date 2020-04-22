@@ -1,2 +1,2 @@
 /vendor/
-/db/db-credentials.php
+/src/database/db-credentials.php
