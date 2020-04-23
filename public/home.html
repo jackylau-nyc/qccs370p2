@@ -23,48 +23,70 @@
 
     </body>
     
-    <script>
-        function hotel_div_generate(){
+    <script type="text/javascript">
 
-            var col_div = document.createElement('div');
-            col_div.className = 'col-md-4';
-            
-            var hotel_div = document.createElement('div');
-            hotel_div.classList.add("hotel-div");
-
-            var title = document.createElement('h1');
-            var franchise = document.createElement('span');
-            franchise.className = 'franchise';
-            var hotel = document.createElement('span');
-            hotel.className = 'hotel-name';
-
-            // franchise name and hotel name 
-            franchise.innerText = "Franchise Testing";
-            hotel.innerText = "HOOOOOOOTel Naaaame";
+        function getData(){
         
-            title.appendChild(franchise);
-            title.appendChild(hotel);
+        //    fetch( php url )
+          //      .then((response) => {
+            //        return response.json();
+              //  })
 
-            // ( i , j ) locations
-            var des = document.createElement('p');
-            des.className = 'hotel-descript';
-            des.innerText = "Location : i street , j ave";
-           
-            // Visit Us button 
-            var btn_padding = document.createElement('div');
-            btn_padding.className ='button-padding';
-            var btn = document.createElement('a');
-            btn.className ="button button-text";
-            btn.href = "#"
-            btn.innerHTML ="Visit Us";
-            btn_padding.appendChild(btn);
+        // for testing  only ..
+            return [
+                    { name: 'hotel name 1', franchise: { name: 'Franchise 1'}, x_coord: [0], y_coord: [0] },
+                    { name: 'hotel name 2', franchise: { name: 'Franchise 1'}, x_coord: [0], y_coord: [1] },
+                    { name: 'hotel name a', franchise: { name: 'Franchise 2'}, x_coord: [1], y_coord: [0] },
+                    { name: 'hotel name b', franchise: { name: 'Franchise 2'}, x_coord: [1], y_coord: [1] },
+                ]
+        }
 
-            col_div.appendChild(hotel_div);
-            hotel_div.appendChild(title);
-            hotel_div.appendChild(des);
-            hotel_div.appendChild(btn_padding);
+        async function hotel_div_generate(){
 
-            document.getElementById('id').appendChild(col_div);
+            var hotelmodal_container = document.getElementById('id');
+            var result = await getData();
+
+            result.forEach(function (result) {
+                var col_div = document.createElement('div');
+                col_div.className = 'col-md-4';
+                
+                var hotel_div = document.createElement('div');
+                hotel_div.classList.add("hotel-div");
+
+                var title = document.createElement('h1');
+                var franchise = document.createElement('span');
+                franchise.className = 'franchise';
+                var hotel = document.createElement('span');
+                hotel.className = 'hotel-name';
+
+                // franchise name and hotel name 
+                franchise.innerText = `${result.name}`;
+                hotel.innerText = `${result.franchise.name}`;
+            
+                title.appendChild(franchise);
+                title.appendChild(hotel);
+
+                // ( i , j ) locations
+                var des = document.createElement('p');
+                des.className = 'hotel-descript';
+                des.innerText = `Location : ${result.x_coord} street , ${result.y_coord} ave`;
+            
+                // Visit Us button 
+                var btn_padding = document.createElement('div');
+                btn_padding.className ='button-padding';
+                var btn = document.createElement('a');
+                btn.className ="button button-text";
+                btn.href = "#"
+                btn.innerHTML ="Visit Us";
+                btn_padding.appendChild(btn);
+
+                col_div.appendChild(hotel_div);
+                hotel_div.appendChild(title);
+                hotel_div.appendChild(des);
+                hotel_div.appendChild(btn_padding);
+
+                hotelmodal_container.appendChild(col_div);
+            })
         }
     </script>
 
