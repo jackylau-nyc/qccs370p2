@@ -1,22 +1,20 @@
 <?php 
+    require "../database/db-connection.php";
+    // Start the session
+    session_start();
+    if(isValidRequest()){
 
-require "../database/db-connection.php";
-// Start the session
-session_start();
-
-if(isValidRequest()){
-
-    $username = $_POST["username"];
-    $passwd   = $_POST["password"];
-    $conn     = openConnection();
-    $verified = attemptSignIn($username, $passwd, $conn);
-    if ($verified){
-        generateSuccessPage();
+        $username = $_POST["username"];
+        $passwd   = $_POST["password"];
+        $conn     = openConnection();
+        $verified = attemptSignIn($username, $passwd, $conn);
+        if ($verified){
+            generateSuccessPage();
+        }
+        else{
+            generateErrorPage();
+        }
     }
-    else{
-        generateErrorPage();
-    }
-}
     
     function attemptSignIn($conn, $username, $passwd){    
 
