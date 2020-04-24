@@ -1,0 +1,32 @@
+@font-face{
+    font-family: personalFont;
+    src: url(BarlowCondensed-Regular.woff);
+  }
+
+  body{
+      background-image: url("hotelroombg.jpg");
+      font-family: personalFont;
+      text-align: center;
+  }
+  
+  h1{
+    font-size: 40px;
+  }
+
+  #hotela, #hotelb, #hotelc{
+    display: inline-block;
+    background-color: white; 
+    opacity: 0.5;
+  }
+
+  #hotela:hover, #hotelb:hover, #hotelc:hover{
+    background-color: #f5f5f5;
+  }
+
+  th{
+    font-size: 22px;
+  }
+
+  td{
+    font-size: 18px;
+  }
