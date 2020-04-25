@@ -1,26 +1,47 @@
 <?php
     require 'db-credentials.php';
 
-    function openConnection() {
-        $connection = new mysqli($dbHost, $dbUser, $dbPass,$dbInstance, $port);
-        if ($connection->connect_error) {
-            echo "code red"; 
-            die('Connect Error (' . $connection->connect_errno . ') '. $connection->connect_error);
-        }
-        return $connection;
-    }
-    
-    function closeConnection($conn) {
-        $conn -> close();
-    }
+    class DBLink {
 
-    function testConnection($conn){
-        // to-do
+        private function openConnection() {
+            $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DATABASE, DB_PORT);
+             if ($connection->connect_error) { 
+                die('Connect Error (' . $connection->connect_errno . ') '. $connection->connect_error);
+            }
+            return $connection;            
+        }
+
+        private function query($sql){
+            $connection = $this->openConnection();
+            $result = mysqli_query($connection, $sql);
+           
+            if(!$this->validResult($result)){
+                echo "No record found!";
+                exit;    
+            }
+            $results = array();
+            while ($row = mysqli_fetch_assoc($result)){
+                $results[] = $row;
+            }
+            $connection -> close(); 
+            return $results;      
+        }
+
+        private function validResult($result){
+            return (mysqli_num_rows($result) == 0) ? false : true;  
+        }
+        
+        function printConnectionProperties(){
+            $connection = $this->openConnection();
+            echo "<pre>" . print_r( $connection, true ). "</pre>"; 
+            $connection -> close();
+        }
+
+
     }
     
-    function printConnectionProperties($conn){
-        echo "<pre>" . print_r( $conn, true ). "</pre>"; 
-    }
+    
 
 ?>
-   
+
+ 
