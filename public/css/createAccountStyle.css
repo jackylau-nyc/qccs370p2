@@ -1,0 +1,43 @@
+
+.bg {
+    background-color:rgba(230,230,230);
+    font-family: 'Arapey';
+}
+
+.cont-div{
+    background-color:rgba(255,255,255,0.8);
+    box-shadow:0 6px 6px 0 rgba(10, 11, 12, 0.3);
+    margin-top: 25px;
+    padding-top: 10px;
+    position:relative
+}
+
+.fontstyle {
+    font-size: 18px;
+    font-weight: Normal;
+    text-align: left;
+}
+
+.inputspace {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    width : 98%;
+    margin: 5px;
+}
+
+.button {
+    padding-top : 5px;
+    padding-bottom : 5px;
+    padding-left :100px;
+    padding-right:100px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    background-color: #5cd6d6;
+}
+
+.button:active,.button:focus,.button:hover{
+    background-color:#52d6d6;
+    color:#ffffff;
+}
