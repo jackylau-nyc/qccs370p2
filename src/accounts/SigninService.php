@@ -5,26 +5,37 @@ require_once "../database/db-connection.php";
 class SigninService{
     private $username; 
     private $passwd; 
+    private $conn; 
 
     function __construct($username, $password){
         $this->username = $username; 
         $this->passwd   = $password; 
+        $this->conn     = new DBLink(); 
     }
 
     function attemptCustomerSignin(){    
-        $conn = new DBLink(); 
-        $hashedPasswd   = $conn->getCustomerPassword($this->username);
-        return  $this->validPassword($this->passwd, $hashedPasswd)? true :false;
+        $hashedPasswd   = $this->conn->getCustomerPassword($this->username);
+        $success = $this->validPassword($this->passwd, $hashedPasswd)? true : false; 
+        $this->printResult($success);
+        return $success; 
     }
 
     function attemptAdminSignin(){    
-        $conn = new DBLink(); 
-        $hashedPasswd   = $conn->getAdminPassword($this->$username);
-        return validPassword($this->passwd, $hashedPasswd)? true :false; 
+        $hashedPasswd   = $this->conn->getAdminPassword($this->username);
+        $success = $this->validPassword($this->passwd, $hashedPasswd)? true :false; 
+        $this->printResult($success);
+        return $success; 
     }
 
     private function validPassword($passwd, $hashedPasswd){
         return !(is_null($hashedPasswd)) && password_verify($passwd,$hashedPasswd);
-    }
+    }   
 
+    private function printResult($success){
+        if($success){
+            echo "Success: Successfuly Signed In!";
+        } else {
+            echo "Invalid username or password.";
+        }
+    }
 }
