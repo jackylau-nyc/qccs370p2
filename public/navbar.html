@@ -8,39 +8,37 @@
 
 </head>
 <body>
-
-<div class="navbar">
-  <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
-  <button class="loginbtn" onclick="document.getElementById('login').style.display='block'">Login</button>
-  <div class="dropdown">
-
-  <button class="dropbtn" onclick="searchFilter()">Search Filter
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-content" id="searchFilter">
-    <p>Franchise</p>
-    <input type="checkbox" name="FirstSelector" value="1">Marriott
-    <input type="checkbox" name="FirstSelector" value="2">Hilton
-    <input type="checkbox" name="FirstSelector" value="3">Hyatt
-    <input type="checkbox" name="FirstSelector" value="4">Wyndham
-    <input type="checkbox" name="FirstSelector" value="5">Radisson
-    <p>Type of Room</p>
-    <input type="checkbox" name="SecondSelector" value="q">Cheap
-    <input type="checkbox" name="SecondSelector" value="w">Regular
-    <input type="checkbox" name="SecondSelector" value="e">Deluxe
-    <p>Price Range Per Night</p>
-    <input type="checkbox" name="ThirdSelector" value="z">000-099
-    <input type="checkbox" name="ThirdSelector" value="x">100-199
-    <input type="checkbox" name="ThirdSelector" value="c">200-299
-    <input type="checkbox" name="ThirdSelector" value="v">300-399
-    <p></p>
-    <input type="checkbox" name="FourthSelector" value="0">Show Available Only
-    <p></p>
-    <button type="button" id="searchButton">Search</button>
-  </div>
-  </div> 
+  <div class="navbar">
+    <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
+    <button class="loginbtn" onclick="document.getElementById('login').style.display='block'">Login</button>
+    <div class="dropdown">
+  
+    <button class="dropbtn" id ="b" onclick="searchFilter()">Search Filter
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" id="searchFilter">
+      <p>Franchise</p>
+      <input type="checkbox" name="FirstSelector" value="1">Marriott
+      <input type="checkbox" name="FirstSelector" value="2">Hilton
+      <input type="checkbox" name="FirstSelector" value="3">Hyatt
+      <input type="checkbox" name="FirstSelector" value="4">Wyndham
+      <input type="checkbox" name="FirstSelector" value="5">Radisson
+      <p>Type of Room</p>
+      <input type="checkbox" name="SecondSelector" value="q">Cheap
+      <input type="checkbox" name="SecondSelector" value="w">Regular
+      <input type="checkbox" name="SecondSelector" value="e">Deluxe
+      <p>Price Range Per Night</p>
+      <input type="checkbox" name="ThirdSelector" value="z">000-099
+      <input type="checkbox" name="ThirdSelector" value="x">100-199
+      <input type="checkbox" name="ThirdSelector" value="c">200-299
+      <input type="checkbox" name="ThirdSelector" value="v">300-399
+      <p></p>
+      <input type="checkbox" name="FourthSelector" value="0">Show Available Only
+      <p></p>
+      <button type="button" id="searchButton">Search</button>
+    </div>
+    </div> 
 </div>
-
 <!-- Login Pop Up Modal -->
 <div id="login" class="w3-modal w3-animate-opacity">
   <div class="w3-modal-content" style="padding:16px;">
@@ -57,29 +55,25 @@
   </div>
 </div>
 
-
 <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function searchFilter() {
-  document.getElementById("searchFilter").classList.toggle("show");
-}
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("searchFilter");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
+    function searchFilter() {
+      document.getElementById("searchFilter").classList.toggle("show");
     }
-  }
-}
+    window.onclick = function(e) {
+      if (!document.getElementById('searchFilter').contains(e)) {
+      var myDropdown = document.getElementById("searchFilter");
+        if (myDropdown.classList.contains('show')) {
+          myDropdown.classList.remove('show');
+        }
+      }
+    }
 
-var currentDate;
-function setDate(val) {
-    currentDate = val;
-}
-console.log(currentDate);
+    var currentDate;
+    function setDate(val) {
+        currentDate = val;
+    }
+    console.log(currentDate);
 
 
 </script>
