@@ -30,4 +30,3 @@ class RegisterService{
         return $this->conn->findAccount($this->username);
     }
 }
-
