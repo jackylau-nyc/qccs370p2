@@ -18,14 +18,21 @@ body {
   text-decoration: none;
 }
 
-#login {
+.navbar .loginbtn {
   padding: 14px 16px;
+  float: left;
+  background-color: #333;
+  color : white;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border:none;
 }
 
 #currentDate {
   color: black;
   float: left;
-  height: 42px;
+  height: 52px;
 }
 
 .dropdown {
@@ -45,7 +52,7 @@ body {
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus ,.loginbtn:hover{
   background-color: red;
 }
 
