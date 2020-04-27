@@ -1,0 +1,21 @@
+{
+  "name": "qccs370p2",
+  "version": "1.0.0",
+  "description": "## Project 2: Hotel Reservation System",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackylau-nyc/qccs370p2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackylau-nyc/qccs370p2/issues"
+  },
+  "homepage": "https://github.com/jackylau-nyc/qccs370p2#readme"
+}
