@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		<?php include "Test.html"?>
+		<?php include "navbar.html"?>
 		<?php include "home.html"?>
 	</body>
 </html>
