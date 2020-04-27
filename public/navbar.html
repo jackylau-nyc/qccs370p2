@@ -47,9 +47,9 @@
       <h2 class="w3-wide">Login</h2>
       <p>Login with your username and password :</p>
       <form method='post' action="">
-        <p><input class="w3-input w3-border" type="text" placeholder="Enter Username" required></p>
-        <p><input class="w3-input w3-border" type="password" placeholder="Enter Password" required></p>
-        <p><input type="submit"></p>
+        <p><input class="w3-input w3-border" type="text" name="username" placeholder="Enter Username" required></p>
+        <p><input class="w3-input w3-border" type="password" name ="password" placeholder="Enter Password" required></p>
+        <p><input type="submit" id="submit-btn"></p>
       </form>
     </div>
   </div>
@@ -61,7 +61,6 @@
       document.getElementById("searchFilter").classList.toggle("show");
     }
     window.onclick = function(e) {
-      /**/
       if (!document.getElementById('searchFilter').contains(e)) {
       var myDropdown = document.getElementById("searchFilter");
         if (myDropdown.classList.contains('show')) {
@@ -69,6 +68,14 @@
         }
       }
     }
+
+    document.getElementById("submit-btn").onclick = function () {
+        location.href = "customer.html";
+    };
+
+    document.getElementById("searchButton").onclick = function () {
+        location.href = "searchResult.html";
+    };
 
     var currentDate;
     function setDate(val) {
