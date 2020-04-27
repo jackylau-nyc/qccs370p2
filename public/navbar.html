@@ -13,6 +13,7 @@
   <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
   <button class="loginbtn" onclick="document.getElementById('login').style.display='block'">Login</button>
   <div class="dropdown">
+
   <button class="dropbtn" onclick="searchFilter()">Search Filter
     <i class="fa fa-caret-down"></i>
   </button>
@@ -40,7 +41,7 @@
   </div> 
 </div>
 
-<!-- Login -->
+<!-- Login Pop Up Modal -->
 <div id="login" class="w3-modal w3-animate-opacity">
   <div class="w3-modal-content" style="padding:16px;">
     <div class="w3-container">
@@ -67,7 +68,7 @@ function searchFilter() {
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
   if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
+  var myDropdown = document.getElementById("searchFilter");
     if (myDropdown.classList.contains('show')) {
       myDropdown.classList.remove('show');
     }
