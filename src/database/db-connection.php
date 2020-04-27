@@ -1,6 +1,10 @@
 <?php
 
-require_once 'db-credentials.php';
+    if(file_exists('db-credentials.php')){
+        require_once 'db-credentials.php';
+    } else {
+        require_once 'db-prod.php';
+    }
 
 class DBLink {
 
