@@ -1,6 +1,10 @@
+.navfont{
+  font-family: 'Arapey';
+  letter-spacing: 1px;
+}
+
 .navbar {
   background-color: #333;
-  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
 }
 
@@ -103,7 +107,7 @@
   color: #eee;
 }
 
-.button {
+.navButton {
   padding-top : 5px;
   padding-bottom : 5px;
   padding-left :50px;
@@ -115,7 +119,7 @@
   background-color: #33adff;
 }
 
-.button:active,.button:focus,.button:hover{
+.navButton:active,.navButton:focus,.navButton:hover{
   background-color:#33adff;
   color:#ffffff;
 }
