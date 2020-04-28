@@ -1,6 +1,7 @@
 .navfont{
   font-family: 'Arapey';
   letter-spacing: 1px;
+
 }
 
 .navbar {
@@ -63,7 +64,7 @@
   z-index: 1;
   top: calc(100% + 1px);
   left: 0;
-  width: 350px;
+  width: 450px;
 }
 
 .dropdown-content a {
