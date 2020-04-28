@@ -6,6 +6,6 @@
 	</head>
 	<body>
 		<?php include "components/navbar.html"?>
-		<?php include "components/home.html"?>
+		<?php include "components/createAccount.html"?>
 	</body>
 </html>
