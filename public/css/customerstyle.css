@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    background-color:rgb(247, 247, 247,1.00) !important;
+}
+
+.banner{
+  padding-top: 12.5rem;
+  padding-bottom: 10rem;
+  text-align: center;
+  background-image: url("../img/reservationbg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+
+.banner-heading{
+    font-size: 8rem;
+    font-weight: Bold;
+    font-style: italic;
+    font-family: 'Dancing Script';
+}
+
+.container{
+    padding-top: 4rem;
+}
+
+.reservation-div{
+    background-color:white;
+    margin-bottom: 30px;
+    padding-top: 5px;
+    position:relative;
+    box-shadow:0 3px 3px 0 rgba(0, 23, 34, 0.4);
+    padding-bottom: 15px;
+}
+
+h3 {
+    font-family: 'Arapey'!important;
+    font-weight: Bold !important;
+    color: #33adff !important;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+h4 {
+    font-family: 'Arapey' !important;
+    font-style: italic !important;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+p {
+    font-family: 'Be Vietnam' !important;
+    line-height: 2.5rem !important;
+}
+
+.price {
+    text-align: right;
+    margin-top: 10%;
+    padding-right: 15px;
+    font-size: 20px;
+}
