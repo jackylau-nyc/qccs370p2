@@ -1,20 +1,24 @@
 <?php
 
-include 'Router.php';
+include '../src/router.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $router = new Router($request);
 
 switch ($request) {
-    case '/' :
-        require __DIR__ . '/views/index.php';
+
+    case '/':
+        require './index.php';
         break;
     case '' :
-        require __DIR__ . '/views/index.php';
+        require './index.php';
         break;
     case '/hotel' :
         require __DIR__ . '/views/hotel.php';
         break;
+    case '/search-engine' :
+            require '../resources/views/search-engine.php';
+            break;
     case '/reservations' :
         require __DIR__ . '/views/reservation.php';
         break;
@@ -23,6 +27,6 @@ switch ($request) {
         break;
     default:
         http_response_code(404);
-        require __DIR__ . '/views/404.php';
+        require '../resources/views/404.php';
         break;
 }

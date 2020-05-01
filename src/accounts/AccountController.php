@@ -7,22 +7,20 @@ require_once "./SigninService.php";
 class AccountController{
      
     private $reqParams = array("username", "password");
+    private $signinService;
     
-    
-    function signinAction(){
-        $validator = new Validator($_POST, $this->reqParams);
-   
-        if(!$this->$validator.isValid()){
-            echo "Invalid Username or Password !";
-            exit; 
-        }
+    function adminSignin(){
         $fields = $validator.getSafeData(); 
-        $signServce = new SigninService($fields["username"], $fields["password"]);
-        if($fields["intent"] == "customer"){
-            $success = $signServce->attemptCustomerSignin() ;  
-        } else {
-            $success = $signServce->attemptAdminSignin();
-        }
+        $this->signServce = new SigninService($fields["username"], $fields["password"]);
+        $this->signServce->attemptAdminSignin();
+    } 
+
+    function customerSignin(){
+
+        $fields = $validator.getSafeData(); 
+        $this->signServce = new SigninService($fields["username"], $fields["password"]);
+        $this->signServce->attemptAdminSignin();
+ 
         if ($success){
             // to-do: redirect to appropriate view.   
             echo "Success!";
@@ -32,12 +30,8 @@ class AccountController{
     }
 
     function signupAction(){
-        $validator = new Validator($_POST, $reqParams);
-   
-        if(!$this->$validator.isValid()){
-            echo "Invalid Username or Password !";
-            exit; 
-        }
+
+
         $fields = $validator.getSafeData(); 
         $signServce = new SigninService($fields["username"], $fields["password"]);
         if($fields["intent"] == "customer"){
@@ -54,7 +48,12 @@ class AccountController{
 
     }
     function checkData(){
-        
+        $validator = new Validator($_POST, $this->reqParams);
+        if(!$this->$validator.isValid()){
+            echo "Invalid Username or Password !";
+            exit; 
+        }
+        return true;
     }
 
 }
