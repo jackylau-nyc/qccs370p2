@@ -1,6 +1,11 @@
 <?php 
+
+namespace accounts; 
+
 require_once "../database/db-connection.php";
+
 class RegisterService{
+
     private $username; 
     private $passwd; 
     private $conn; 

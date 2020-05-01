@@ -1,59 +1,56 @@
 <?php
 
+namespace accounts; 
+
 require_once "./utility/validator.php ";
 require_once "./RegisterService.php ";
 require_once "./SigninService.php";
 
 class AccountController{
      
-    private $reqParams = array("username", "password");
-    private $signinService;
-    
-    function adminSignin(){
-        $fields = $validator.getSafeData(); 
-        $this->signServce = new SigninService($fields["username"], $fields["password"]);
-        $this->signServce->attemptAdminSignin();
+    private static $reqParams = array("username", "password");
+    private static $accountService;
+    private static $validator;
+
+    function adminSignin($args){
+        self::$validator = new Validator($args, self::$reqParams);
+        $fields = self::$validator.getSafeData(); 
+        self::$accountService = new SigninService($fields["username"], $fields["password"]);
+        $result = $this->signServce->attemptAdminSignin();
+        self::processResult($result);
     } 
 
-    function customerSignin(){
-
-        $fields = $validator.getSafeData(); 
-        $this->signServce = new SigninService($fields["username"], $fields["password"]);
-        $this->signServce->attemptAdminSignin();
- 
-        if ($success){
-            // to-do: redirect to appropriate view.   
-            echo "Success!";
-        }else{
-            echo "Failure!";
-        }
+    function customerSignin($args){
+        self::$validator = new Validator($args, self::$reqParams);
+        $fields = self::$validator.getSafeData(); 
+        self::$accountService = new SigninService($fields["username"], $fields["password"]);
+        $result = $this->signServce->attemptCustomerSignin();
+        self::processResult($result);
     }
 
-    function signupAction(){
-
-
-        $fields = $validator.getSafeData(); 
-        $signServce = new SigninService($fields["username"], $fields["password"]);
-        if($fields["intent"] == "customer"){
-            $success = $signServce->attemptCustomerSignin() ;  
-        } else {
-            $success = $signServce->attemptAdminSignin();
-        }
-        if ($success){
-            // to-do: redirect to appropriate view.   
-            echo "Success!";
-        }else{
-            echo "Failure!";
-        }
-
+    function signupAction($args){
+        self::$validator = new Validator($args, self::$reqParams);
+        $fields = self::$validator.getSafeData(); 
+        self::$accountService = new RegisterService($fields["username"], $fields["password"]);
+        $result = $this->signServce->attemptCustomerSignin();
+        self::processResult($result);
     }
-    function checkData(){
-        $validator = new Validator($_POST, $this->reqParams);
+
+    private static function checkData(){
         if(!$this->$validator.isValid()){
             echo "Invalid Username or Password !";
             exit; 
         }
         return true;
     }
+
+    private static function processResult($success){
+        if ($success){
+            // to-do: redirect to appropriate view.   
+            echo "Success!";
+        }else{
+            echo "Failure!";
+        }
+    } 
 
 }

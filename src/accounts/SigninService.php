@@ -1,5 +1,7 @@
 <?php 
 
+namespace accounts; 
+
 require_once "../database/db-connection.php";
 
 class SigninService{
