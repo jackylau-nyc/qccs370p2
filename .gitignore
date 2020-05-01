@@ -1,2 +1,4 @@
+._*
+debug.log
 /vendor/
 /src/database/db-credentials.php
