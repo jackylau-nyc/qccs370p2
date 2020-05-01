@@ -11,6 +11,7 @@ class DBLink {
     private function openConnection() {
         try{
             $connection = new PDO(DSN, DB_USER, DB_PASS);
+          
         } catch(PDOException $e){
             $connection = null; 
             print "Error!: " . $e->getMessage();
@@ -98,6 +99,23 @@ class DBLink {
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : true;
     }
+
+
+    function getroom($price,$type,$hotel){
+
+        
+        $sql = "SELECT  *
+                FROM  room inner join hotel on room.x_cord= hotel.x_cord and room.y_cord= hotel.y_cord and room.class = '$type' and hotel.company='$hotel'
+                and room.price between $price";   
+        $result = $this->query($sql,array());
+        
+        return (is_null($result))? false : $result;
+        
+       
+ 
+    }
+
+    
     // to-do
     function addRoom(){ // Add 1 room to a given hotel 
 
