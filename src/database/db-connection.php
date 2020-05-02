@@ -6,7 +6,7 @@
     // } else {
     //     require_once 'db-prod.php';
     // }
-    require_once 'db-credentials.php';    
+    require_once __DIR__.'/db-credentials.php';    
 class DBLink {
 
     private function openConnection() {

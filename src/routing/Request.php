@@ -1,7 +1,7 @@
 <?php
 namespace routing; 
 
-require_once __DIR__.'./IRequest.php';
+require_once __DIR__.'/IRequest.php';
 
 class Request implements IRequest {
   
