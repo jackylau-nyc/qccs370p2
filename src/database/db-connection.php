@@ -2,9 +2,9 @@
     namespace database;
     use PDO; 
     if(file_exists('db-credentials.php')){
-         require_once 'db-credentials.php';
+         require_once __DIR__.'/db-credentials.php';
      } else {
-         require_once 'db-prod.php';
+         require_once __DIR__.'/db-prod.php';
     }
    // require_once __DIR__.'/db-credentials.php';    
 class DBLink {
