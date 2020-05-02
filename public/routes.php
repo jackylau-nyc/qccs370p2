@@ -44,12 +44,14 @@ $router = new Router(new Request);
         });
         break;
     case '/signin' :
-        $router->get('/signin', AccountController::customerSignIn());
+        $router->post('/signin', function($req){
+
+            AccountController::customerSignIn($req->getBody());});
         break;
     default:
-        $router->get(null, function(){
+        $router->post(null, function($req){
             http_response_code(404);
-            require __DIR__ . '/../resources/views/404.php';    
+            require __DIR__ . '/../resources/views/404.php';  
         });
         break;
     }
