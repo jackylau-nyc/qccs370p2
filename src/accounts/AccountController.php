@@ -2,8 +2,8 @@
 namespace accounts; 
 use utility\Validator;
 
-require_once __DIR__ ."/../utility/validator.php ";
-require_once __DIR__ ."/RegisterService.php ";
+require_once __DIR__ ."/../utility/validator.php";
+require_once __DIR__ ."/RegisterService.php";
 require_once __DIR__ ."/SigninService.php";
 
 class AccountController{
