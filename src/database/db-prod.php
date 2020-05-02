@@ -1,10 +1,10 @@
 <?php
     namespace database; 
-    define ('DB_HOST',  ENV['DB_HOST'] );
-    define ('DB_PORT',  ENV['DB_PORT'] ); 
-    define ('DB_USER',  ENV['DB_USER'] );
-    define ('DB_PASS',  ENV['DB_PASS'] );
-    define ('DATABASE', ENV['DATABASE'] );
+    define ('DB_HOST',  getenv('DB_HOST') );
+    define ('DB_PORT',  getenv('DB_PORT') ); 
+    define ('DB_USER',  getenv('DB_USER') );
+    define ('DB_PASS',  getenv('DB_PASS') );
+    define ('DATABASE', getenv('DATABASE') );
     define ('DSN', 'mysql:host='.DB_HOST.';'
                    .'port='.DB_PORT.';'
                    .'dbname='.DATABASE.';'
