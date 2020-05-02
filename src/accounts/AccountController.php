@@ -2,9 +2,9 @@
 
 namespace accounts; 
 
-require_once "./utility/validator.php ";
-require_once "./RegisterService.php ";
-require_once "./SigninService.php";
+require_once __DIR__ ."/../utility/validator.php ";
+require_once __DIR__ ."/RegisterService.php ";
+require_once __DIR__ ."/SigninService.php";
 
 class AccountController{
      
@@ -12,7 +12,7 @@ class AccountController{
     private static $accountService;
     private static $validator;
 
-    function adminSignin($args){
+    static function adminSignin($args){
         self::$validator = new Validator($args, self::$reqParams);
         $fields = self::$validator.getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
@@ -20,7 +20,8 @@ class AccountController{
         self::processResult($result);
     } 
 
-    function customerSignin($args){
+    static function customerSignin(){
+        $args = null; 
         self::$validator = new Validator($args, self::$reqParams);
         $fields = self::$validator.getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);

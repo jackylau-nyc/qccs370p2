@@ -2,7 +2,7 @@
 
 namespace accounts; 
 
-require_once "../database/db-connection.php";
+require_once __DIR__."/../database/db-connection.php";
 
 class SigninService{
     private $username; 
