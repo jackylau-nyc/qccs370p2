@@ -1,6 +1,11 @@
 <?php 
-require_once "../database/db-connection.php";
+
+namespace accounts; 
+use database\DBLink;
+require_once __DIR__."/../database/db-connection.php";
+
 class RegisterService{
+
     private $username; 
     private $passwd; 
     private $conn; 

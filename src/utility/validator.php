@@ -1,10 +1,11 @@
 <?php 
+namespace utility;
 
 class Validator{
 
-    private array $request;
-    private array $requiredParams; 
-    private array $cleanData; 
+    private  $request;
+    private  $requiredParams; 
+    private  $cleanData; 
 
     function __construct($request, $requiredParams){
         $this->requiredParams = $requiredParams;

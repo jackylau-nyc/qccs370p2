@@ -1,11 +1,12 @@
 <?php
-
-    if(file_exists('db-credentials.php')){
-        require_once 'db-credentials.php';
-    } else {
-        require_once 'db-prod.php';
-    }
-
+    namespace database;
+    use PDO; 
+    // if(file_exists('db-credentials.php')){
+    //     require_once 'db-credentials.php';
+    // } else {
+    //     require_once 'db-prod.php';
+    // }
+    require_once 'db-credentials.php';    
 class DBLink {
 
     private function openConnection() {
