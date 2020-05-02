@@ -2,6 +2,7 @@
 
 namespace accounts; 
 use database\DBLink;
+
 require_once __DIR__."/../database/db-connection.php";
 
 class RegisterService{
