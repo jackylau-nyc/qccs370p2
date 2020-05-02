@@ -1,6 +1,6 @@
 <?php
-
 namespace accounts; 
+use utility\Validator;
 
 require_once __DIR__ ."/../utility/validator.php ";
 require_once __DIR__ ."/RegisterService.php ";
@@ -14,18 +14,17 @@ class AccountController{
 
     static function adminSignin($args){
         self::$validator = new Validator($args, self::$reqParams);
-        $fields = self::$validator.getSafeData(); 
+        $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
-        $result = $this->signServce->attemptAdminSignin();
+        $result = self::$accountService->signServce->attemptAdminSignin();
         self::processResult($result);
     } 
 
-    static function customerSignin(){
-        $args = null; 
+    static function customerSignin($args){ 
         self::$validator = new Validator($args, self::$reqParams);
-        $fields = self::$validator.getSafeData(); 
+        $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
-        $result = $this->signServce->attemptCustomerSignin();
+        $result = self::$accountService->attemptCustomerSignin();
         self::processResult($result);
     }
 

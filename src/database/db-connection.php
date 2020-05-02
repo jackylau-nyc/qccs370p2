@@ -1,5 +1,6 @@
 <?php
-
+    namespace database;
+    use PDO; 
     // if(file_exists('db-credentials.php')){
     //     require_once 'db-credentials.php';
     // } else {

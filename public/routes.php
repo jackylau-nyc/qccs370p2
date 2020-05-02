@@ -45,7 +45,6 @@ $router = new Router(new Request);
         break;
     case '/signin' :
         $router->post('/signin', function($req){
-
             AccountController::customerSignIn($req->getBody());});
         break;
     default:

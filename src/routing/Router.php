@@ -25,6 +25,7 @@ class Router{
         $methodDictionary = $this->{strtolower($this->request->requestMethod)};
         $formatedRoute = $this->formatRoute($this->request->requestUri);
         $method = $methodDictionary[$formatedRoute];
+        
         echo call_user_func_array($method, array($this->request));
         
     }
