@@ -13,7 +13,7 @@ class SigninService{
     function __construct($username, $password){
         $this->username = $username; 
         $this->passwd   = $password; 
-        $this->conn     = new DBLink(); 
+        $this->conn     = new AccountLink(); 
     }
 
     function attemptCustomerSignin(){    

@@ -70,7 +70,7 @@ INSERT INTO room (room_num, x_cord, y_cord, class, price)
 VALUES (2,0,0, "Deluxe", 999);
 
 INSERT INTO room (room_num, x_cord, y_cord, class, price)
-VALUES (3,0,0, "Deluxe", 999);
+VALUES (8,0,0, "Free", 0);
 
 -- Query for finding all the rooms that belong to a particular Hotel.
 SELECT* 
@@ -115,7 +115,7 @@ START TRANSACTION;
     VALUES(@res, @room, @x_cord , @y_cord);
     
  COMMIT;
-
+SELECT* FROM customer;
 
 -- Query for Finding all reservations before date()
 -- Query for Finding all reservations after date()

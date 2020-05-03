@@ -18,54 +18,48 @@ $router = new Router(new Request);
  **************************************** Route <-> Mappings ****************************************
  ****************************************************************************************************/
 
- switch ($request) {
-    case '/' :
-        $router->get('/', function() {
-            require __DIR__.'./index.php;';
-        });
-    case '' :
-        require __DIR__.'./index.php';
-        break;
-    case '/hotel' :
-        $router->get('/hotel', function() {
+
+$router->get('/', function() {
+    require __DIR__.'./index.php;';
+});
+
+$router->get('', function() {
+    require __DIR__.'./index.php;';
+});
+
+$router->get('/hotel', function() {
+    require __DIR__.'./hotel.php;';
+});
     
-        });
-        break;
-    case '/reservations' :
-        $router->get('/reservations', function() {
-            require __DIR__.'./reservations.php;';
-        });
-        break;
-    case '/search' :
-        $router->get('/search', function() {
-            require __DIR__.'./search.php;';
-        });        
-        break;
-    case '/admin' :
-        $router->get('/admin', function() {
-            require __DIR__.'./index.php;';
-        });
-        break;
-    case '/signin' :
-        $router->post('/signin', function($req){
-            AccountController::customerSignIn($req->getBody());});
-        break;
-    case '/map' :
-        $router->get('/map', function($req){
-            MapController::getHotels();});
-        break;
-    default:
-        $router->post(null, function($req){
-            http_response_code(404);
-            require __DIR__ . '/../resources/views/404.php';  
-        });
-        break;
-    }
+   
+$router->get('/reservations', function() {
+    require __DIR__.'./reservations.php;';
+});
+
+  
+$router->get('/search', function() {
+    require __DIR__.'./search.php;';
+});        
 
 
+$router->get('/admin', function() {
+    require __DIR__.'./index.php;';
+});
 
+$router->post('/signin', function($req){
+    AccountController::customerSignIn($req->getBody());
+});
 
+$router->get('/map', function($req){
+    MapController::getHotels();
+});
 
+// $router->post(null, function($req){
+// http_response_code(404);
+//     require __DIR__ . '/../resources/views/404.php';  
+// });
+        
+  
 
 
   
