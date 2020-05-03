@@ -30,9 +30,9 @@ class AccountController{
 
     function signupAction($args){
         self::$validator = new Validator($args, self::$reqParams);
-        $fields = self::$validator.getSafeData(); 
+        $fields = self::$validator->getSafeData(); 
         self::$accountService = new RegisterService($fields["username"], $fields["password"]);
-        $result = $this->signServce->attemptCustomerSignin();
+        $result = self::$accountService->attemptRegistration();
         self::processResult($result);
     }
 

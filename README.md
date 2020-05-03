@@ -15,7 +15,7 @@
 ### Configuring a Database
 
 1. Navigate to `/src/database`.
-2. Rename `db-credentials.php.example` to `db-credentials.php`.
+2. Make a copy of  `db-credentials.php.example` and rename it to `db-credentials.php`.
 3. Assign appropriate values to variables in `db-credentials.php`.
 
 **Note**: `db-credentials.php` is already in `.gitignore` and will be ignored in subsequent commits.
