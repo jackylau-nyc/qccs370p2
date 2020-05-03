@@ -3,9 +3,12 @@
 use routing\Request;
 use routing\Router;
 use accounts\AccountController;
+use map\MapController; 
 require_once __DIR__ ."/../src/routing/Request.php";
 require_once __DIR__ ."/../src/routing/Router.php";
 require_once __DIR__ ."/../src/accounts/AccountController.php";
+require_once __DIR__ ."/../src/accounts/AccountController.php";
+require_once __DIR__ ."/../src/map/MapController.php";
 
 $request = $_SERVER['REQUEST_URI'];
 
@@ -46,6 +49,10 @@ $router = new Router(new Request);
     case '/signin' :
         $router->post('/signin', function($req){
             AccountController::customerSignIn($req->getBody());});
+        break;
+    case '/map' :
+        $router->get('/map', function($req){
+            MapController::getHotels();});
         break;
     default:
         $router->post(null, function($req){
