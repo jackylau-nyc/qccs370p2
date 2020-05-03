@@ -26,7 +26,7 @@ class HotelLink extends BaseLink {
 
     function getClassCount(){
         $sql = "SELECT class, count(class)
-                FROM room 
+                FROM   room 
                 WHERE  room.x_cord  = ? AND room.y_cord = ?
                 GROUP BY class";
         $params = array ($hotelXCord, $hotelYCord);

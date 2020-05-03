@@ -15,7 +15,6 @@ class Router{
         list($route, $method) = $args;
         $this->validateVerb($name);
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
-        $this->resolve();
     }
 
     /*
@@ -24,10 +23,13 @@ class Router{
     function resolve(){
         $methodDictionary = $this->{strtolower($this->request->requestMethod)};
         $formatedRoute = $this->formatRoute($this->request->requestUri);
-        $method = $methodDictionary[$formatedRoute];
         
-        echo call_user_func_array($method, array($this->request));
-        
+        $method = $methodDictionary[$formatedRoute] ?? null;
+        if(is_null($method)){
+            $this->defaultMethodHandler();
+        }else{
+            echo call_user_func_array($method, array($this->request));
+        }
     }
 
     /**
@@ -46,6 +48,14 @@ class Router{
         header("{$this->request->serverProtocol} 405 Method Not Allowed");
     }
 
+    private function defaultMethodHandler(){
+        http_response_code(404);
+        require __DIR__ . '/../../resources/views/404.php'; 
+    }
+
+    function __destruct(){
+        $this->resolve();
+    }
  
    /****************************************************************************************************
     ********************************************** Helper **********************************************
