@@ -137,7 +137,10 @@ class DBLink {
         
     }
     function getHotels(){
-
+        $sql = "SELECT  company, x_cord, y_cord
+        FROM    hotel";
+        $result = $this->query($sql, []);        
+        return (is_null($result))? false : $result;
     }
     function createRes(){
 
