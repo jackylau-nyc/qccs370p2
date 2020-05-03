@@ -46,6 +46,3 @@ class HotelLink extends BaseLink {
     }
     
 }
-
-$var = new HotelLink();
-echo print_r($var->getAllRooms(0,0));
