@@ -1,7 +1,7 @@
 <?php
     namespace database;
     use PDO; 
-    if(file_exists(__DIR__.'db-credentials.php')){
+    if(file_exists(__DIR__.'/db-credentials.php')){
          require_once __DIR__.'/db-credentials.php';
      } else {
          require_once __DIR__.'/db-prod.php';
