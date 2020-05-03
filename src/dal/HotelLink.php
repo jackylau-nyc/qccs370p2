@@ -88,14 +88,14 @@ class HotelLink extends BaseLink {
                      SELECT room.room_num 
                      FROM room 
                      INNER JOIN room_has_reservation
-                        ON  room.x_cord = 0 
-                        AND room.y_cord = 0 
+                        ON  room.x_cord = ? 
+                        AND room.y_cord = ? 
                         AND room.x_cord = room_has_reservation.x_cord  
                         AND room.y_cord = room_has_reservation.y_cord
                         AND room_has_reservation.room_num =  room.room_num 
                      INNER JOIN reservation
                         ON  reservation.res_id = room_has_reservation.res_id
-                        AND  '2019-09-30' BETWEEN  
+                        AND  ?  BETWEEN  
                         reservation.res_start AND reservation.res_end)
                 GROUP BY room.class";
 
