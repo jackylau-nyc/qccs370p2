@@ -1,15 +1,15 @@
 <?php 
 namespace map; 
-use database\DBLink;
+use dal\MapLink;
 
-require_once __DIR__."/../database/db-connection.php";
+require_once __DIR__."/../dal/MapLink.php";
 
 class MapAccessService{
 
     private $conn; 
 
     function __construct(){
-        $this->conn     = new DBLink(); 
+        $this->conn     = new MapLink(); 
     }
     
     function getHotels(){    

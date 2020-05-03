@@ -1,9 +1,9 @@
 <?php 
 
 namespace accounts; 
-use database\DBLink;
+use dal\AccountLink;
 
-require_once __DIR__."/../database/db-connection.php";
+require_once __DIR__."/../dal/AccountLink.php";
 
 class RegisterService{
 
@@ -14,7 +14,7 @@ class RegisterService{
     function __construct($username, $password){
         $this->username = $username; 
         $this->passwd   = $password; 
-        $this->conn     = new DBLink(); 
+        $this->conn     = new AccountLink(); 
     }
 
     function attemptRegistration(){    
