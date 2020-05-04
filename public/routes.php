@@ -28,12 +28,12 @@ $router->get('', function() {
 });
 
 $router->get('/hotel', function() {
-    require __DIR__.'./hotel.php;';
+    require __DIR__.'/hotel.php;';
 });
     
    
 $router->get('/reservations', function() {
-    require __DIR__.'./reservations.php;';
+    require __DIR__.'/reservation.php;';
 });
 
   
@@ -57,17 +57,6 @@ $router->post('/signup', function($req){
 $router->get('/map', function($req){
     MapController::getHotels();
 });
-
-// $router->post(null, function($req){
-// http_response_code(404);
-//     require __DIR__ . '/../resources/views/404.php';  
-// });
-        
-  
-
-
-  
-
 
 
 

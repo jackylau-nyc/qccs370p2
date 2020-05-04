@@ -55,7 +55,7 @@ INSERT INTO hotel (x_cord, y_cord, company)
 VALUES (0,0, "Howard Resorts");
 
 INSERT INTO hotel (x_cord, y_cord, company)
-VALUES (0,1, "Howard Resorts");
+VALUES (0,2, "Howard Resorts");
 
 -- Query for finding the parent company for a given hotel.
 SELECT  hotel.company
