@@ -46,7 +46,7 @@ $router->get('/admin', function() {
     require __DIR__.'./index.php;';
 });
 
-$router->post('/', function($req){
+$router->post('/signin', function($req){
     AccountController::customerSignIn($req->getBody());
 });
 
