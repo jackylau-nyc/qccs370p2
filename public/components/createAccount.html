@@ -17,9 +17,9 @@
           <h4>Fill out the following informations to create an new account :</h4>
         
           <form action="" method="POST">
-              <input id="username" class="fontstyle inputspace" type="text" placeholder="Username" required>
+              <input id="user" class="fontstyle inputspace" type="text" placeholder="Username" required>
               <br>
-              <input id="password" class="fontstyle inputspace" type="password" placeholder="Password" required>
+              <input id="pw" class="fontstyle inputspace" type="password" placeholder="Password" required>
               <br>
               <!--<input class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
               <br>-->
@@ -31,8 +31,8 @@
   </body>
 <script>
   function SignUp(){
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
+      var username = document.getElementById('user').value;
+      var password = document.getElementById('pw').value;
       $.ajax({
         method:"POST",
         url:"/signup",
