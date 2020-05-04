@@ -3,7 +3,7 @@
     <head>
         <title>Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/homestyle.css">
+        <link rel="stylesheet" href="./css/homestyle.css">
         <!-- fonts -->
         <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Cinzel Decorative' rel='stylesheet'>
@@ -23,18 +23,18 @@
     
     <script type="text/javascript">
         function getData(){
-        
-        //    fetch( php url )
-          //      .then((response) => {
-            //        return response.json();
-              //  })
-
-        // for testing  only ..
+        /*
+            fetch('./routes.php')
+               .then((response) => {
+                   return response.json();
+             })
+*/
+         // for testing  only ..
             return [
-                    { name: 'hotel name 1', franchise: { name: 'Franchise 1'}, x_coord: [0], y_coord: [0] },
-                    { name: 'hotel name 2', franchise: { name: 'Franchise 1'}, x_coord: [0], y_coord: [1] },
-                    { name: 'hotel name a', franchise: { name: 'Franchise 2'}, x_coord: [1], y_coord: [0] },
-                    { name: 'hotel name b', franchise: { name: 'Franchise 2'}, x_coord: [1], y_coord: [1] },
+                    { name: 'hotel name 1', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [0] },
+                    { name: 'hotel name 2', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [1] },
+                    { name: 'hotel name a', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [0] },
+                    { name: 'hotel name b', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [1] },
                 ]
         }
         async function hotel_div_generate(){
@@ -65,7 +65,7 @@
                 // ( i , j ) locations
                 var des = document.createElement('p');
                 des.className = 'hotel-descript';
-                des.innerText = `Location : ${result.x_coord} street , ${result.y_coord} ave`;
+                des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
             
                 // Visit Us button 
                 var btn_padding = document.createElement('div');
