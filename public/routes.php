@@ -50,6 +50,10 @@ $router->post('/signin', function($req){
     AccountController::customerSignIn($req->getBody());
 });
 
+$router->post('/signup', function($req){
+    AccountController::signupAction($req->getbody());
+});
+
 $router->get('/map', function($req){
     MapController::getHotels();
 });

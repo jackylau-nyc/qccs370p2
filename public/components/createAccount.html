@@ -17,16 +17,31 @@
           <h4>Fill out the following informations to create an new account :</h4>
         
           <form action="" method="POST">
-              <input class="fontstyle inputspace" type="text" placeholder="Username" required>
+              <input id="username" class="fontstyle inputspace" type="text" placeholder="Username" required>
               <br>
-              <input class="fontstyle inputspace" type="password" placeholder="Password" required>
+              <input id="password" class="fontstyle inputspace" type="password" placeholder="Password" required>
               <br>
-              <input class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
-              <br>
-              <button class="fontstyle button" type="button">Sign Up</button>
+              <!--<input class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
+              <br>-->
+              <button class="fontstyle button" type="button" onclick="SignUp()">Sign Up</button>
           </form>
         </div>
       </div>
     </div>
   </body>
+<script>
+  function SignUp(){
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      $.ajax({
+        method:"POST",
+        url:"/signup",
+        data:{username:username,password:password},
+        })
+        .done(function(){
+          alert("success !");
+        })
+        .fail(err=>console.log(err))
+    }
+</script>
 </html>
