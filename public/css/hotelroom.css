@@ -13,20 +13,13 @@
     font-size: 40px;
   }
 
-  #hotela, #hotelb, #hotelc{
-    display: inline-block;
+  #hotela, #hotelb, #hotel1, #hotel2{
     background-color: white; 
     opacity: 0.5;
+    font-size: 25px;
   }
 
-  #hotela:hover, #hotelb:hover, #hotelc:hover{
+  #hotela:hover, #hotelb:hover, #hotel1:hover. #hotel2:hover{
     background-color: #f5f5f5;
   }
 
-  th{
-    font-size: 22px;
-  }
-
-  td{
-    font-size: 18px;
-  }
