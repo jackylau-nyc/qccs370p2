@@ -25,18 +25,12 @@
             return await fetch('/map').then((response) => {
                    return response.json();
              })
-          /*  return [
-                    { name: 'hotel name 1', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [0] },
-                    { name: 'hotel name 2', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [1] },
-                    { name: 'hotel name a', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [0] },
-                    { name: 'hotel name b', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [1] },
-                ] */
         }
         async function hotel_div_generate(){
 
             var hotelmodal_container = document.getElementById('id');
             var result = await getData();
-            console.log(result);
+
             result.forEach(function (result) {
                 var col_div = document.createElement('div');
                 col_div.className = 'col-md-4';
