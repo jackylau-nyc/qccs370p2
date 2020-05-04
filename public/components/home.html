@@ -21,9 +21,8 @@
     </body>
     
     <script type="text/javascript">
-        function getData(){
-            fetch('/map')
-               .then((response) => {
+        async function  getData(){
+            var result = await fetch('/map').then((response) => {
                    return response.json();
              })
           /*  return [
