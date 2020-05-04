@@ -22,7 +22,7 @@
     
     <script type="text/javascript">
         async function  getData(){
-            var result = await fetch('/map').then((response) => {
+            return await fetch('/map').then((response) => {
                    return response.json();
              })
           /*  return [
