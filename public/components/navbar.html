@@ -79,15 +79,22 @@
     function Signin(){
       var username = document.getElementById('username').value;
       var password = document.getElementById('password').value;
-      $.ajax({
-            method : "POST",
-            url  : "/signin",
-            data : { username : username, password : password },
-        })
-        .done(function(){
-          location.href = "/reservations";
-        })
-        .fail(err => console.log(err))
+        if( username != "" && password != "" ){
+            $.ajax({
+                url:'/signin',
+                type:'POST',
+                data:{username:username,password:password},
+                success:function(response){
+                    var msg = "";
+                    if(response == 1){
+                        window.location = '/reservations';
+                    }else{
+                        msg = "Invalid username and password!";
+                    }
+                    $("#message").html(msg);
+                }
+            });
+        }
     }
 
     document.getElementById("signup-btn").onclick = function () {

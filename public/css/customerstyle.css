@@ -60,3 +60,44 @@ p {
     padding-right: 15px;
     font-size: 20px;
 }
+
+.LogoutCss {
+    font-family: 'Arapey' !important;
+    padding-top : 10px;
+    padding-bottom : 10px;
+    padding-left :50px;
+    padding-right:50px;
+    margin-top: 25px;
+    margin-left: 68%;
+    background-color: #33adff;
+}
+
+.buttonCss {
+    font-family: 'Arapey' !important;
+    padding-top : 5px;
+    padding-bottom : 5px;
+    padding-left :80px;
+    padding-right:80px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    background-color: #33adff;
+}
+
+.cancelCss {
+    font-family: 'Arapey' !important;
+    padding-top : 5px;
+    padding-bottom : 5px;
+    padding-left :80px;
+    padding-right:80px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    background-color: Grey;
+}
+.fontstyle {
+    font-size: 18px;
+    font-weight: Normal;
+    text-align: left;
+}
+
