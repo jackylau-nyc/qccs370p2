@@ -4,7 +4,7 @@
     <title>Create New Account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/createAccountStyle.css">
+    <link rel="stylesheet" href="./css/createAccountStyle.css">
     <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
@@ -16,14 +16,15 @@
 
           <h1>Create New Account</h1>
           <h4>Fill out the following informations to create an new account :</h4>
+          <h4 style="color: red;" id="signup-msg"> </h4>
         
           <form action="" method="POST">
-              <input id="user" class="fontstyle inputspace" type="text" placeholder="Username" required>
+              <input id="signup-username" class="fontstyle inputspace" type="text" placeholder="Username" required>
               <br>
-              <input id="pw" class="fontstyle inputspace" type="password" placeholder="Password" required>
+              <input id="signup-password" class="fontstyle inputspace" type="password" placeholder="Password" required>
               <br>
-              <!--<input class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
-              <br>-->
+              <input id="signup-confirm-password" class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
+              <br>
               <button class="fontstyle button" type="button" onclick="SignUp()">Sign Up</button>
           </form>
         </div>
@@ -32,17 +33,34 @@
   </body>
 <script type="text/javascript">
   function SignUp(){
-      var username = document.getElementById('user').value;
-      var password = document.getElementById('pw').value;
-      $.ajax({
-        method:"POST",
-        url:"/signup",
-        data:{username:username,password:password},
-        })
-        .done(function(){
-          alert("success !");
-        })
-        .fail(err=>console.log(err))
+      var signup_user = document.getElementById('signup-username').value;
+      var signup_pw = document.getElementById('signup-password').value;
+      var signup_confirm_pw = document.getElementById('signup-confirm-password').value;
+  
+      const regexp = /[a-z0-9]/ig;
+      
+      if( signup_user == "" || signup_pw == "" || signup_confirm_pw == ""){
+        document.getElementById('signup-msg').innerText = " Please fill in all fields"
+      } else if (!regexp.test(signup_user)){
+        document.getElementById('signup-msg').innerText = " Invalid Username!"
+      }
+       else if( signup_pw != signup_confirm_pw ){
+        document.getElementById('signup-msg').innerText = " Passwords not match!"
+      } else {
+          $.ajax({
+          method:"POST",
+          url:"/signup",
+          processData: false,
+          contentType: false,
+          data:{username:username,password:password},
+          })
+          .done(function(){
+            document.getElementById('signup-msg').innerText = " Your Account has been create !"
+          })
+          .fail(function(){
+            document.getElementById('err-msg').innerText = "ajax Unknown Errors"
+          })
+      }
     }
 </script>
 </html>

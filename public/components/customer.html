@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="../css/customerstyle.css" rel="stylesheet" />
+        <link href="./css/customerstyle.css" rel="stylesheet" />
         <!-- fonts -->
         <link href='https://fonts.googleapis.com/css?family=Be Vietnam' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
@@ -19,26 +19,9 @@
     <body onload="reservations_generate()">
         <header class="banner">
             <div class="container">
-                <div class="banner-heading">Reservations</div>
+                <div class="banner-heading">My Reservations</div>
             </div>
         </header>   
-        
-        <button class="fontstyle LogoutCss" onclick="document.getElementById('logout').style.display='block'">Log Out</button>
-            <!-- Log Out Modal -->
-            <div id="logout" class="w3-modal w3-animate-opacity">
-              <div class="w3-modal-content" style="padding:32px">
-                <div class="w3-container w3-white">
-                  <i onclick="document.getElementById('logout').style.display='none'" class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-large"></i>
-                  <h3>Log Out</h3>
-                  <h4>Are you sure that you want to Log out ?</h4>
-                  <br>
-                  <form method="post" action="">
-                    <button class="fontstyle buttonCss" name="logout_button">Log Out</button>
-                  </form>
-                  <button class="fontstyle cancelCss" onclick="document.getElementById('logout').style.display='none'">Cancel</button>
-                </div>
-              </div>
-            </div>
         <div class="container" id="reservations">
         </div>
     </body>

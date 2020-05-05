@@ -27,6 +27,7 @@
   text-align: center;
   text-decoration: none;
   border:none;
+  position: right;
 }
 
 #currentDate {
