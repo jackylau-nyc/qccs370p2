@@ -1,8 +1,6 @@
 <IfModule mod_rewrite.c> 
 RewriteEngine On
 
-# Disable directory browsing
-Options All -Indexes
 
 # Explicitly enable per-directory rewrites in the .htaccess context.
 Options +FollowSymLinks  -MultiViews
