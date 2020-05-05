@@ -54,7 +54,7 @@
           url:"/signup",
           processData: false,
           contentType: false,
-          data:{username:username,password:password},
+          data:{ username: signup_user, password:signup_pw },
           })
           .done(function(){
             document.getElementById('signup-msg').innerText = " Your Account has been create !"

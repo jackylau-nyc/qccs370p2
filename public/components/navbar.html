@@ -105,7 +105,9 @@
         $.ajax({
           method:"POST",
           url:"/signin",
-          data:{username:username,password:password},
+          processData: false,
+          contentType: false,
+          data:{username: login_username,password: login_password},
           })
           .done(function(){
             location.href = "/reservations";
