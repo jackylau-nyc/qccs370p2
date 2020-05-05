@@ -95,19 +95,25 @@
     }
 */
     function Signin(){
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-      $.ajax({
-        method:"POST",
-        url:"/signin",
-        data:{username:username,password:password},
-        })
-        .done(function(){
-          location.href = "/reservations";
-        })
-        .fail(function(){
-          document.getElementById('err-msg').innerText = "Invalid username or password . Please try again"
-        })
+      var login_username = document.getElementById('username').value;
+      var login_password = document.getElementById('password').value;
+
+
+      if( login_username == "" || login_password == "" ){
+        document.getElementById('err-msg').innerText = "Please fill in all fields"
+      } else {         
+        $.ajax({
+          method:"POST",
+          url:"/signin",
+          data:{username:username,password:password},
+          })
+          .done(function(){
+            location.href = "/reservations";
+          })
+          .fail(function(){
+            document.getElementById('err-msg').innerText = "Invalid username or password . Please try again"
+          })
+    }
     }
 
     document.getElementById("signup-btn").onclick = function () {
