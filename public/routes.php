@@ -13,8 +13,8 @@ require_once __DIR__ ."/../src/accounts/AccountController.php";
 require_once __DIR__ ."/../src/accounts/AccountController.php";
 require_once __DIR__ ."/../src/map/MapController.php";
 require_once __DIR__ ."/../src/hotel/HotelController.php";
-require_once __DIR__ ."/../src/Customer/CustomerController.php";
-require_once __DIR__ ."/../src/Admin/AdminController.php";
+require_once __DIR__ ."/../src/customer/CustomerController.php";
+require_once __DIR__ ."/../src/admin/AdminController.php";
 
 $router = new Router(new Request);
 $uri  = $_SERVER["REQUEST_URI"];
@@ -60,7 +60,7 @@ $uri  = $_SERVER["REQUEST_URI"];
     $router->post('/admin-signin', function($req){
         AccountController::adminSignIn($req->getBody());
     });
-    
+     
     $router->post('/signin', function($req){
         AccountController::customerSignIn($req->getBody());
     });

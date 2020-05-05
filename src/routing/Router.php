@@ -52,7 +52,6 @@ class Router{
 
     private function defaultMethodHandler(){
         http_response_code(404);
-        echo var_dump($this->request);
         require __DIR__ . '/../../resources/views/404.php'; 
     }
 
