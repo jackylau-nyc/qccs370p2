@@ -22,20 +22,11 @@
     </body>
     
     <script type="text/javascript">
-        function getData(){
-        /*
-            fetch('./routes.php')
-               .then((response) => {
+        async function getData(){
+            return await fetch('/map').then((response) => {
                    return response.json();
              })
-*/
-         // for testing  only ..
-            return [
-                    { name: 'hotel name 1', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [0] },
-                    { name: 'hotel name 2', franchise: { name: 'Franchise 1'}, x_cord: [0], y_cord: [1] },
-                    { name: 'hotel name a', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [0] },
-                    { name: 'hotel name b', franchise: { name: 'Franchise 2'}, x_cord: [1], y_cord: [1] },
-                ]
+
         }
         async function hotel_div_generate(){
 
@@ -56,8 +47,8 @@
                 hotel.className = 'hotel-name';
 
                 // franchise name and hotel name 
-                franchise.innerText = `${result.name}`;
-                hotel.innerText = `${result.franchise.name}`;
+                franchise.innerText = `${result.company}`;
+                hotel.innerText = `${result.company}`;
             
                 title.appendChild(franchise);
                 title.appendChild(hotel);
