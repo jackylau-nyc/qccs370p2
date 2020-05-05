@@ -1,6 +1,6 @@
 <?php
+//  Adapted from this tutorial: https://medium.com/the-andela-way/how-to-build-a-basic-server-side-routing-system-in-php-e52e613cf241.
 namespace routing; 
-
 require_once __DIR__.'/IRequest.php';
 
 class Request implements IRequest {
@@ -11,19 +11,9 @@ class Request implements IRequest {
     
     private function bootstrapSelf(){
         foreach($_SERVER as $key => $value){
-            $this->{$this->toCamelCase($key)} = $value;
+            $this->{$key} = $value;
         }
     } 
-    // Convert from snake_case to camelCase 
-    private function toCamelCase($string) {
-        $result = strtolower($string);
-        preg_match_all('/_[a-z]/', $result, $matches);
-        foreach($matches[0] as $match){
-            $c = str_replace('_', '', strtoupper($match));
-            $result = str_replace($match, $c, $result);
-        }
-        return $result;
-    }
 
     public function getBody() {
         if($this->requestMethod === "GET"){

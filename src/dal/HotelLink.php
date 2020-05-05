@@ -106,5 +106,6 @@ class HotelLink extends BaseLink {
 
     
 }
+
 $var = new HotelLink();
 echo var_dump( $var->getAvailClassCount(0,0, '2019-04-07')  );

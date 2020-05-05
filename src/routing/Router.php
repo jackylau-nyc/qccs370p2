@@ -1,6 +1,7 @@
 <?php
 namespace routing;
 
+//  Adapted from this tutorial: https://medium.com/the-andela-way/how-to-build-a-basic-server-side-routing-system-in-php-e52e613cf241.
 
 class Router{
     private $request;
@@ -13,6 +14,7 @@ class Router{
     function __call($name, $args){
         $this->isInvoked($args);
         list($route, $method) = $args;
+        error_log($route);
         $this->validateVerb($name);
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
     }
@@ -21,8 +23,8 @@ class Router{
     *
     */
     function resolve(){
-        $methodDictionary = $this->{strtolower($this->request->requestMethod)};
-        $formatedRoute = $this->formatRoute($this->request->requestUri);
+        $methodDictionary = $this->{strtolower($this->request->REQUEST_METHOD)};
+        $formatedRoute = $this->formatRoute($this->request->REQUEST_URI);
         
         $method = $methodDictionary[$formatedRoute] ?? null;
         if(is_null($method)){
@@ -50,6 +52,7 @@ class Router{
 
     private function defaultMethodHandler(){
         http_response_code(404);
+        echo var_dump($this->request);
         require __DIR__ . '/../../resources/views/404.php'; 
     }
 
