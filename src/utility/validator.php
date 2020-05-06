@@ -19,17 +19,17 @@ class Validator{
     private function parameterCheck(){
         foreach ($this->requiredParams as $req){
             if(!key_exists($req, $this->request)){
-                error_log ("Request Field Missing: " . $req);
+                echo var_dump ($this->request);
+                error_log ("Request Field Missing: " . $req );
                 return false;   
             }
             if(!isset($this->request[$req])){
                 error_log("Request Field is Null: " . $req );
+                error_log ("Provided: ");
+                error_log(var_dump($this->request));
                 return false; 
             }
-            if (empty($this->request[$req])){
-                error_log("Request Field is Empty: " . $req);
-                return false; 
-            }
+
         }
         return true; 
     } 
@@ -43,6 +43,7 @@ class Validator{
         }  
         return $this->cleanData; 
     }
+
     function getSafeHTMl(){
         if(! $this->isValid()){
             return false; 

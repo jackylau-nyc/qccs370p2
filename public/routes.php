@@ -26,7 +26,7 @@ $uri  = $_SERVER["REQUEST_URI"];
 
     if( isQStr("hotel", $uri)){
         $router->get("$uri", function($req) {
-            HotelController::test($req);
+            HotelController::getAvailableRooms($req);
         });
     }   
 
