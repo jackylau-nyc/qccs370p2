@@ -16,8 +16,7 @@ class Request implements IRequest {
     } 
 
     public function getBody() {
-        if($this->requestMethod === "GET"){
-            return;
+        if($this->requestMethod === "GET"){ 
         }
 
         if ($this->requestMethod == "POST"){

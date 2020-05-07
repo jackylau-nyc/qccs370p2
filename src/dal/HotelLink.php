@@ -32,46 +32,11 @@ class HotelLink extends BaseLink {
     }
 
 
-    function findRoomsLT($hotelXCord, $hotelYCord, $price){
-        $sql = "SELECT  room_num, class, price
-                FROM    room
-                WHERE   room.x_cord = ? 
-                        AND room.y_cord = ? 
-                        AND room.price < ?";
-        $params = array ($hotelXCord, $hotelYCord, $price);
-        $result = $this->query($sql, $params);        
-        return (is_null($result))? false : $result;
-
-    }
-
-    function findRoomsGT($hotelXCord, $hotelYCord, $price){
-        $sql = "SELECT  room_num, class, price
-                FROM    room
-                WHERE   room.x_cord = ? 
-                        AND room.y_cord = ? 
-                        AND room.price > ?";
-        $params = array ($hotelXCord, $hotelYCord);
-        $result = $this->query($sql, $params);        
-        return (is_null($result))? false : $result;
-
-    }
-    function findRoomsEQ($hotelXCord, $hotelYCord, $price){
-        $sql = "SELECT  room_num, class, price
-                FROM    room
-                WHERE   room.x_cord = ? 
-                        AND room.y_cord = ? 
-                        AND room.price = ?";
-        $params = array ($hotelXCord, $hotelYCord);
-        $result = $this->query($sql, $params);        
-        return (is_null($result))? false : $result;
-        
-    }
-
     /*
      * Returns an arra containing arrays of room classifications and classification counts.  
      * array( array("class"=> "Cheap","size"=> "3"), array("class"=> "Free,"size"=> "3") );  
      */
-    function getClassCount($hotelXCord, $hotelYCord){
+    function getClassCounts($hotelXCord, $hotelYCord){
         $sql = "SELECT class, count(class) as size
                 FROM   room 
                 WHERE  room.x_cord  = ? AND room.y_cord = ?
@@ -82,7 +47,7 @@ class HotelLink extends BaseLink {
     }
 
     function getAvailClassCount($hotelXCord, $hotelYCord, $date){
-        $sql = "SELECT class, count(class) as availableRooms
+        $sql = "SELECT class, count(class) as size
                 FROM  room 
                 WHERE room.room_num NOT IN (           
                      SELECT room.room_num 
@@ -104,8 +69,16 @@ class HotelLink extends BaseLink {
         return (is_null($result))? false : $result;
     }
 
-    
+
+    function getRoomClasses($hotelXCord, $hotelYCord){
+        $sql = "SELECT class
+                FROM   room 
+                WHERE  room.x_cord = ?  AND room.y_cord = ?
+                GROUP BY room.class;";
+        $params = array ($hotelXCord, $hotelYCord);
+        $result = $this->query($sql, $params);        
+        return (is_null($result))? false : $result;
+    }
+
 }
 
-$var = new HotelLink();
-echo var_dump( $var->getAvailClassCount(0,0, '2019-04-07')  );
