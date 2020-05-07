@@ -20,7 +20,7 @@ class HotelAccessService{
     }
     
     function getCompany($hotelXCord, $hotelYCord){
-        return $this->conn->getCompany();
+        return json_encode( $this->conn->getCompany($hotelXCord, $hotelYCord));
     }
 
     function getAllRooms($hotelXCord, $hotelYCord){
@@ -39,7 +39,24 @@ class HotelAccessService{
          return json_encode($res);
     }
 
+    function getRoomClasses($hotelXCord,$hotelYCord){
+        $res = $this->conn->getRoomClasses($hotelXCord, $hotelYCord);
+         if(!$res){
+             return false; 
+         }
+         return json_encode($res);
+    }
+
+    function getRoomClassCounts($hotelXCord,$hotelYCord){
+        $res = $this->conn->getClassCounts($hotelXCord, $hotelYCord);
+         if(!$res){
+             return false; 
+         }
+         return json_encode($res);
+    }
     
+
+
 
 
 }
