@@ -120,3 +120,11 @@ SELECT* FROM customer;
 -- Query for Finding all reservations before date()
 -- Query for Finding all reservations after date()
 -- Query for Finding all reservations on date() i.e. all checked in reservations.
+
+
+
+
+ALTER TABLE reservation_has_customer
+Change reserveration_id reservation_id int(11);
+
+describe reservation_has_customer;

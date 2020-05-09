@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS room_has_reservation(
 );
 
 CREATE TABLE IF NOT EXISTS reservation_has_customer(
-	PRIMARY KEY(customer_username, reserveration_id),
+	PRIMARY KEY(customer_username, reservation_id),
     customer_username varchar(64)   NOT NULL, 
-    reserveration_id INT NOT NULL,
+    reservation INT NOT NULL,
 	CONSTRAINT fk_customer_reservation FOREIGN KEY (reserveration_id) 
 		REFERENCES reservation(res_id),
 	CONSTRAINT fk_reserved_for_customer FOREIGN KEY (customer_username) 
