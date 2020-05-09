@@ -21,7 +21,9 @@ class BaseLink {
         }
         return $connection;            
     }
-
+    /**
+     * 
+     */
     protected function query($sql, $params){
         $connection = $this->openConnection();
         $result     = $connection->prepare($sql);
@@ -39,8 +41,57 @@ class BaseLink {
     protected function validResult($result){
         return ($result->rowCount() > 0);  
     }
+    /**
+     * 
+     */
+    protected function transaction($stmnts, $params){
+        try{
+            $connection = $this->openConnection();   
+            $prepStmnts = []; 
+            $connection->beginTransaction();
+            $count  = count($stmnts);
+            for ($i = 0; $i < $count; $i++){
+                $result = $connection->prepare($stmnts[$i]);
+                $result->execute($params[$i]); 
+            }
 
+            $connection->commit();
+            $connection = null;    
+            return  $result->fetchALL(PDO::FETCH_ASSOC); 
+        } 
+        catch(Exception $e){
+            echo  "Unable to handle request at this time";
+            error_log ($e->getMessage());
+            $pdo->rollBack();
+        }
+    }
 
+    /**
+     *  
+     *
+     */
+    protected function multiTransaction($stmnts, $params, $limit){
+        try{
+            $connection = $this->openConnection();   
+            $prepStmnts = []; 
+            $connection->beginTransaction();
+            $count  = count($stmnts);
+            for ($a = 0; $a < $limit; $a++){
+                for ($i = 0; $i < $count; $i++){
+                    $result = $connection->prepare($stmnts[$i]);
+                    $result->execute($params[$i]); 
+                }
+            }
 
+            $connection->commit();
+            $connection = null;    
+            return  $result->fetchALL(PDO::FETCH_ASSOC); 
+        } 
+        catch(Exception $e){
+            echo  "Unable to handle request at this time";
+            error_log ($e->getMessage());
+            $pdo->rollBack();
+        }
+    }
 
 }
