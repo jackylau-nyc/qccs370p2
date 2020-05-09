@@ -21,7 +21,7 @@ class AdminLink extends BaseLink {
     
     /**
      * Spec: The administrator can view all the customer reservations in the hotel chain.
-     * Fetch reservation data from ALL hotels that belong to a specified company. 
+     * Fetch reservation data from ALL hotels that belong to a specified company. (Past, Future, Present)
      */
     function getAllReservations($companyName){
         $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
@@ -45,39 +45,69 @@ class AdminLink extends BaseLink {
         $result = $this->query($sql, $params);
         return (is_null($result))? false : $result;
     }
-
-    function getAllValidReservations($companyName, $startDate){
+   
+    /**
+    * Fetch all upcoming reservations active for a given company based around a specified date.
+    */
+    function getAllUpcomingReservations($companyName, $date){
         $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
-                FROM hotel
+                FROM   hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
                     AND hot.x_cord = hotel.x_cord
                     AND hot.y_cord = hotel.y_cord
                 INNER JOIN room AS rm 
-                    ON rm.x_cord = hotel.x_cord
+                    ON  rm.x_cord = hotel.x_cord
                     AND rm.y_cord = hotel.y_cord
                 INNER JOIN room_has_reservation AS rm_junc
-                    ON rm_junc.x_cord = hotel.x_cord
+                    ON  rm_junc.x_cord = hotel.x_cord
                     AND rm_junc.y_cord = hotel.x_cord
                     AND rm_junc.room_num = rm.room_num
                 INNER JOIN reservation_has_customer AS rc_junc
-                    ON rc_junc.reservation_id = rm_junc.res_id
+                    ON  rc_junc.reservation_id = rm_junc.res_id
                 INNER JOIN reservation AS res
-                    ON res.res_id = rc_junc.reservation_id
-                    AND res.res_start >= ?;";
-        $params = array ($companyName);
+                    ON  res.res_id = rc_junc.reservation_id
+                    AND (res.res_start >= ?;";
+        $params = array ($companyName, $date);
         $result = $this->query($sql, $params);
         return (is_null($result))? false : $result;
     }
     
     /**
-     * The administrator can also viewall the customers who are currently checked intohotels in the chain.
-     * Fetch active reservation data from ALL hotels that belong to a specified company.
-     * @param hotelXCord -> x coordinate of the hotel 
-     * @param hotelYCord -> y coordinate of the hotel
-     * @return array  
-     */
-    function getAllActiveReservations($hotelXCord, $hotelYCord, $date){
+    * Fetch all "Checked-In" reservations active for a given company for a specified date. 
+    * Active here is defined as a reservation's start date being on or before the specified date, 
+    * And the reservation's end date being on or after the specified date.
+    */
+    function getAllActiveReservations($companyName, $date){
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
+                FROM   hotel
+                INNER JOIN hotel AS hot
+                    ON  hot.company = ?
+                    AND hot.x_cord = hotel.x_cord
+                    AND hot.y_cord = hotel.y_cord
+                INNER JOIN room AS rm 
+                    ON  rm.x_cord = hotel.x_cord
+                    AND rm.y_cord = hotel.y_cord
+                INNER JOIN room_has_reservation AS rm_junc
+                    ON  rm_junc.x_cord = hotel.x_cord
+                    AND rm_junc.y_cord = hotel.x_cord
+                    AND rm_junc.room_num = rm.room_num
+                INNER JOIN reservation_has_customer AS rc_junc
+                    ON  rc_junc.reservation_id = rm_junc.res_id
+                INNER JOIN reservation AS res
+                    ON  res.res_id = rc_junc.reservation_id
+                    AND (res.res_start <= ? AND res.res_end >= ?);";
+        $params = array ($companyName, $date, $date);
+        $result = $this->query($sql, $params);
+        return (is_null($result))? false : $result;
+
+    }
+
+    /**
+    * Fetch all reservations that are either currently checking in, or are pending.price
+    * Pending here is defined as having the reservation start date be after the specified date.
+    */
+    function getAllValidReservations($companyName, $date){
         $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
                 FROM hotel
                 INNER JOIN hotel AS hot
@@ -95,13 +125,13 @@ class AdminLink extends BaseLink {
                     ON rc_junc.reservation_id = rm_junc.res_id
                 INNER JOIN reservation AS res
                     ON res.res_id = rc_junc.reservation_id
-                    AND res.res_start = ?;";
-        $params = array ($companyName);
+                    AND ((res.res_start <=  ? AND res.res_end >=  ? ) 
+                        OR (res.res_start >=  ?  AND res.res_end >=  ?))";
+        $params = array ($companyName, $date, $date,$date,$date);
         $result = $this->query($sql, $params);
         return (is_null($result))? false : $result;
 
     }
-
     /****************************************************************************************************
      ***************************************** Room Manipulation ****************************************
      ****************************************************************************************************/
