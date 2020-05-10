@@ -28,22 +28,34 @@ $uri  = $_SERVER["REQUEST_URI"];
         $router->get("$uri", function($req) {
             HotelController::requestHandler($req);
         });
+    }
+
+    if( isQStr("admin", $uri)){
+        $router->get("$uri", function($req) {
+            AdminController::requestHandler($req);
+        });
     }   
 
- } else{ // everything else.
+    
+    if( isQStr("customer", $uri)){
+        $router->get("$uri", function($req) {
+            CustomerController::test();
+        });
+    } 
+    
+    if( isQStr("search", $uri)){
+        $router->get("$uri", function($req) {
+            CustomerController::test();
+        });
+    } 
+    
 
+ } else{ // everything else.
     
     $router->get('/', function() {
         require __DIR__.'/index.php;';
     });
 
-    $router->get('/admin', function() {
-        AdminController::test();
-    });
-
-    $router->get('/customer', function() {
-        CustomerController::test();
-    });
 
     $router->get('', function() {
         require __DIR__.'/index.php;';
@@ -57,6 +69,10 @@ $uri  = $_SERVER["REQUEST_URI"];
         require __DIR__.'/reservation.php';
     });
       
+    $router->post("/admin", function($req) {
+        AdminController::postRequestHandler($req->getBody());
+    });
+
     $router->post('/admin-signin', function($req){
         AccountController::adminSignIn($req->getBody());
     });

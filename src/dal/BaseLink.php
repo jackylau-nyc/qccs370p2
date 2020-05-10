@@ -91,6 +91,7 @@ class BaseLink {
             echo  "Unable to handle request at this time";
             error_log ($e->getMessage());
             $pdo->rollBack();
+            return null; 
         }
     }
 

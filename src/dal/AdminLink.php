@@ -16,9 +16,22 @@ class AdminLink extends BaseLink {
                 VALUES (?,?,?)";
         $params = array ($hotelXCord, $hotelYCord, $companyName);
         $result = $this->query($sql, $params);
-        return (is_null($result))? false : true;
     }
-    
+    /**
+     * @param hotelXCord -> x coordinate of the hotel 
+     * @param hotelYCord -> y coordinate of the hotel 
+     * @return boolean true if Hotel Exists, false otherwise.  
+     */
+    function hotelExists($hotelXCord, $hotelYCord){
+        $sql = "SELECT 
+                EXISTS (SELECT * 
+                        FROM  hotel
+                        WHERE (hotel.x_cord =? AND hotel.y_cord =?) 
+                        LIMIT 1)";
+        $params = array($hotelXCord, $hotelYCord);
+        return $this->query($sql, $params);    
+    }
+
     /**
      * Spec: The administrator can view all the customer reservations in the hotel chain.
      * Fetch reservation data from ALL hotels that belong to a specified company. (Past, Future, Present)
@@ -103,35 +116,7 @@ class AdminLink extends BaseLink {
 
     }
 
-    /**
-    * Fetch all reservations that are either currently checking in, or are pending.price
-    * Pending here is defined as having the reservation start date be after the specified date.
-    */
-    function getAllValidReservations($companyName, $date){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
-                FROM hotel
-                INNER JOIN hotel AS hot
-                    ON  hot.company = ?
-                    AND hot.x_cord = hotel.x_cord
-                    AND hot.y_cord = hotel.y_cord
-                INNER JOIN room AS rm 
-                    ON rm.x_cord = hotel.x_cord
-                    AND rm.y_cord = hotel.y_cord
-                INNER JOIN room_has_reservation AS rm_junc
-                    ON rm_junc.x_cord = hotel.x_cord
-                    AND rm_junc.y_cord = hotel.x_cord
-                    AND rm_junc.room_num = rm.room_num
-                INNER JOIN reservation_has_customer AS rc_junc
-                    ON rc_junc.reservation_id = rm_junc.res_id
-                INNER JOIN reservation AS res
-                    ON res.res_id = rc_junc.reservation_id
-                    AND ((res.res_start <=  ? AND res.res_end >=  ? ) 
-                        OR (res.res_start >=  ?  AND res.res_end >=  ?))";
-        $params = array ($companyName, $date, $date,$date,$date);
-        $result = $this->query($sql, $params);
-        return (is_null($result))? false : $result;
 
-    }
     /****************************************************************************************************
      ***************************************** Room Manipulation ****************************************
      ****************************************************************************************************/
@@ -160,8 +145,7 @@ class AdminLink extends BaseLink {
                      INTO   room (room_num, x_cord, y_cord, class, price)
                      VALUES (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
-        $result   =  $this->transaction($stmnts, $params, $amount);
-        return (is_null($result)) ? false : true;
+        $this->transaction($stmnts, $params, $amount);
     }
 
     /**
@@ -189,7 +173,6 @@ class AdminLink extends BaseLink {
                      INTO     room (room_num, x_cord, y_cord, class, price)
                      VALUES   (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
-        $result   =  $this->multiTransaction($stmnts, $params, $amount);
-        return (is_null($result)) ? false : true;
+        $this->multiTransaction($stmnts, $params, $amount);
     }
 }

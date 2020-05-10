@@ -16,10 +16,10 @@ class Request implements IRequest {
     } 
 
     public function getBody() {
-        if($this->requestMethod === "GET"){ 
+        if($this->REQUEST_METHOD === "GET"){ 
         }
 
-        if ($this->requestMethod == "POST"){
+        if ($this->REQUEST_METHOD == "POST"){
             $body = array();
             foreach($_POST as $key => $value){
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
