@@ -6,6 +6,6 @@
 	</head>
 	<body>
 		<?php include __DIR__."/components/navbar.html"?>
-		<?php // Does not exist yet include __DIR__."/components/hotelroom.html"?>
+		<?php include __DIR__."/components/hotelroom.html"?>
 	</body>
 </html>

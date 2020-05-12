@@ -1,0 +1,81 @@
+body {
+    font-family: 'Quicksand' !important;
+    text-decoration: none;
+    margin: 0 !important;
+    background-image: url('../img/adminbg.jpg');
+    background-size: cover ;
+    background-attachment: fixed;
+  }
+  /*------------- Admin Navbar ---------------*/
+  .admin-navbar {
+    background-color: #333;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .admin-navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+  .admin-navbar .admin-navbar-btn {
+    padding: 15px 16px;
+    float: left;
+    background-color: #333;
+    color : white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border:none;
+    position: right;
+  }
+  .admin-navbar a:hover, .admin-navbar-btn:hover{
+    background-color:#ff9933;
+  }
+  .admin-modal-btn {
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color:#9b9b9b;
+      color:white;
+  }
+  .admin-modal-btn:hover {
+    background-color: #ff9933;
+    color:white;
+  }
+/* -------------- Hotel Modal --------------*/
+.hotel-modal{
+    margin-top:5rem;
+    margin-bottom:5rem;
+    position: relative;   
+}
+
+.hotel-div{
+    background: rgba(0, 0, 0, 0.8); 
+    margin-bottom: 55px;
+    padding-top: 35px;
+    padding-bottom: 55px;
+    position:relative;
+}
+
+.hotel-name{
+    padding-top: 10px;
+    display:block;
+    font-size: 32px;
+    font-weight:Normal;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand';
+    font-style: italic;
+}
+
+.hotel-descript{
+    display:block;
+    font-size:20px;
+    font-weight:Normal;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand';
+}

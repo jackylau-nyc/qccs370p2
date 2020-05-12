@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- my css -->
+    <link rel="stylesheet" href="./css/adminNewHotelstyle.css">
+    <!--fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Pop Up Modal-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!--Admin navbar-->
+    <div class="admin-navbar">
+      <a class ="admin-navbar-btn" href ="./adminHome.php">Home</a>
+      <a class ="admin-navbar-btn" href ="./adminReservation.php">All Reservations</a>
+      <a class ="admin-navbar-btn" href ="./adminNewHotel.php">Add New Hotel</a>
+      <button class="admin-navbar-btn pull-right" onclick="document.getElementById('admin-logout').style.display='block'">Logout</button>
+    </div>
+    <!-- Admin LogOut Modal -->
+    <div id="admin-logout" class="w3-modal w3-animate-opacity">
+      <div class="w3-modal-content" style="padding:16px">
+        <div class="w3-container">
+          <i onclick="document.getElementById('admin-logout').style.display='none'" class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-large"></i>
+          <h2>Log Out</h2>
+          <br>
+          <h5>Are you sure that you want to Log out ?</h5>
+          <br>
+          <!--<form method="POST" action=""></form> -->
+            <button class="admin-modal-btn" id="admin-logout-btn">Log out</button>
+          <button class="admin-modal-btn" onclick="document.getElementById('admin-logout').style.display='none'">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="NewHotelDiv">
+      <form class ="form-style" method="POST" action="">
+        <div class="NewHotelBanner">
+          <h1 class="BannerHeader">New Hotel Informations</h1>
+        </div>
+        <br>
+        <!-- Hotel x , y cords -->
+        <fieldset>
+          <legend>Hotel Location</legend>
+          <p id ="location-err-msg" style="color: red;"></p>
+          <div class="columns">
+            <div class="item">
+              <label for="x_cord">X Street <span>*</span></label>
+              <input id="x_cord" type="text" name="x_cord" />
+            </div>
+            <div class="item">
+              <label for="y_cord">Y Ave <span>*</span></label>
+              <input id="y_cord" type="text" name="y_cord" />
+            </div>
+        </fieldset>
+        <br/>
+        <!-- Rooms Types and Rate -->
+        <fieldset>
+        <legend> Edit Rooms</legend>
+        <p id ="room-err-msg" style="color: red;"></p>
+        <div class="columns">
+
+        <div class="item">
+          <label for="standard">Total Cheap Room</label>
+          <input id="standard" type="number" min="0" name="standard" />
+        </div>
+
+        <div class="item">
+          <label for="standard-rate">Cheap Room Rates </label>
+          <input id="standard-rate" type="text" name="standard-rate"/>
+        </div>
+
+        <div class="item">
+          <label for="deluxe">Total Deluxe Room</label>
+          <input id="deluxe" type="number" min="0" name="deluxe" />
+        </div>
+
+        <div class="item">
+          <label for="deluxe-rate">Deluxe Room Rates </label>
+          <input id="deluxe-rate" type="text" name="deluxe-rate"/>
+        </div>
+
+        <div class="item">
+          <label for="suite">Total Suite</label>
+          <input id="suite" type="number" min="0" name="suite" />
+        </div>
+
+        <div class="item">
+          <label for="suite-rate">Suite Rates </label>
+          <input id="suite-rate" type="text" name="suite-rate"/>
+        </div>
+
+        </fieldset>
+        
+        <!-- Add Button -->
+        <div class="form-btn-div">
+          <button class ="submit-btn" type="button" id="form-submit" onclick="AddHotel()">Submit</button>
+        </div>
+      </form>
+      </div>
+
+    <script>
+      document.getElementById("admin-logout-btn").onclick = function () {
+        location.href = "./hotel.php";
+      };
+
+      function AddHotel() {
+        // form datas .. 
+        var x_cord = document.getElementById('x_cord').value;
+        var y_cord = document.getElementById('y_cord').value;
+        var standard_num = document.getElementById('standard').value;
+        var standard_rate = document.getElementById('standard-rate').value;
+        var deluxe_num = document.getElementById('deluxe').value;
+        var deluxe_rate = document.getElementById('deluxe-rate').value;
+        var suite_num = document.getElementById('suite').value;
+        var suite_rate = document.getElementById('suite-rate').value;
+        
+        // Checking Location inputs ... 
+        if ( x_cord == "" || y_cord == "" ) {
+          document.getElementById('location-err-msg').innerText = "Please fill in all fields"
+        }
+        else if ( x_cord < 0 || x_cord > 100 || y_cord < 0 || y_cord > 100) {
+          document.getElementById('location-err-msg').innerText = "Invalid Inputs : street and ave must between 0 - 100 "
+        }
+        // Checking Room inputs ... 
+        else if ( standard_num == "" || standard_rate == "" || deluxe_num == "" || deluxe_rate == ""|| suite_num == "" || suite_rate == ""){
+          document.getElementById('room-err-msg').innerText = "Please fill in all fields"
+        } 
+        else {
+          document.getElementById('location-err-msg').innerText = "Success"
+          /*
+            $.ajax({
+            method:"POST",
+            url:"",
+            processData: false,
+            contentType: false,
+            data:{ x_cord : x_cord , 
+                   y_cord : y_cord ,
+                   standard_num : standard_num,
+                   standard_rate : standard_rate,
+                   deluxe_num : deluxe_num,
+                   deluxe_rate : deluxe_rate,
+                   suite_num : suite_num,
+                   standard_rate : suite_rate,
+                   },
+            })
+            .done(function(){
+              document.getElementById('signup-msg').innerText = " Your Account has been create !"
+            })
+            .fail(function(){
+              document.getElementById('err-msg').innerText = "ajax Unknown Errors"
+            })
+        }*/
+      }
+    </script>
+
+  </body>
+</html>

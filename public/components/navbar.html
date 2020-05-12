@@ -39,10 +39,10 @@
           <input type="checkbox" name="FourthSelector" value="0"> Show Available Only
           <p></p>
           <input type="submit" id="searchButton" value="search" >
-        
+
         </form>
        </div>
-      </div> 
+      </div>
     <a class ="loginbtn" href ="./reservation.php">My Reservation</a>
     <!--<button class="loginbtn pull-right" onclick="document.getElementById('logout').style.display='block'">Log out</button>-->
     <a class ="loginbtn pull-right" href ="./signUp.php">Sign Up</a>
@@ -101,7 +101,7 @@
 
       if( login_username == "" || login_password == "" ){
         document.getElementById('err-msg').innerText = "Please fill in all fields"
-      } else {         
+      } else {
         $.ajax({
           method:"POST",
           url:"/signin",
@@ -110,7 +110,7 @@
           data:{username: login_username,password: login_password},
           })
           .done(function(){
-            location.href = "/reservations";
+            location.href = "/reservation";
           })
           .fail(function(){
             document.getElementById('err-msg').innerText = "Invalid username or password . Please try again"
@@ -132,8 +132,6 @@
         }
     */
 </script>
-
-
 
 </body>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- my css -->
+    <link rel="stylesheet" href="./css/adminHomestyle.css">
+    <!--fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Pop Up Modal-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body onload="hotel_div_generate()">
+    <!--Admin navbar-->
+    <div class="admin-navbar">
+      <a class ="admin-navbar-btn" href ="./adminHome.php">Home</a>
+      <a class ="admin-navbar-btn" href ="./adminReservation.php">All Reservations</a>
+      <a class ="admin-navbar-btn" href ="./adminNewHotel.php">Add New Hotel</a>
+      <button class="admin-navbar-btn pull-right" onclick="document.getElementById('admin-logout').style.display='block'">Logout</button>
+    </div>
+    <!-- Admin LogOut Modal -->
+    <div id="admin-logout" class="w3-modal w3-animate-opacity">
+      <div class="w3-modal-content" style="padding:16px">
+        <div class="w3-container">
+          <i onclick="document.getElementById('admin-logout').style.display='none'" class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-large"></i>
+          <h2>Log Out</h2>
+          <br>
+          <h5>Are you sure that you want to Log out ?</h5>
+          <br>
+          <form method="POST" action="">          </form>
+            <button class="admin-modal-btn" id="admin-logout-btn">Log out</button>
+          <button class="admin-modal-btn" onclick="document.getElementById('admin-logout').style.display='none'">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- Display Templates-->
+    <section class="hotel-modal">   
+        <div class="container" id = "id"></div>
+    </section>
+
+    <script>
+      document.getElementById("admin-logout-btn").onclick = function () {
+        location.href = "./hotel.php";
+      };
+
+      async function getData(){
+            //return await fetch('').then((response) => {
+            //       return response.json();
+            // })
+             return [
+                    { company : 'Howard Resorts', x_cord: [0], y_cord: [0] },
+                    { company : 'Howard Resorts', x_cord: [0], y_cord: [1] },
+                    { company : 'Howard Resorts', x_cord: [0], y_cord: [2] },
+                    { company : 'Howard Resorts', x_cord: [0], y_cord: [2]}
+                    ]
+        }
+        async function hotel_div_generate(){
+
+            var hotelmodal_container = document.getElementById('id');
+            var result = await getData();
+
+            result.forEach(function (result) {
+                var col_div = document.createElement('div');
+                col_div.className = 'col-md-4';
+                
+                var hotel_div = document.createElement('div');
+                hotel_div.classList.add("hotel-div");
+
+                var title = document.createElement('h1');
+                var hotel = document.createElement('span');
+                hotel.className = 'hotel-name';
+                hotel.innerText = `${result.company}`;
+                title.appendChild(hotel);
+
+                // ( i , j ) locations
+                var des = document.createElement('p');
+                des.className = 'hotel-descript';
+                des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
+
+                col_div.appendChild(hotel_div);
+                hotel_div.appendChild(title);
+                hotel_div.appendChild(des);
+
+                hotelmodal_container.appendChild(col_div);
+            })
+        }
+    </script>
+
+  </body>
+</html>

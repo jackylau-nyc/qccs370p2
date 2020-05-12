@@ -14,22 +14,57 @@
   <body class = "bg">
     <div>
       <div class="container">
-        <div class="col-sm-offset-3 col-sm-6 cont-div">
+        <div class="col-sm-offset-2 col-sm-8 cont-div">
 
           <h1>Cancel My Reservation</h1>
           <h4>Fill out the following informations to cancel your reservation :</h4>
-        
-          <form action="" method="POST" >
-              <input class="fontstyle inputspace" type="text" placeholder="Reservation number" required>
+          <h4 id="cancel-err-msg" style="color: red;"></h4>
+          <form action="" method="POST">
+              <input id ="cancel-res-id" class="fontstyle inputspace" type="text" placeholder="Reservation number" required>
               <br>
-              <input class="fontstyle inputspace" type="text" placeholder="Username" required>
+              <input id ="cancel-username" class="fontstyle inputspace" type="text" placeholder="Username" required>
               <br>
-              <input class="fontstyle inputspace" type="password" placeholder="Password" required>
+              <input id ="cancel-password" class="fontstyle inputspace" type="password" placeholder="Password" required>
               <br>
-              <button class="fontstyle button" type="button">Cancel</button>
+              <button class="fontstyle button" type="button"  onclick="CancelReservation()">Cancel</button>
           </form>
+
         </div>
       </div>
     </div>
+
+    <script>
+    function CancelReservation(){
+          var res_id = document.getElementById('cancel-res-id').value;
+          var username = document.getElementById('cancel-username').value;
+          var password = document.getElementById('cancel-password').value;
+    
+          if( res_id == "" || username == "" || password == ""){
+            document.getElementById('cancel-err-msg').innerText = "Please fill in all fields"
+          } else if (!regexp.test(res_id)){
+            document.getElementById('cancel-err-msg').innerText = "Please fill in all fields"
+          } else {
+             document.getElementById('cancel-err-msg').innerText = "Your reservation has been cancelled!"
+             /*
+              $.ajax({
+              method:"POST",
+              url:"/",
+              processData: false,
+              contentType: false,
+              data: { 
+                username: username, 
+                password:password,
+                /* res_id ???  
+                },
+              })
+              .done(function(){
+                document.getElementById('cancel-err-msg').innerText = "Your reservation has been cancelled!"
+              })
+              .fail(function(){
+                document.getElementById('cancel-err-msg').innerText = "ajax Unknown Errors"
+              })*/
+          }
+        }
+    </script>
   </body>
 </html>

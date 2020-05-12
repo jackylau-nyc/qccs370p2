@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- my css -->
+    <link rel="stylesheet" href="./css/adminReservationstyle.css">
+    <!--fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Pop Up Modal-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body onload="allReservations()">
+    <!--Admin navbar-->
+    <div class="admin-navbar">
+      <a class ="admin-navbar-btn" href ="./adminHome.php">Home</a>
+      <a class ="admin-navbar-btn" href ="./adminReservation.php">All Reservations</a>
+      <a class ="admin-navbar-btn" href ="./adminNewHotel.php">Add New Hotel</a>
+      <button class="admin-navbar-btn pull-right" onclick="document.getElementById('admin-logout').style.display='block'">Logout</button>
+    </div>
+    <!-- Admin LogOut Modal -->
+    <div id="admin-logout" class="w3-modal w3-animate-opacity">
+      <div class="w3-modal-content" style="padding:16px">
+        <div class="w3-container">
+          <i onclick="document.getElementById('admin-logout').style.display='none'" class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-large"></i>
+          <h2>Log Out</h2>
+          <br>
+          <h5>Are you sure that you want to Log out ?</h5>
+          <br>
+          <form method="POST" action="">          </form>
+            <button class="admin-modal-btn" id="admin-logout-btn">Log out</button>
+          <button class="admin-modal-btn" onclick="document.getElementById('admin-logout').style.display='none'">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- Display Templates-->
+    <div class ="container" id="admin-view"></div> 
+
+    <script>
+      document.getElementById("admin-logout-btn").onclick = function () {
+        location.href = "./hotel.php";
+      };
+
+      async function getData(){
+        /*
+            return await fetch('').then((response) => {
+                   return response.json();
+             })
+        }
+        */
+        
+        // for display testing  only ....
+            return [
+                    { res_id: '001001',username:'john', company : 'Howard Resorts', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
+                    { res_id: '101111',username:'david', company : 'Howard Resorts', x_cord: [0], y_cord: [1] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                    { res_id: '201222',username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+                ]
+        }
+    
+        async function allReservations(){
+
+            var cont = document.getElementById('admin-view');
+            var result = await getData();
+
+            result.forEach(function (result) {
+                var res_div = document.createElement('div');
+                res_div.className ='row';
+
+                var res_id = document.createElement('h3');
+                res_id.innerText = `Reservation Number : ${result.res_id}`;
+      
+                var left_div = document.createElement('div');
+                left_div.className ='col-sm-3';
+                var hotel_name = document.createElement('p');
+                var hotel_cords = document.createElement('p');
+                var roomtype = document.createElement('p');
+                hotel_name.innerText = `${result.company}`;
+                hotel_cords.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
+                roomtype.innerText = `Room Type : ${result.class}`;
+                left_div.appendChild(hotel_name);
+                left_div.appendChild(hotel_cords);
+                left_div.appendChild(roomtype);
+
+                var mid_div = document.createElement('div');
+                mid_div.className = 'col-sm-3';
+                var check_in = document.createElement('p');
+                var check_out = document.createElement('p');
+                check_in.innerText = `Check In Date : ${result.res_start}`;
+                check_out.innerText = `Check Out Date : ${result.res_end}`;
+                mid_div.appendChild(check_in);
+                mid_div.appendChild(check_out);
+
+
+                var right_div = document.createElement('div');
+                right_div.className = 'col-sm-3';
+                var username = document.createElement('p');
+                var price = document.createElement('p');
+                username.innerText = `Customer : ${result.username}`;
+                price.innerText = `Price : $${result.price}`;
+                right_div.appendChild(username);
+                right_div.appendChild(price);
+               
+                // Append all div in containter...
+                res_div.appendChild(res_id);
+                res_div.appendChild(left_div);
+                res_div.appendChild(mid_div);
+                res_div.appendChild(right_div);
+                cont.appendChild(res_div);
+            })
+        }
+    </script>
+
+  </body>
+</html>
