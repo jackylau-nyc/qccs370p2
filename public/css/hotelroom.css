@@ -5,12 +5,11 @@
 
   body{
       background-image: url("public/img/hotelroombg.jpg");
-      font-family: personalFont;
-      text-align: center;
+      font-family: personalFont !important;
   }
   
   h1{
-    font-size: 40px;
+    font-size: 40px !important;
   }
 
   #hotela, #hotelb, #hotel1, #hotel2{
@@ -27,4 +26,55 @@
 #hotelareservations, #hotelbreservations, #hotel1reservations, #hotel2reservations{
     background-color: white; 
     float: right;
+    
+}
+
+.sidenav {
+  font-family: 'Arapey';
+  width: 170px;
+  position: fixed;
+  z-index: 1;
+  top: 8rem ;
+  left: 10px;
+  background: rgb(228, 228, 228);
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  display: block;
+}
+
+.sidenav button {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  background: rgb(228, 228, 228);
+  border: none;
+  display: block;
+  text-align: left;
+}
+
+.sidenav a:hover , .sidenav button:hover{
+  color: #5bb2f8;
+}
+
+.main {
+  margin-left: 200px;
+  padding: 0px 15px;
+  text-align: center;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.fontstyle {
+  font-family: 'Arapey';
 }

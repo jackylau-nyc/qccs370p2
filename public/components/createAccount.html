@@ -39,14 +39,9 @@
       var signup_pw = document.getElementById('signup-password').value;
       var signup_confirm_pw = document.getElementById('signup-confirm-password').value;
   
-      const regexp = /[a-z0-9]/ig;
-      
       if( signup_user == "" || signup_pw == "" || signup_confirm_pw == ""){
         document.getElementById('signup-msg').innerText = " Please fill in all fields"
-      } else if (!regexp.test(signup_user)){
-        document.getElementById('signup-msg').innerText = " Invalid Username!"
-      }
-       else if( signup_pw != signup_confirm_pw ){
+      } else if( signup_pw != signup_confirm_pw ){
         document.getElementById('signup-msg').innerText = " Passwords not match!"
       } else {
           $.ajax({
@@ -57,7 +52,7 @@
           data:{ username: signup_user, password:signup_pw },
           })
           .done(function(){
-            document.getElementById('signup-msg').innerText = " Your Account has been create !"
+            document.getElementById('signup-msg').innerText = " Your Account has been created !"
           })
           .fail(function(){
             document.getElementById('err-msg').innerText = "ajax Unknown Errors"
