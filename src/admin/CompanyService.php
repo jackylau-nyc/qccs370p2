@@ -12,7 +12,7 @@ require_once __DIR__."/../dal/AdminLink.php";
  *  
 */
 
-class HotelAccessService{
+class CompanyService{
     private $conn;
     
     function __construct(){
