@@ -34,8 +34,8 @@ class AccountLink extends BaseLink {
                 INTO customer (username, passwd)
                 VALUES (?, ?)";
         $params = array($username, $passwd);
-        $result = $this->query($sql, $params);
-        return (is_null($result))? false: true ;
+        $result = $this->inQuery($sql, $params);
+        return $result;
     }
 
 }

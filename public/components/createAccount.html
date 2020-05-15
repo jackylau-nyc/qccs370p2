@@ -1,63 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Create New Account</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/createAccountStyle.css">
-    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
-     <!-- Bootstrap-->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
+<div class = "bg">
+  <div>
+    <div class="container">
+      <div class="col-sm-offset-3 col-sm-6 cont-div">
 
-  <body class = "bg">
-    <div>
-      <div class="container">
-        <div class="col-sm-offset-3 col-sm-6 cont-div">
-
-          <h1>Create New Account</h1>
-          <h4>Fill out the following informations to create an new account :</h4>
-          <h4 style="color: red;" id="signup-msg"> </h4>
-        
-          <form action="" method="POST">
-              <input id="signup-username" class="fontstyle inputspace" type="text" placeholder="Username" required>
-              <br>
-              <input id="signup-password" class="fontstyle inputspace" type="password" placeholder="Password" required>
-              <br>
-              <input id="signup-confirm-password" class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
-              <br>
-              <button class="fontstyle button" type="button" onclick="SignUp()">Sign Up</button>
-          </form>
-        </div>
+        <h1>Create New Account</h1>
+        <h4>Fill out the following informations to create an new account :</h4>
+        <h4 style="color: red;" id="signup-msg"> </h4>
+      
+        <form action="" method="POST">
+            <input id="signup-username" class="fontstyle inputspace" type="text" placeholder="Username" required>
+            <br>
+            <input id="signup-password" class="fontstyle inputspace" type="password" placeholder="Password" required>
+            <br>
+            <input id="signup-confirm-password" class="fontstyle inputspace" type="password" placeholder="Confirm Password" required>
+            <br>
+            <button class="fontstyle button" type="button" onclick="SignUp()">Sign Up</button>
+        </form>
       </div>
     </div>
-  </body>
-<script type="text/javascript">
-  function SignUp(){
-      var signup_user = document.getElementById('signup-username').value;
-      var signup_pw = document.getElementById('signup-password').value;
-      var signup_confirm_pw = document.getElementById('signup-confirm-password').value;
-  
-      if( signup_user == "" || signup_pw == "" || signup_confirm_pw == ""){
-        document.getElementById('signup-msg').innerText = " Please fill in all fields"
-      } else if( signup_pw != signup_confirm_pw ){
-        document.getElementById('signup-msg').innerText = " Passwords not match!"
-      } else {
-          $.ajax({
-          method:"POST",
-          url:"/signup",
-          processData: false,
-          contentType: false,
-          data:{ username: signup_user, password:signup_pw },
-          })
-          .done(function(){
-            document.getElementById('signup-msg').innerText = " Your Account has been created !"
-          })
-          .fail(function(){
-            document.getElementById('err-msg').innerText = "ajax Unknown Errors"
-          })
-      }
-    }
-</script>
-</html>
+  </div>
+</div>
+

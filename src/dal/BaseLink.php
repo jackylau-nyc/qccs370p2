@@ -13,8 +13,7 @@ class BaseLink {
     protected function openConnection() {
         try{
             $connection = new PDO(DSN, DB_USER, DB_PASS);
-          
-        } catch(PDOException $e){
+        } catch(\PDOException $e){
             $connection = null; 
             print "Error!: " . $e->getMessage();
             die();
@@ -22,7 +21,7 @@ class BaseLink {
         return $connection;            
     }
     /**
-     * 
+     * For select queries.  
      */
     protected function query($sql, $params){
         $connection = $this->openConnection();
@@ -38,9 +37,25 @@ class BaseLink {
         return  $results;  
     }
 
+     /**
+     * For insert queries.  
+     */
+
+    protected function inQuery($sql, $params){
+        $connection = $this->openConnection();
+        $result     = $connection->prepare($sql);
+        $connection = null;
+        $result->execute($params);
+        if(!$this->validResult($result)){
+            return null;    
+        }
+        return  $result;  
+    }
+
     protected function validResult($result){
         return ($result->rowCount() > 0);  
     }
+    
     /**
      * 
      */

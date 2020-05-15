@@ -12,6 +12,10 @@ class RegisterService{
     private $conn; 
 
     function __construct($username, $password){
+        if(is_null($username) || is_null($password)){
+            echo "Error: Username or Password can't be empty!";
+            exit();
+        }
         $this->username = $username; 
         $this->passwd   = $password; 
         $this->conn     = new AccountLink(); 
@@ -24,6 +28,7 @@ class RegisterService{
         }
         $hashedPasswd = password_hash($this->passwd, PASSWORD_DEFAULT);
         $success = $this->conn->createAccount($this->username, $hashedPasswd); 
+  
         if($success){
             echo "Success: Account successfuly created!";
         } else {
