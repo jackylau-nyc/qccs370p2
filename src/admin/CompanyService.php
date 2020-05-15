@@ -48,11 +48,10 @@ class CompanyService{
     }
     
     function addRooms($hotelXCord, $hotelYCord, $class, $price, $amount){
-        $this->conn->addRoom($hotelXCord, $hotelYCord, $class, $price,$amount);
+        $this->conn->addRooms($hotelXCord, $hotelYCord, $class, $price, $amount);
         return true; 
     }
     
-
-
+    
 
 }

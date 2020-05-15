@@ -15,7 +15,7 @@ class AdminLink extends BaseLink {
                 INTO hotel (x_cord, y_cord, company)
                 VALUES (?,?,?)";
         $params = array ($hotelXCord, $hotelYCord, $companyName);
-        $result = $this->query($sql, $params);
+        $this->query($sql, $params);
     }
     /**
      * @param hotelXCord -> x coordinate of the hotel 
@@ -29,7 +29,9 @@ class AdminLink extends BaseLink {
                         WHERE (hotel.x_cord =? AND hotel.y_cord =?) 
                         LIMIT 1)";
         $params = array($hotelXCord, $hotelYCord);
-        return $this->query($sql, $params);    
+        $result =  $this->query($sql, $params);    
+        $result = array_pop($result); 
+        return array_pop($result);
     }
 
     /**
@@ -145,7 +147,7 @@ class AdminLink extends BaseLink {
                      INTO   room (room_num, x_cord, y_cord, class, price)
                      VALUES (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
-        $this->transaction($stmnts, $params, $amount);
+        $this->transaction($stmnts, $params, $price);
     }
 
     /**

@@ -8,8 +8,8 @@ require_once __DIR__ ."/../utility/validator.php";
 
 class AdminController {
     // Every request must specify these fields. 
-    private static $reqGETParams  = array("company", "action","content");
-    private static $reqPOSTParams = array("x_cord","y_cord", "action", "content");                       
+    private static $reqPOSTParams = array("x_cord","y_cord", "action");                       
+    private static $reqGETParams  = array("company", "action");
     private static $validator;
 
     public static function postRequestHandler($req){
