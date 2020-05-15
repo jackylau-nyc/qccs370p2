@@ -7,7 +7,7 @@ class Validator{
     private  $requiredParams; 
     private  $cleanData; 
 
-    function __construct($request, $requiredParams){
+    function __construct($request = null, $requiredParams = null){
         $this->requiredParams = $requiredParams;
         $this->request        = $request; 
     }
@@ -21,13 +21,13 @@ class Validator{
      * @param requiredParams =>  array("key1"=> "val1","key2"=> "val2") ...)
      * @return boolean true if all keys are present. 
      */
-    public function varCheck($qStr, $requiredParams){
-        foreach ($this->requiredParams as $requirement){
-            if(!key_exists($requirement, $qStr)){
+    public function varCheck($req, $requiredParams){
+        foreach ($requiredParams as $requirement){
+            if(!key_exists($requirement, $req)){
                 return false;   
             }
         }
-        return true; 
+        return $req; 
     }
 
     /**
@@ -37,7 +37,7 @@ class Validator{
      */
     
     public function strictVarCheck($qStr, $requiredParams){
-        foreach ($this->requiredParams as $requirement){
+        foreach ($requiredParams as $requirement){
             if(!key_exists($requirement, $qStr)){
                 return false;   
             }
@@ -59,12 +59,11 @@ class Validator{
                 error_log("Request Field is Null: " . $req );
                 return false; 
             }
-
         }
         return true; 
     } 
 
-    function getSafeData(){
+    public function getSafeData(){
         if(! $this->isValid()){
             return false; 
         }
@@ -74,7 +73,7 @@ class Validator{
         return $this->cleanData; 
     }
 
-    function getSafeHTMl(){
+    public function getSafeHTMl(){
         if(! $this->isValid()){
             return false; 
         }
@@ -83,7 +82,7 @@ class Validator{
          }  
          return $this->cleanData; 
     }
+
    function validateDate($date){
-        // to-do
    }  
 }
