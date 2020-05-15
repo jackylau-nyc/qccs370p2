@@ -24,15 +24,19 @@ function Signin(){
       $.ajax({
         method:"POST",
         url:"/signin",
-        processData: false,
-        contentType: false,
         data:{username: login_username,password: login_password},
         })
-        .done(function(){
-          location.href = "../../reservation.php";
+        .done(function(response){
+          if (response.includes("Success")){
+            location.href = "../../reservation.php";
+          }
+          else{
+            // Replace later 
+            alert(response);
+          }
         })
-        .fail(function(){
-          document.getElementById('err-msg').innerText = "Invalid username or password . Please try again"
+        .fail(function(response){
+          $('#err-msg').text("Invalid username or password . Please try again");
         })
     }
 }
