@@ -36,16 +36,11 @@ function Signin(){
         })
     }
 }
-    window.onload = function(){ 
-        
+
         document.getElementById("signup-btn").onclick = function () {
             location.href = "../../signUp.php";
         };   
 
-        document.getElementById("searchButton").onclick = function () {
-            location.href = "../../index.php";
-        };
-    };
   
 
 

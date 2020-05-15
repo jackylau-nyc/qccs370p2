@@ -1,4 +1,5 @@
 <?php
+include "components/session.php";	
 // to-do replace with spl auto-loading later 
 use routing\Request;
 use routing\Router;

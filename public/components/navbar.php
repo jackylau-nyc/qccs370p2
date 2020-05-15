@@ -1,19 +1,16 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8">
-  <?php include __DIR__."/dependencies.php" ?>
-</head>
-
   <div class="navbar navfont">
     <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
     <a class ="loginbtn" href ="./index.php">Home</a>
-     <!-- Search Engine Filter -->
-      <a class ="loginbtn" href ="../search.php"> Search</a>
-      <a class ="loginbtn" href ="./reservation.php">My Reservation</a>
+    <!-- Search Engine -->
+    <a class ="loginbtn" href ="../search.php"> Search</a>
+    <!--Reservations Page -->
+    <a class ="loginbtn" href ="./reservation.php">My Reservation</a>
     <!--<button class="loginbtn pull-right" onclick="document.getElementById('logout').style.display='block'">Log out</button>-->
+    <!--Signup Page -->
     <a class ="loginbtn pull-right" href ="./signUp.php">Sign Up</a>
     <button class="loginbtn pull-right" onclick="document.getElementById('login').style.display='block'">Login</button>
   </div>
+
   <!-- Login Pop Up Modal -->
   <div id="login" class="w3-modal w3-animate-opacity navfont">
     <div class="w3-modal-content" style="padding:16px;">
@@ -30,6 +27,7 @@
       </div>
     </div>
   </div>
+  
   <!-- Log Out Pop Up Modal -->
   <div id="logout" class="w3-modal w3-animate-opacity navfont">
     <div class="w3-modal-content" style="padding:16px">

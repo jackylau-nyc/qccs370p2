@@ -1,5 +1,5 @@
-
-<?php include "../src/database/db-connection.php"?>
+<?php include __DIR__."/components/session.php"?>	
+<?php include __DIR__."/../src/database/db-connection.php"?>
 
 <?php
 
