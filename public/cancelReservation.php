@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		<?php include "components/navbar.html"?>
+		<?php include "components/navbar.php"?>
 		<?php include "components/cancelReservation.html"?>
 	</body>
 </html>

@@ -5,7 +5,6 @@
 		<title></title>
 	</head>
 	<body>
-		<?php include "components/navbar.html"?>
-		<?php include "components/search.html"?>
+		<?php include "components/navbar.php"?>
 	</body>
 </html>

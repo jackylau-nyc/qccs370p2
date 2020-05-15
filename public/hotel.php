@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		<?php include __DIR__."/components/navbar.html"?>
+		<?php include __DIR__."/components/navbar.php"?>
 		<?php include __DIR__."/components/hotelroom.html"?>
 	</body>
 </html>
