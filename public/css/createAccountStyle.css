@@ -1,7 +1,9 @@
-
 .bg {
     background-color:rgba(230,230,230);
     font-family: 'Arapey';
+    margin-top: -5rem;
+    padding-top: 10rem;
+    padding-bottom: 47rem;
 }
 
 .cont-div{
