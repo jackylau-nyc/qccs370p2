@@ -61,18 +61,16 @@ function AdminLogin(){
         document.getElementById('admin-err-msg').innerText = "Please fill in all fields"
     } else {
         $.ajax({
-        method:"POST",
-        url:"/admin-signin",
-        processData: false,
-        contentType: false,
-        data : { username: admin_username , password: admin_password },
+          method:"POST",
+          url:"/admin-signin",
+          processData: false,
+          contentType: false,
+          data : { username: admin_username , password: admin_password },
         })
         .done(function(){
-            console.log(response);
-            location.href = "./adminHome.php";
+           location.href = "./adminHome.php";
         })
         .fail(function(){
-            console.log(response);
             document.getElementById('admin-err-msg').innerText = "Denied access."
         })
     }
