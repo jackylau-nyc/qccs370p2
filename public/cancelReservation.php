@@ -4,6 +4,7 @@
 	<head>
 		<title>Cancel Reservation</title>
 		<?php include __DIR__."/components/header.php";?>
+		<link rel="stylesheet" href="./css/cancelReservationStyle.css">
 	</head>
 	<body>
 		<?php include __DIR__."/components/navbar.php"?>

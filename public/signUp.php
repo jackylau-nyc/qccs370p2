@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Signup </title>
+		<title>Signup</title>
 		<?php include __DIR__."/components/header.php";?>
 		<link rel="stylesheet" href="./css/createAccountStyle.css">
 	</head>
