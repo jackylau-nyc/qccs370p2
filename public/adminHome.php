@@ -8,7 +8,6 @@
 	</head>
 	<body>
 		<?php include __DIR__."/components/adminHome.html"?>
-		<?php include __DIR__."/components/admin-default-scripts.php";?>
-		<?php include __DIR__."/components/default-styles.php";?>			
+		<?php include __DIR__."/components/admin-default-scripts.php";?>		
 	</body>
 </html>
