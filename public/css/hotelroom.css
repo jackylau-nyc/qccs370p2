@@ -14,14 +14,18 @@
 
 #room-container {
   width: 40vw;
-  border: 1px solid black;
-  margin: 20px;
+  margin-left: 20px;
+}
+
+#room {
+  border: 1px solid red;
+  margin-top: 15px;
 }
 
 #reserve {
   font-family: 'Arapey';
   width: 40vw;
-  margin: 20px;
+  margin-right: 20px;
   border: 1px solid black;
   background: rgb(228, 228, 228);
 }
@@ -51,7 +55,7 @@
 
 .main {
   display: inline-flex;
-  padding: 0px 15px;
+  padding: 0px 20px;
   text-align: center;
 }
 
@@ -62,22 +66,4 @@
 
 .fontstyle {
   font-family: 'Arapey';
-}
-
-#calComp{
-  overflow: hidden;
-  position: fixed;
-  width: 30vw !important;
-  right: 5vw;
-
-}
-
-.fc-header-toolbar {
-  /*
-  the calendar will be butting up against the edges,
-  but let's scoot in the header's buttons
-  */
-  padding-top: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
 }
