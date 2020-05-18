@@ -15,22 +15,18 @@
 #room-container {
   width: 40vw;
   border: 1px solid black;
-  margin: 50px;
+  margin: 20px;
 }
 
-.reserve {
+#reserve {
   font-family: 'Arapey';
-  width: 170px;
-  position: fixed;
-  z-index: 1;
-  top: 8rem ;
-  left: 10px;
+  width: 40vw;
+  margin: 20px;
+  border: 1px solid black;
   background: rgb(228, 228, 228);
-  overflow-x: hidden;
-  padding: 8px 0;
 }
 
-.reserve a {
+#reserve a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -38,7 +34,7 @@
   display: block;
 }
 
-.reserve button {
+#reserve button {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -49,7 +45,7 @@
   text-align: left;
 }
 
-.reserve a:hover , .reserve button:hover{
+#reserve a:hover , #reserve button:hover{
   color: #5bb2f8;
 }
 
