@@ -27,17 +27,26 @@
 <div class="main">
 
     <div>
-      <h1 id="hotel1reservations">Hotel Name</h1>
-      <div>
-        
+      <h1>Hotel Name</h1>
+      <div id ="rooms">
+        <h3>Room Type<h3>
+          <h5>Price<h5>
       </div>
     </div>
     
     <div id ="reserve">
-      
-    </div>
+      <label for="start">Start date:</label>
 
-    <div id="hotel1reservations"></div>
+      <input type="date" id="start" name="trip-start"
+       value=""
+       min="" max="">
+
+      <label for="start">End date:</label>
+      <input type="date" id="start" name="trip-end"
+       value="">
+
+       <button id="searchButton">Search for Rooms</button>
+    </div>
 
 </div>  
 

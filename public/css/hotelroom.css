@@ -29,7 +29,7 @@
     
 }
 
-.sidenav {
+.reserve {
   font-family: 'Arapey';
   width: 170px;
   position: fixed;
@@ -41,7 +41,7 @@
   padding: 8px 0;
 }
 
-.sidenav a {
+.reserve a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -49,7 +49,7 @@
   display: block;
 }
 
-.sidenav button {
+.reserve button {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -60,7 +60,7 @@
   text-align: left;
 }
 
-.sidenav a:hover , .sidenav button:hover{
+.reserve a:hover , .reserve button:hover{
   color: #5bb2f8;
 }
 
@@ -71,8 +71,8 @@
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .reserve {padding-top: 15px;}
+  .reserve a {font-size: 18px;}
 }
 
 .fontstyle {
