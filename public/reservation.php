@@ -4,6 +4,7 @@
 	<head>
 		<title> Reservation </title>
 		<?php include __DIR__."/components/header.php";?>
+		<link href="./css/customerstyle.css" rel="stylesheet" />
 	</head>
 	<body>
 		<?php include __DIR__."/components/navbar.php"?>

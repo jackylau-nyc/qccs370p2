@@ -12,36 +12,25 @@
     font-size: 40px !important;
   }
 
-  #hotela, #hotelb, #hotel1, #hotel2{
-    background-color: white; 
-    opacity: 0.5;
-    font-size: 25px;
-    float: left;
-  }
-
-  #hotela:hover, #hotelb:hover, #hotel1:hover, #hotel2:hover{
-    background-color: #f5f5f5;
-  }
-
-#hotelareservations, #hotelbreservations, #hotel1reservations, #hotel2reservations{
-    background-color: white; 
-    float: right;
-    
+#room-container {
+  width: 40vw;
+  margin-left: 20px;
 }
 
-.sidenav {
+#room {
+  border: 1px solid red;
+  margin-top: 15px;
+}
+
+#reserve {
   font-family: 'Arapey';
-  width: 170px;
-  position: fixed;
-  z-index: 1;
-  top: 8rem ;
-  left: 10px;
+  width: 40vw;
+  margin-right: 20px;
+  border: 1px solid black;
   background: rgb(228, 228, 228);
-  overflow-x: hidden;
-  padding: 8px 0;
 }
 
-.sidenav a {
+#reserve a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -49,7 +38,7 @@
   display: block;
 }
 
-.sidenav button {
+#reserve button {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -60,19 +49,19 @@
   text-align: left;
 }
 
-.sidenav a:hover , .sidenav button:hover{
+#reserve a:hover , #reserve button:hover{
   color: #5bb2f8;
 }
 
 .main {
-  margin-left: 200px;
-  padding: 0px 15px;
+  display: inline-flex;
+  padding: 0px 20px;
   text-align: center;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .reserve {padding-top: 15px;}
+  .reserve a {font-size: 18px;}
 }
 
 .fontstyle {

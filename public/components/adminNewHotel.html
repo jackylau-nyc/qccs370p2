@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- my css -->
-    <link rel="stylesheet" href="./css/adminNewHotelstyle.css">
-    <!--fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Pop Up Modal-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
+
     <!--Admin navbar-->
     <div class="admin-navbar">
       <a class ="admin-navbar-btn" href ="./adminHome.php">Home</a>
@@ -105,61 +88,5 @@
         </div>
       </form>
       </div>
-
-    <script>
-      document.getElementById("admin-logout-btn").onclick = function () {
-        location.href = "./hotel.php";
-      };
-
-      function AddHotel() {
-        // form datas .. 
-        var x_cord = document.getElementById('x_cord').value;
-        var y_cord = document.getElementById('y_cord').value;
-        var standard_num = document.getElementById('standard').value;
-        var standard_rate = document.getElementById('standard-rate').value;
-        var deluxe_num = document.getElementById('deluxe').value;
-        var deluxe_rate = document.getElementById('deluxe-rate').value;
-        var suite_num = document.getElementById('suite').value;
-        var suite_rate = document.getElementById('suite-rate').value;
-        
-        // Checking Location inputs ... 
-        if ( x_cord == "" || y_cord == "" ) {
-          document.getElementById('location-err-msg').innerText = "Please fill in all fields"
-        }
-        else if ( x_cord < 0 || x_cord > 100 || y_cord < 0 || y_cord > 100) {
-          document.getElementById('location-err-msg').innerText = "Invalid Inputs : street and ave must between 0 - 100 "
-        }
-        // Checking Room inputs ... 
-        else if ( standard_num == "" || standard_rate == "" || deluxe_num == "" || deluxe_rate == ""|| suite_num == "" || suite_rate == ""){
-          document.getElementById('room-err-msg').innerText = "Please fill in all fields"
-        } 
-        else {
-          document.getElementById('location-err-msg').innerText = "Success"
-          /*
-            $.ajax({
-            method:"POST",
-            url:"",
-            processData: false,
-            contentType: false,
-            data:{ x_cord : x_cord , 
-                   y_cord : y_cord ,
-                   standard_num : standard_num,
-                   standard_rate : standard_rate,
-                   deluxe_num : deluxe_num,
-                   deluxe_rate : deluxe_rate,
-                   suite_num : suite_num,
-                   standard_rate : suite_rate,
-                   },
-            })
-            .done(function(){
-              document.getElementById('signup-msg').innerText = " Your Account has been create !"
-            })
-            .fail(function(){
-              document.getElementById('err-msg').innerText = "ajax Unknown Errors"
-            })*/
-        }
-      }
-    </script>
-
-  </body>
-</html>
+<!-- Scripts --> 
+<script type="text/javascript" src="../scripts/js/admin-newhotel.js"></script>

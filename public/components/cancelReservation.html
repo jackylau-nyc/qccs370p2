@@ -1,21 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Create New Account</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/cancelReservationStyle.css">
-    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
-     <!-- Bootstrap-->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
 
-  <body class = "bg">
+<!-- side navbar for hotel -->
+<div class="sidenav">
+  <a href="./hotel.php">Hotel Homepage</a>
+  <a href="">Make a Reservation</a>
+  <a href="./cancelReservation.php">Cancel My Reservation</a>
+  <button  onclick="document.getElementById('admin-login').style.display='block'">Administrator Login</button>
+</div>
+
+<!-- Admin Login Modal -->
+<div id="admin-login" class="w3-modal w3-animate-opacity fontstyle">
+    <div class="w3-modal-content" style="padding:16px;">
+      <div class="w3-container">
+        <i onclick="document.getElementById('admin-login').style.display='none'" class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-large"></i>
+        <h2>Login as administrator</h2>
+        <h4>Please enter your username and password :</h4>
+        <p style="color:red" id="admin-err-msg"></p>
+        <div>
+          <p><input class="w3-input w3-border" type="text" id="admin-username" placeholder="Enter Username" required></p>
+          <p><input class="w3-input w3-border" type="password" id ="admin-password" placeholder="Enter Password" required></p>
+          <button type="button" id="admin-login-btn" onclick="AdminLogin()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "bg">
     <div>
       <div class="container">
         <div class="col-sm-offset-2 col-sm-8 cont-div">
-
           <h1>Cancel My Reservation</h1>
           <h4>Fill out the following informations to cancel your reservation :</h4>
           <h4 id="cancel-err-msg" style="color: red;"></h4>
@@ -28,12 +39,36 @@
               <br>
               <button class="fontstyle button" type="button"  onclick="CancelReservation()">Cancel</button>
           </form>
-
         </div>
       </div>
     </div>
 
     <script>
+    function AdminLogin(){
+        var admin_username = document.getElementById('admin-username').value;
+        var admin_password = document.getElementById('admin-password').value;
+
+        if( admin_username == "" || admin_password == "" ){
+            document.getElementById('admin-err-msg').innerText = "Please fill in all fields"
+        } else {
+            $.ajax({
+            method:"POST",
+            url:"/admin-signin",
+            processData: false,
+            contentType: false,
+            data : { username: admin_username , password: admin_password },
+            })
+            .done(function(){
+                console.log(response);
+                location.href = "./adminHome.php";
+            })
+            .fail(function(){
+                console.log(response);
+                document.getElementById('admin-err-msg').innerText = "Denied access."
+            })
+        }
+    }
+
     function CancelReservation(){
           var res_id = document.getElementById('cancel-res-id').value;
           var username = document.getElementById('cancel-username').value;
@@ -66,5 +101,4 @@
           }
         }
     </script>
-  </body>
-</html>
+

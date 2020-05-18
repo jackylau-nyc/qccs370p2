@@ -10,4 +10,6 @@
 <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Cinzel Decorative' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Be Vietnam' rel='stylesheet'>
 
