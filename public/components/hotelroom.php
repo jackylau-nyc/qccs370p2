@@ -26,7 +26,7 @@
 <!-- Hotel Display Div -->
 <div class="main">
 
-    <div>
+    <div id="room-container">
       <h1>Hotel Name</h1>
       <div id ="rooms">
         <h3>Room Type<h3>

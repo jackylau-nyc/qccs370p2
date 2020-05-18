@@ -12,21 +12,10 @@
     font-size: 40px !important;
   }
 
-  #hotela, #hotelb, #hotel1, #hotel2{
-    background-color: white; 
-    opacity: 0.5;
-    font-size: 25px;
-    float: left;
-  }
-
-  #hotela:hover, #hotelb:hover, #hotel1:hover, #hotel2:hover{
-    background-color: #f5f5f5;
-  }
-
-#hotelareservations, #hotelbreservations, #hotel1reservations, #hotel2reservations{
-    background-color: white; 
-    float: right;
-    
+#room-container {
+  width: 40vw;
+  border: 1px solid black;
+  margin: 50px;
 }
 
 .reserve {
