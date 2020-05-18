@@ -26,27 +26,17 @@
 <!-- Hotel Display Div -->
 <div class="main">
 
-    <h1>Hotel 1 Rooms & Rates</h1>
-  
-    <!-- Hotel 1 -->
-    <div id="hotel1">
-     <div id= "1dexlue">
-      <p> Room Type: Deluxe</p>  
-      <p> Room Rate: $140/night</p>
-     </div>
-     
-      <div id= "1regular">
-        <p>Room Type: Regular</p>
-        <p>Room Rate: $60/night</p>
+    <div>
+      <h1 id="hotel1reservations">Hotel Name</h1>
+      <div>
+        
       </div>
-      
-      <div id="1cheap">
-        <p>Room Type: Cheap</p>   
-        <p>Room Rate: $50/night</p>
-      </div>
-      
     </div>
     
+    <div id ="reserve">
+      
+    </div>
+
     <div id="hotel1reservations"></div>
 
 </div>  
