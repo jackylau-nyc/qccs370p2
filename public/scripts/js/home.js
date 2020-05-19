@@ -44,7 +44,7 @@ async function hotel_div_generate(){
         btn_padding.className ='button-padding';
         var btn = document.createElement('a');
         btn.className ="button button-text";
-        btn.href = "./hotel.php"
+        btn.href = "./roomlistings.php"
         btn.innerHTML ="Visit Us";
         btn_padding.appendChild(btn);
 
