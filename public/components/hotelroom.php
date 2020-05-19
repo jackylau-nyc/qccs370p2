@@ -76,13 +76,14 @@ function AdminLogin(){
     }
 
     window.addEventListener('load', function (){
-    hotel_div_generate();
+    room_div_generate();
 });
 
 
 
 async function getData(){
     return await fetch('/hotel').then((response) => {
+           console.log(response.json());
            return response.json();
      })
 }
@@ -97,13 +98,13 @@ async function room_div_generate(){
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
         
-        var hotel_div = document.createElement('div');
-        hotel_div.classList.add("room-div");
+        var room_div = document.createElement('div');
+        room_div.classList.add("room-div");
 
         var title = document.createElement('h1');
         var roomclass = document.createElement('span');
         roomclass.className = 'class';
-        var hotel = document.createElement('span');
+        var price = document.createElement('span');
         price.className = 'price';
 
         // franchise name and hotel name 
