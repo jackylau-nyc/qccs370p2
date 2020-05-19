@@ -83,8 +83,23 @@ function AdminLogin(){
 
 async function getData(){
     return await fetch('/hotel').then((response) => {
-           console.log(response.json());
-           return response.json();
+           // console.log(response.json());
+           // return response.json();
+           return [{
+    "room_num": "1",
+    "class": "Deluxe",
+    "price": "999.00"
+  },
+  {
+    "room_num": "2",
+    "class": "Deluxe",
+    "price": "999.00"
+  },
+  {
+    "room_num": "3",
+    "class": "Deluxe",
+    "price": "999.00"
+  }]
      })
 }
 
@@ -101,9 +116,9 @@ async function room_div_generate(){
         var room_div = document.createElement('div');
         room_div.classList.add("room-div");
 
-        var title = document.createElement('h1');
+        var roomnum = document.createElement('h1');
         var roomclass = document.createElement('span');
-        roomclass.className = 'class';
+        roomclass.className = 'roomclass';
         var price = document.createElement('span');
         price.className = 'price';
 
@@ -111,8 +126,8 @@ async function room_div_generate(){
         roomclass.innerText = `${result.company}`;
         price.innerText = `${result.company}`;
     
-        title.appendChild(roomclass);
-        title.appendChild(price);
+        roomnum.appendChild(roomclass);
+        roomnum.appendChild(price);
 
         // ( i , j ) locations
         var des = document.createElement('p');
@@ -128,12 +143,12 @@ async function room_div_generate(){
         btn.innerHTML ="Visit Us";
         btn_padding.appendChild(btn);
 
-        col_div.appendChild(hotel_div);
-        hotel_div.appendChild(title);
-        hotel_div.appendChild(des);
-        hotel_div.appendChild(btn_padding);
+        col_div.appendChild(room_div);
+        room_div.appendChild(roomnum);
+        room_div.appendChild(des);
+        room_div.appendChild(btn_padding);
 
-        hotelmodal_container.appendChild(col_div);
+        roommodal_container.appendChild(col_div);
     })
 }
 }
