@@ -123,8 +123,9 @@ async function room_div_generate(){
         price.className = 'price';
 
         // franchise name and hotel name 
-        roomclass.innerText = `${result.company}`;
-        price.innerText = `${result.company}`;
+        roomnum.innerText = `${result.room_num}`;
+        roomclass.innerText = `${result.class}`;
+        price.innerText = `${result.price}`;
     
         roomnum.appendChild(roomclass);
         roomnum.appendChild(price);
