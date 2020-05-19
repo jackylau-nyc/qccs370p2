@@ -1,6 +1,6 @@
 <!-- side navbar for hotel -->
 <div class="sidenav">
-  <a href="./hotel.php">Hotel Homepage</a>
+  <a href="./roomlistings.php">Hotel Homepage</a>
   <a href="">Make a Reservation</a>
   <a href="./cancelReservation.php">Cancel My Reservation</a>
   <button  onclick="document.getElementById('admin-login').style.display='block'">Administrator Login</button>
@@ -29,6 +29,7 @@
     <div id="room-container">
       <h1>Hotel Name</h1>
       <div id ="rooms">
+
         <h3>Room Type<h3>
           <h5>Price<h5>
       </div>
@@ -73,5 +74,83 @@ function AdminLogin(){
             document.getElementById('admin-err-msg').innerText = "Denied access."
         })
     }
+
+    window.addEventListener('load', function (){
+    room_div_generate();
+});
+
+
+
+async function getData(){
+    return await fetch('/hotel').then((response) => {
+           // console.log(response.json());
+           // return response.json();
+           return [{
+    "room_num": "1",
+    "class": "Deluxe",
+    "price": "999.00"
+  },
+  {
+    "room_num": "2",
+    "class": "Deluxe",
+    "price": "999.00"
+  },
+  {
+    "room_num": "3",
+    "class": "Deluxe",
+    "price": "999.00"
+  }]
+     })
+}
+
+
+async function room_div_generate(){
+
+    var roommodal_container = document.getElementById('id');
+    var result = await getData();  
+
+    result.forEach(function (result) {
+        var col_div = document.createElement('div');
+        col_div.className = 'col-md-4';
+        
+        var room_div = document.createElement('div');
+        room_div.classList.add("room-div");
+
+        var roomnum = document.createElement('h1');
+        var roomclass = document.createElement('span');
+        roomclass.className = 'roomclass';
+        var price = document.createElement('span');
+        price.className = 'price';
+
+        // franchise name and hotel name 
+        roomnum.innerText = `${result.room_num}`;
+        roomclass.innerText = `${result.class}`;
+        price.innerText = `${result.price}`;
+    
+        roomnum.appendChild(roomclass);
+        roomnum.appendChild(price);
+
+        // ( i , j ) locations
+        var des = document.createElement('p');
+        des.className = 'hotel-descript';
+        des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
+    
+        // Visit Us button 
+        var btn_padding = document.createElement('div');
+        btn_padding.className ='button-padding';
+        var btn = document.createElement('a');
+        btn.className ="button button-text";
+        btn.href = "./hotel.php"
+        btn.innerHTML ="Visit Us";
+        btn_padding.appendChild(btn);
+
+        col_div.appendChild(room_div);
+        room_div.appendChild(roomnum);
+        room_div.appendChild(des);
+        room_div.appendChild(btn_padding);
+
+        roommodal_container.appendChild(col_div);
+    })
+}
 }
 </script>

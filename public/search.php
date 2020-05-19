@@ -7,6 +7,9 @@
 	</head>
 	<body>
 		<?php include __DIR__."/components/navbar.php";?>
+		<?php include __DIR__."/components/search-bar.php";?>
 		<?php include __DIR__."/components/default-scripts.php";?>
+
+	
 	</body>
 </html>
