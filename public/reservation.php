@@ -9,6 +9,5 @@
 	<body>
 		<?php include __DIR__."/components/customer-navbar.php"?>
 		<?php include __DIR__."/components/customer.html"?>
-		<?php include __DIR__."/components/default-scripts.php";?>
 	</body>
 </html>
