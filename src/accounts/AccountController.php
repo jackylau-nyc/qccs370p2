@@ -39,6 +39,12 @@ class AccountController{
         $result = self::$accountService->attemptRegistration();
         self::customerResult($result, $fields["username"]);
     }
+    
+    static function logout(){
+        session_destroy();
+        $url = $_SERVER['SERVER_NAME'] . '/index.php'; 
+    }
+ 
 
     /****************************************************************************************************
      **************************************** Results & Sessions ****************************************

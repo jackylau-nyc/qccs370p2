@@ -81,6 +81,10 @@ $uri  = $_SERVER["REQUEST_URI"];
     $router->post('/signin', function($req){
         AccountController::customerSignIn($req->getBody());
     });
+
+    $router->post('/logout', function($req){
+        AccountController::logout();
+    });
     
     $router->post('/signup', function($req){
         AccountController::signupAction($req->getbody());
