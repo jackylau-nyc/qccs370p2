@@ -30,6 +30,19 @@
   position: right;
 }
 
+.navbar .logoutbtn {
+  padding: 15px 16px;
+  float: left;
+  background-color: #333;
+  color : white;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border:none;
+  position: right;
+  display: none;
+}
+
 #currentDate {
   color: black;
   float: left;

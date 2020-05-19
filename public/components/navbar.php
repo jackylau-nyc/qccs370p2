@@ -3,9 +3,6 @@
     <a class ="loginbtn" href ="./index.php">Home</a>
     <!-- Search Engine -->
     <a class ="loginbtn" href ="../search.php"> Search</a>
-    <!--Reservations Page -->
-    <a class ="loginbtn" href ="./reservation.php">My Reservation</a>
-    <!--<button class="loginbtn pull-right" onclick="document.getElementById('logout').style.display='block'">Log out</button>-->
     <!--Signup Page -->
     <a class ="loginbtn pull-right" href ="./signUp.php">Sign Up</a>
     <button class="loginbtn pull-right" onclick="document.getElementById('login').style.display='block'">Login</button>
@@ -43,4 +40,3 @@
       </div>
     </div>
   </div>
-

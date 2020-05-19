@@ -45,7 +45,9 @@ function Signin(){
             location.href = "../../signUp.php";
         };   
 
-  
+        document.getElementById("logout-btn").onclick = function () {
+          location.href = "./index.php";
+        };
 
 
   /*
