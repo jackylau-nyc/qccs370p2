@@ -12,12 +12,16 @@ class AccountController{
     private static $accountService;
     private static $validator;
 
+   /****************************************************************************************************
+    *********************************************** Core ***********************************************
+    ****************************************************************************************************/
+
     static function adminSignin($args){
         self::$validator = new Validator($args, self::$reqParams);
         $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
         $result = self::$accountService->signServce->attemptAdminSignin();
-        self::processResult($result);
+        self::adminResult($result, $fields["username"]);
     } 
 
     static function customerSignin($args){ 
@@ -25,7 +29,7 @@ class AccountController{
         $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
         $result = self::$accountService->attemptCustomerSignin();
-        self::processResult($result);
+        self::customerResult($result,$fields["username"]);
     }
 
     static function signupAction($args){
@@ -33,9 +37,32 @@ class AccountController{
         $fields = self::$validator->getSafeData(); 
         self::$accountService = new RegisterService($fields["username"], $fields["password"]);
         $result = self::$accountService->attemptRegistration();
-        self::processResult($result);
+        self::customerResult($result, $fields["username"]);
     }
 
+    /****************************************************************************************************
+     **************************************** Results & Sessions ****************************************
+     ****************************************************************************************************/
+    private static function customerResult($result, $username){
+        if ($result){
+            // to-do: redirect to customer view.   
+            $_SESSION["username"] = $username;
+            echo "Success!";
+        }else{
+            echo "Error: Unable to process action. Please try again!";
+        }
+    }
+    private static function adminResult($result, $username){
+        if ($result){
+            $_SESSION["admin"] = $username;
+            echo "Success!";
+        }else{
+            echo "Error: Unable to process action. Please try again!";
+        }
+    }
+ /****************************************************************************************************
+  ********************************************** Helper **********************************************
+  ****************************************************************************************************/
     private static function checkData(){
         if(!$this->$validator.isValid()){
             echo "Invalid Username or Password !";
@@ -43,14 +70,4 @@ class AccountController{
         }
         return true;
     }
-
-    private static function processResult($success){
-        if ($success){
-            // to-do: redirect to appropriate view.   
-            echo "Success!";
-        }else{
-            echo "Failure!";
-        }
-    } 
-
 }
