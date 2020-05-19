@@ -15,9 +15,7 @@
         <h2 class="w3-wide navfont">Log Out</h2>
         <h4>Are you sure that you want to Log out ?</h4>
         <br>
-        <form method="post" action="">
-          <button id = "logout-btn" class="navButton" name="logout_button">Log Out</button>
-        </form>
+        <button id = "logout-btn" class="navButton" name="logout_button">Log Out</button>
         <button class="navButton" onclick="document.getElementById('logout').style.display='none'">Cancel</button>
       </div>
     </div>
