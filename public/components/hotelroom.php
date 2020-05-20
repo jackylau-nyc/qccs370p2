@@ -29,12 +29,6 @@
     <div id="room-container">
       <h1 id="hotel-name"></h1>
       <h2 id="location"></h2>
-      <div id ="rooms">
-
-        <h3 class="roomclass">Room Type<h3>
-          <h5 class="price">Price<h5>
-      </div>
-    </div>
     
     <div id ="reserve">
       <label for="start">Start date:</label>
@@ -96,22 +90,7 @@ var getParams = function (url) {
 
 async function getData(x, y){
     return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
-           return response.json();
-          //  return [{
-          //   "room_num": "1",
-          //   "class": "Deluxe",
-          //   "price": "999.00"
-          // },
-          // {
-          //   "room_num": "2",
-          //   "class": "Deluxe",
-          //   "price": "999.00"
-          // },
-          // {
-          //   "room_num": "3",
-          //   "class": "Deluxe",
-          //   "price": "999.00"
-          // }]
+          return response.json();
      })
 }
 
@@ -121,7 +100,6 @@ async function room_div_generate(){
     var roommodal_container = document.getElementById('room-container');
     var params = getParams(window.location.href);
     var result = await getData(params.x, params.y);
-    console.log(result);  
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     result.forEach(function (result) {
