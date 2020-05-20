@@ -27,11 +27,12 @@
 <div class="main">
 
     <div id="room-container">
-      <h1>Hotel Name</h1>
+      <h1 id="hotel-name"></h1>
+      <h2 id="location"></h2>
       <div id ="rooms">
 
-        <h3>Room Type<h3>
-          <h5>Price<h5>
+        <h3 class="roomclass">Room Type<h3>
+          <h5 class="price">Price<h5>
       </div>
     </div>
     
@@ -122,6 +123,8 @@ function room_div_generate(){
     var result = getData();  
     var params = getParams(window.location.href );
     console.log(params);
+    document.getElementById('hotel-name').innerText = params.franchise;
+    document.getElementById('location').innerText = `Location: ${params.x}, ${params.y}`;
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
@@ -146,7 +149,7 @@ function room_div_generate(){
         // ( i , j ) locations
         var des = document.createElement('p');
         des.className = 'hotel-descript';
-        des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
+        // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
     
         // Visit Us button 
         var btn_padding = document.createElement('div');
