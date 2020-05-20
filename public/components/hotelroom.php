@@ -81,8 +81,8 @@ function AdminLogin(){
 
 
 
-async function getData(){
-    return await fetch('/hotel').then((response) => {
+function getData(){
+    // return await fetch('/hotel').then((response) => {
            // console.log(response.json());
            // return response.json();
            return [{
@@ -100,7 +100,7 @@ async function getData(){
             "class": "Deluxe",
             "price": "999.00"
           }]
-     })
+     // })
 }
 
 
@@ -114,7 +114,7 @@ async function room_div_generate(){
         col_div.className = 'col-md-4';
         
         var room_div = document.createElement('div');
-        room_div.classList.add("room-div");
+        room_div.classList.add("rooms");
 
         var roomnum = document.createElement('h1');
         var roomclass = document.createElement('span');
