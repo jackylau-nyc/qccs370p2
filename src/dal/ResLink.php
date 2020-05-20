@@ -57,6 +57,7 @@ class ResLink extends BaseLink {
 
     }
     
+    
     /**
      * Cancels a specified reservation. 
      * @param resID   reservation ID. 
