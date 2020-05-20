@@ -74,12 +74,11 @@ function AdminLogin(){
             document.getElementById('admin-err-msg').innerText = "Denied access."
         })
     }
-
-    window.addEventListener('load', function (){
-    room_div_generate();
-});
 }
 
+window.addEventListener('load', function (){
+  room_div_generate();
+});
 
 function getData(){
     // return await fetch('/hotel').then((response) => {
