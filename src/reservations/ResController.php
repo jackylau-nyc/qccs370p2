@@ -14,7 +14,6 @@ class ResController {
     private static $validator;
 
     public static function postRequestHandler($req){
-
         self::validateMinParams($req, self::REQ_POST_PARAMS);
         ResPOSTHandler::init($req);
     }
