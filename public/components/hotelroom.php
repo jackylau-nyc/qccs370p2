@@ -39,8 +39,7 @@
        min="" max="">
 
       <label for="start">End date:</label>
-      <input type="date" id="start" name="trip-end"
-       value="">
+      <input type="date" id="start" name="trip-end">
 
        <button id="searchButton">Search for Rooms</button>
     </div>

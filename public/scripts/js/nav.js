@@ -40,20 +40,18 @@ function Signin(){
         })
     }
 }
-
-$("#currentDate").change(function(){
+function setDate(date) {
   // var $x = $("calendar");
   // $x.prop("color", "FF0000");
   // $x.append("The color property: " + $x.prop("color"));
   // $x.removeProp("color");
-  var dee = $("#currentDate").val()
-  document.cookie = document.cookie + "; path=/; mindate=" + dee + "; expires="
-  console.log(dee);
-  var tomorrow = new Date();
+  document.cookie = document.cookie + "; path=/; mindate=" + date + "; expires="
+  console.log(date);
+  // var tomorrow = new Date();
 // tomorrow.setDate(dee + 1);
 //   $('#calendar').fullCalendar('gotoDate',new Date('2020-05-05'));
 // });
-
+}
         document.getElementById("signup-btn").onclick = function () {
             location.href = "../../signUp.php";
         };   
