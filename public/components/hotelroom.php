@@ -80,6 +80,19 @@ window.addEventListener('load', function (){
   room_div_generate();
 });
 
+var getParams = function (url) {
+  var params = {};
+  var parser = document.createElement('a');
+  parser.href = url;
+  var query = parser.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    params[pair[0]] = decodeURIComponent(pair[1]);
+  }
+  return params;
+};
+
 function getData(){
     // return await fetch('/hotel').then((response) => {
            // console.log(response.json());
@@ -107,7 +120,8 @@ function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
     var result = getData();  
-
+    var params = getParams():
+    console.log(params);
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
