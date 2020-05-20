@@ -94,8 +94,8 @@ var getParams = function (url) {
   return params;
 };
 
-function async getData(){
-    return await fetch('/hotel').then((response) => {
+async function getData(x, y){
+    return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
            console.log(response.json());
            return response.json();
           //  return [{
@@ -117,12 +117,11 @@ function async getData(){
 }
 
 
-function async room_div_generate(){
+async function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
-    var result = await getData();  
-    var params = getParams(window.location.href );
-    console.log(params);
+    var params = getParams(window.location.href);
+    var result = await getData(params.x, params.y);  
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x}, ${params.y}`;
     result.forEach(function (result) {
