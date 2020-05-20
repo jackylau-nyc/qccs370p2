@@ -75,7 +75,7 @@ function AdminLogin(){
         })
     }
 
-    document.addEventListener('load', function (){
+    window.addEventListener('load', function (){
     room_div_generate();
 });
 }
