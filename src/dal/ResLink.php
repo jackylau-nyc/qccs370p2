@@ -42,27 +42,44 @@ class ResLink extends BaseLink {
         $stmnts[] = "SELECT @res := LAST_INSERT_ID();";
         $params[] = [];
 
-        $stmnts[] = "INSERT INTO reservation_has_customer(customer_username, reserveration_id) 
+        $stmnts[] = "INSERT INTO reservation_has_customer(customer_username, reservation_id) 
                      VALUES (@username, @res);";
         $params[] = [];
 
         $stmnts[] = "INSERT INTO room_has_reservation(res_id, room_num, x_cord, y_cord)
                      VALUES(@res, @room, @x_cord , @y_cord);";
         $params[] = [];
-
-        $this->transaction($stmnts, $params);
+    
+        return $this->inTransaction($stmnts, $params);
     }
 
     function findActiveRes($username, $date){
 
     }
     
+    
     /**
      * Cancels a specified reservation. 
      * @param resID   reservation ID. 
      */
     function cancelRes($resID){
+
+        $stmnts[] = "set  @res = ?;";
+        $params[] = [$resID]; 
+
+        $stmnts[] = "DELETE FROM reservation_has_customer
+                    WHERE reservation_has_customer.reservation_id = @res;";
+        $params[] = []; 
+
+        $stmnts[] = "DELETE FROM room_has_reservation
+                    WHERE room_has_reservation.res_id= @res;";
+        $params[] = []; 
+
+        $stmnts[] = "DELETE FROM reservation  
+                     WHERE reservation.res_id = @res;";
+        $params[] = []; 
         
+        return $this->inTransaction($stmnts, $params);
     }
 
 }

@@ -7,7 +7,9 @@ use accounts\AccountController;
 use map\MapController; 
 use hotel\HotelController;
 use customer\CustomerController;
-use admin\AdminController;  
+use admin\AdminController;
+use sessions\SessionController;  
+use reservation\ResController;
 require_once __DIR__ ."/../src/routing/Request.php";
 require_once __DIR__ ."/../src/routing/Router.php";
 require_once __DIR__ ."/../src/accounts/AccountController.php";
@@ -16,6 +18,8 @@ require_once __DIR__ ."/../src/map/MapController.php";
 require_once __DIR__ ."/../src/hotel/HotelController.php";
 require_once __DIR__ ."/../src/customer/CustomerController.php";
 require_once __DIR__ ."/../src/admin/AdminController.php";
+require_once __DIR__ ."/../src/reservations/ResController.php";
+require_once __DIR__ ."/../src/sessions/SessionController.php";
 
 $router = new Router(new Request);
 $uri  = $_SERVER["REQUEST_URI"];
@@ -52,11 +56,14 @@ $uri  = $_SERVER["REQUEST_URI"];
     
 
  } else{ // everything else.
-    
-    $router->get('/', function() {
+
+   /****************************************************************************************************
+    **************************************** Free Site Mappings ****************************************
+    ****************************************************************************************************/
+
+    $router->get('/', function() {  
         require __DIR__.'/index.php;';
     });
-
 
     $router->get('', function() {
         require __DIR__.'/index.php;';
@@ -69,32 +76,42 @@ $uri  = $_SERVER["REQUEST_URI"];
     $router->get('/reservation', function() {
         require __DIR__.'/reservation.php';
     });
-      
+
+    $router->get('/search', function() {
+        require __DIR__.'/search.php;';
+    });    
+
+    $router->get('/map', function($req){
+        MapController::getHotels();
+    });
+   /****************************************************************************************************
+    ******************************************* POST Mappings ******************************************
+    ****************************************************************************************************/
+
+    $router->post('/reservation', function($req) {
+        ResController::postRequestHandler($req->getBody());
+    });
+
     $router->post("/admin", function($req) {
+        SessionController::adminProtect(); 
         AdminController::postRequestHandler($req->getBody());
+    });
+    $router->post('/signin', function($req){
+        AccountController::customerSignIn($req->getBody());
+    });
+
+    $router->post('/signup', function($req){
+        AccountController::signupAction($req->getbody());
     });
 
     $router->post('/admin-signin', function($req){
         AccountController::adminSignIn($req->getBody());
     });
      
-    $router->post('/signin', function($req){
-        AccountController::customerSignIn($req->getBody());
+    $router->post('/logout', function($req){
+        AccountController::logout();
     });
     
-    $router->post('/signup', function($req){
-        AccountController::signupAction($req->getbody());
-    });
-
-    
-    $router->get('/search', function() {
-        require __DIR__.'/search.php;';
-    });        
-
-
-    $router->get('/map', function($req){
-        MapController::getHotels();
-    });
 
     
  }
