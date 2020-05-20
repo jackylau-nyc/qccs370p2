@@ -124,7 +124,7 @@ body {
   .submit-btn:hover {
     background:  #ff9933;
   }
-  input {
+  input,select,option {
     width: calc(100% - 40px);
     padding: 5px;
     border: 1px solid #ccc;

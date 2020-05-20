@@ -1,4 +1,8 @@
 <div class="navbar navfont">
+    <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
+    <a class ="loginbtn" href ="./index.php">Home</a>
+    <!-- Search Engine -->
+    <a class ="loginbtn" href ="../search.php"> Search</a>
     <!-- Logout Page -->
     <button class="loginbtn pull-right" onclick="document.getElementById('logout').style.display='block'">Log out</button>
   </div>
@@ -11,7 +15,9 @@
         <h2 class="w3-wide navfont">Log Out</h2>
         <h4>Are you sure that you want to Log out ?</h4>
         <br>
-        <button id = "logout-btn" class="navButton">Log Out</button>
+        <form method="POST" action="/logout">
+          <button id = "logout-btn" class="navButton" type ="submit">Log Out</button>
+        </form> 
         <button class="navButton" onclick="document.getElementById('logout').style.display='none'">Cancel</button>
       </div>
     </div>

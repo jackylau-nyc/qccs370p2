@@ -15,78 +15,129 @@
           <br>
           <h5>Are you sure that you want to Log out ?</h5>
           <br>
-          <!--<form method="POST" action=""></form> -->
-            <button class="admin-modal-btn" id="admin-logout-btn">Log out</button>
+          <form method="POST" action="/logout">         
+            <button class="admin-modal-btn" id="admin-logout-btn" type="submit">Log out</button>
+          </form>
           <button class="admin-modal-btn" onclick="document.getElementById('admin-logout').style.display='none'">Cancel</button>
         </div>
       </div>
     </div>
 
-    <!-- Form -->
+    <!-- Forms -->
     <div class="NewHotelDiv">
-      <form class ="form-style" method="POST" action="">
+      <div class ="form-style">
         <div class="NewHotelBanner">
           <h1 class="BannerHeader">New Hotel Informations</h1>
         </div>
+        <p><span><h2 style="font-weight: bold;">Instruction : </h2></span>1 ) Please Fill out <span style="color: red;"> Form 1</span> if you wish to add a new hotel location</p>
+        <p>2 ) Please Fill out <span style="color: red;"> Form 2</span> if you wish to add a single room to a specific location</p>
+        <p>3 ) Please Fill out <span style="color: red;"> Form 3</span> if you wish to add multiple rooms to a specific location</p>
         <br>
-        <!-- Hotel x , y cords -->
-        <fieldset>
-          <legend>Hotel Location</legend>
-          <p id ="location-err-msg" style="color: red;"></p>
-          <div class="columns">
-            <div class="item">
-              <label for="x_cord">X Street <span>*</span></label>
-              <input id="x_cord" type="text" name="x_cord" />
-            </div>
-            <div class="item">
-              <label for="y_cord">Y Ave <span>*</span></label>
-              <input id="y_cord" type="text" name="y_cord" />
-            </div>
-        </fieldset>
+
+        <!-- Add Hotel -->
+        <form>
+          <fieldset>
+            <legend>Form 1 : Add New Hotel</legend>
+            <p id ="addHotel-err-msg" style="color: red;"></p>
+            <div class="columns">
+                <div class="item">
+                  <label for="x_cord">X Street <span>*</span></label>
+                  <input id="x_cord" type="text" name="x_cord" />
+                </div>
+                <div class="item">
+                  <label for="y_cord">Y Ave <span>*</span></label>
+                  <input id="y_cord" type="text" name="y_cord" />
+                </div>
+                <div class="item">
+                  <label for="company_name"> Company <span>*</span></label>
+                  <input id="company_name" type="text" name="company_name" />
+                </div>
+              </div>
+
+              <div class="form-btn-div">
+                <button class ="submit-btn" type="button" onclick="AddHotel()">Submit</button>
+              </div>
+
+          </fieldset>
+        </form>
         <br/>
-        <!-- Rooms Types and Rate -->
-        <fieldset>
-        <legend> Edit Rooms</legend>
-        <p id ="room-err-msg" style="color: red;"></p>
-        <div class="columns">
 
-        <div class="item">
-          <label for="standard">Total Cheap Room</label>
-          <input id="standard" type="number" min="0" name="standard" />
-        </div>
+        <!-- Add Room -->
+        <form>
+          <fieldset>
+          <legend>Form 2 : Add A Single Room</legend>
+          <p id ="addRoom-err-msg" style="color: red;"></p>
+          <div class="columns">
+  
+            <div class="item">
+              <label for="addRoom_x_cord">X Street <span>*</span></label>
+              <input id="addRoom_x_cord" type="text"/>
+            </div>
+            <div class="item">
+              <label for="addRoom_y_cord">Y Ave <span>*</span></label>
+              <input id="addRoom_y_cord" type="text" />
+            </div>
+            <div class="item">
+              <label for="Room Class">Room Type</label>
+                <select id="addRoom_class">
+                  <option value="Cheap">Cheap</option>
+                  <option value="Deluxe">Deluxe</option>
+                  <option value="Suite">Suite</option>
+                </select>
+            </div>
+            <div class="item">
+              <label for="rate">Room Rates</label>
+              <input id="rate" type="text"/>
+            </div>
 
-        <div class="item">
-          <label for="standard-rate">Cheap Room Rates </label>
-          <input id="standard-rate" type="text" name="standard-rate"/>
-        </div>
+          </fieldset>
+          <div class="form-btn-div">
+            <button class ="submit-btn" type="button" onclick="AddRoom()">Submit</button>
+          </div>
+        </form>
+        <br>
 
-        <div class="item">
-          <label for="deluxe">Total Deluxe Room</label>
-          <input id="deluxe" type="number" min="0" name="deluxe" />
-        </div>
+        <!-- Add Rooms -->
+        <form>
+          <fieldset>
+          <legend>Form 3 : Add Multiple Rooms</legend>
+          <p id ="addRooms-err-msg" style="color: red;"></p>
+          <div class="columns">
+  
+            <div class="item">
+              <label for="addRooms_x_cord">X Street <span>*</span></label>
+              <input id="addRooms_x_cord" type="text"/>
+            </div>
+            <div class="item">
+              <label for="addRooms_y_cord">Y Ave <span>*</span></label>
+              <input id="addRooms_y_cord" type="text" />
+            </div>
+            <div class="item">
+              <label for="RoomsClass">Room Type</label>
+                <select id="addRooms_class">
+                  <option value="Cheap">Cheap</option>
+                  <option value="Deluxe">Deluxe</option>
+                  <option value="Suite">Suite</option>
+                </select>
+            </div>
+            <div class="item">
+              <label for="amount">Number of Rooms</label>
+              <input id="amount" type="number" min="1"/>
+            </div>
+            <div class="item">
+              <label for="rooms_rate">Room Rates</label>
+              <input id="rooms_rate" type="text"/>
+            </div>
 
-        <div class="item">
-          <label for="deluxe-rate">Deluxe Room Rates </label>
-          <input id="deluxe-rate" type="text" name="deluxe-rate"/>
-        </div>
-
-        <div class="item">
-          <label for="suite">Total Suite</label>
-          <input id="suite" type="number" min="0" name="suite" />
-        </div>
-
-        <div class="item">
-          <label for="suite-rate">Suite Rates </label>
-          <input id="suite-rate" type="text" name="suite-rate"/>
-        </div>
-
-        </fieldset>
-        
-        <!-- Add Button -->
-        <div class="form-btn-div">
-          <button class ="submit-btn" type="button" id="form-submit" onclick="AddHotel()">Submit</button>
-        </div>
-      </form>
+          </fieldset>
+          <div class="form-btn-div">
+            <button class ="submit-btn" type="button" onclick="AddRooms()">Submit</button>
+          </div>
+        </form>
+       
       </div>
+    </div>
+
+
 <!-- Scripts --> 
 <script type="text/javascript" src="../scripts/js/admin-newhotel.js"></script>
