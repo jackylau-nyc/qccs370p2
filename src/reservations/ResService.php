@@ -21,8 +21,7 @@ class ResService{
         return $this->conn->cancelRes($res);
     }
 
-    function getReservation(){
-
+    function getCustomerReservation($username, $date){
+        return json_encode($this->conn->getCustRes($username, $date));
     }
-
 }

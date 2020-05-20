@@ -33,6 +33,20 @@
   * **Location:** /logout
   * **Required Parameters:**  {}
 
+## Customer
+
+* **Location:** /customer
+
+* Get Active Customer Reservations
+  * **Request Type:** GET
+  * **Action:** "get-reservations"
+  * **Required Parameters:**  {"username","date"}
+
+* Cancel Customer Reservation
+  * **Request Type:** GET
+  * **Action:** "cancel-res"
+  * **Required Parameters:**  {"res"}
+
 ## Reservations
 
 * **Location:** /reservation
