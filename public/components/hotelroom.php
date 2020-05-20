@@ -27,11 +27,12 @@
 <div class="main">
 
     <div id="room-container">
-      <h1>Hotel Name</h1>
+      <h1 id="hotel-name"></h1>
+      <h2 id="location"></h2>
       <div id ="rooms">
 
-        <h3>Room Type<h3>
-          <h5>Price<h5>
+        <h3 class="roomclass">Room Type<h3>
+          <h5 class="price">Price<h5>
       </div>
     </div>
     
@@ -93,35 +94,35 @@ var getParams = function (url) {
   return params;
 };
 
-function getData(){
-    // return await fetch('/hotel').then((response) => {
-           // console.log(response.json());
-           // return response.json();
-           return [{
-            "room_num": "1",
-            "class": "Deluxe",
-            "price": "999.00"
-          },
-          {
-            "room_num": "2",
-            "class": "Deluxe",
-            "price": "999.00"
-          },
-          {
-            "room_num": "3",
-            "class": "Deluxe",
-            "price": "999.00"
-          }]
-     // })
+async function getData(x, y){
+    return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
+           return response.json();
+          //  return [{
+          //   "room_num": "1",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // },
+          // {
+          //   "room_num": "2",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // },
+          // {
+          //   "room_num": "3",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // }]
+     })
 }
 
 
-function room_div_generate(){
+async function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
-    var result = getData();  
-    var params = getParams(window.location.href );
-    console.log(params);
+    var params = getParams(window.location.href);
+    var result = await getData(params.x, params.y);  
+    document.getElementById('hotel-name').innerText = params.franchise;
+    document.getElementById('location').innerText = `Location: ${params.x}, ${params.y}`;
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
@@ -129,9 +130,15 @@ function room_div_generate(){
         var room_div = document.createElement('div');
         room_div.classList.add("rooms");
 
-        var roomnum = document.createElement('h1');
+        // Room number
+        var roomnum = document.createElement('h3');
+        price.className = 'price';
+
+        // Class of the room
         var roomclass = document.createElement('span');
         roomclass.className = 'roomclass';
+
+        // Price of room
         var price = document.createElement('span');
         price.className = 'price';
 
@@ -139,28 +146,18 @@ function room_div_generate(){
         roomnum.innerText = `${result.room_num}`;
         roomclass.innerText = `${result.class}`;
         price.innerText = `${result.price}`;
-    
-        roomnum.appendChild(roomclass);
-        roomnum.appendChild(price);
+        
+        room_div.appendChild(roomnum);
+        room_div.appendChild(roomclass);
+        room_div.appendChild(price);
 
         // ( i , j ) locations
         var des = document.createElement('p');
         des.className = 'hotel-descript';
-        des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
-    
-        // Visit Us button 
-        var btn_padding = document.createElement('div');
-        btn_padding.className ='button-padding';
-        var btn = document.createElement('a');
-        btn.className ="button button-text";
-        btn.href = "./hotel.php"
-        btn.innerHTML ="Visit Us";
-        btn_padding.appendChild(btn);
+        // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
 
         col_div.appendChild(room_div);
-        room_div.appendChild(roomnum);
         room_div.appendChild(des);
-        room_div.appendChild(btn_padding);
 
         roommodal_container.appendChild(col_div);
     })
