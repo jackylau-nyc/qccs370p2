@@ -100,8 +100,15 @@
   * **Action:** "rooms"
   * **Required Parameters:**  {"xcord", "ycord"}
 
-* Get Available Rooms
-  * Under Construction :(
+* Get Available Room Class Counts
+  * **Request Type:** GET
+  * **Action:** "avail-room-class-counts"
+  * **Required Parameters:**  {"xcord", "ycord", "date"}
+
+* Get Available Room Records
+  * **Request Type:** GET
+  * **Action:** "avail-room-records"
+  * **Required Parameters:**  {"xcord", "ycord", "date"}
 
 * Get Classes
   * **Request Type:** GET
