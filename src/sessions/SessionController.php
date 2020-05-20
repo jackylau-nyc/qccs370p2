@@ -5,25 +5,30 @@ namespace sessions;
 class SessionController{
 
     static function protect(){
-        if (!self::checkSessionVar("username")){
-            self::handleAccess();
-        };
+        $state = checkSessionVar("username"); 
+        if($state){
+            return true;
+        } else{
+            msg();
+            return  false; 
+        }
     }
 
     static function adminProtect(){
-        if (!self::checkSessionVar("admin")){
-            self::handleAccess();
-        };
+        $state = checkSessionVar("admin"); 
+        if($state){
+            return true;
+        } else{
+            msg();
+            return  false; 
+        }  
     }
 
     private static function checkSessionVar($var){
         return (!empty($_SESSION["$var"]))? true:false;
     }
     
-    private static function handleAccess(){
+    private static function msg(){
         echo "Access Denied: Please sign !";
-        echo "You will be redirected in 5 seconds";
-        $url = '/index.php';
-        header( "refresh:5;url=$url" );
     }
 }
