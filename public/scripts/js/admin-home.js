@@ -4,7 +4,8 @@ window.addEventListener('load', function (){
 });
 
 async function getData(){
-    //return await fetch('').then((response) => {
+
+    //return await fetch('/').then((response) => {
     //       return response.json();
     // })
      return [

@@ -4,7 +4,7 @@ window.addEventListener('load', function (){
 
 async function getData(){
 /*
-return await fetch('/get-all-res').then((response) => {
+return await fetch('/get-upcoming-res').then((response) => {
        return response.json();
  })
 }
@@ -70,3 +70,4 @@ result.forEach(function (result) {
     cont.appendChild(res_div);
 })
 }
+

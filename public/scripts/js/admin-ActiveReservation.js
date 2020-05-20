@@ -3,8 +3,9 @@ window.addEventListener('load', function (){
 });
 
 async function getData(){
+    
 /*
-return await fetch('/get-all-res').then((response) => {
+return await fetch('/get-active-res').then((response) => {
        return response.json();
  })
 }

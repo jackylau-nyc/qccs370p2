@@ -1,11 +1,21 @@
+  <!-- 
+
+    Post Request For Admin : Add Room , Add Rooms , Add Hotel 
+
+  -->
+    
+
 
     <!--Admin navbar-->
     <div class="admin-navbar">
       <a class ="admin-navbar-btn" href ="./adminHome.php">Home</a>
       <a class ="admin-navbar-btn" href ="./adminReservation.php">All Reservations</a>
+      <a class ="admin-navbar-btn" href ="./adminActiveReservation.php">Active Reservations</a>
+      <a class ="admin-navbar-btn" href ="./adminUpcomingReservation.php">Upcoming Reservations</a>
       <a class ="admin-navbar-btn" href ="./adminNewHotel.php">Add New Hotel</a>
       <button class="admin-navbar-btn pull-right" onclick="document.getElementById('admin-logout').style.display='block'">Logout</button>
     </div>
+
     <!-- Admin LogOut Modal -->
     <div id="admin-logout" class="w3-modal w3-animate-opacity">
       <div class="w3-modal-content" style="padding:16px">
