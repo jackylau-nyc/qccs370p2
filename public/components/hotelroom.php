@@ -94,33 +94,33 @@ var getParams = function (url) {
   return params;
 };
 
-function getData(){
-    // return await fetch('/hotel').then((response) => {
-           // console.log(response.json());
-           // return response.json();
-           return [{
-            "room_num": "1",
-            "class": "Deluxe",
-            "price": "999.00"
-          },
-          {
-            "room_num": "2",
-            "class": "Deluxe",
-            "price": "999.00"
-          },
-          {
-            "room_num": "3",
-            "class": "Deluxe",
-            "price": "999.00"
-          }]
-     // })
+function async getData(){
+    return await fetch('/hotel').then((response) => {
+           console.log(response.json());
+           return response.json();
+          //  return [{
+          //   "room_num": "1",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // },
+          // {
+          //   "room_num": "2",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // },
+          // {
+          //   "room_num": "3",
+          //   "class": "Deluxe",
+          //   "price": "999.00"
+          // }]
+     })
 }
 
 
-function room_div_generate(){
+function async room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
-    var result = getData();  
+    var result = await getData();  
     var params = getParams(window.location.href );
     console.log(params);
     document.getElementById('hotel-name').innerText = params.franchise;
