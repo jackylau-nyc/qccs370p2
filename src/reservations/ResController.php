@@ -9,12 +9,13 @@ require_once __DIR__."/../utility/validator.php";
 
 class ResController {
     // Every request must specify these fields. 
-    private const  REQ_POST_PARAMS = array("username", "x_cord","y_cord", "action");                       
-    private const  REQ_GET_PARAMS  = array("username", "action");
+    private const  REQ_POST_PARAMS = array("action");                       
+    private const  REQ_GET_PARAMS  = array("action");
     private static $validator;
 
     public static function postRequestHandler($req){
-        self::validateMinParams($qVars, REQ_POST_PARAMS);
+
+        self::validateMinParams($req, self::REQ_POST_PARAMS);
         ResPOSTHandler::init($req);
     }
 

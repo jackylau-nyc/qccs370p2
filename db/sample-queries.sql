@@ -96,12 +96,12 @@ VALUES ("John", "Bleh");
 
 START TRANSACTION;
 	SET @res = -1; 
-    SET @username = "Jillian";
-    SET @room   = 2; 
+    SET @username = "Eddie";
+    SET @room   = 8; 
     SET @x_cord = 0;
     SET @y_cord = 0; 
-    SET @start_date = Date("2019-04-01");
-    SET @end_date   = Date("2019-04-02");
+    SET @start_date = Date("2019-04-20");
+    SET @end_date   = Date("2019-04-25");
     
 	INSERT INTO reservation (res_start, res_end) 
 	VALUES (DATE(@start_date), DATE(@end_date));
