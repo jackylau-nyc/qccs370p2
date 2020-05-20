@@ -118,12 +118,12 @@ async function room_div_generate(){
         // Class of the room
         var roomclass = document.createElement('span');
         roomclass.className = 'roomclass';
-        roomclass.innerText = " : $" + `${result.class}`;
+        roomclass.innerText = `${result.class}`;
 
         // Price of room
         var price = document.createElement('span');
         price.className = 'price';
-        price.innerText = `${result.price}`;
+        price.innerText = " : $" + `${result.price}`;
         
         room_div.appendChild(roomnum);
         room_div.appendChild(roomclass);
