@@ -132,7 +132,7 @@ async function room_div_generate(){
 
         // Room number
         var roomnum = document.createElement('h3');
-        price.className = 'price';
+        roomnum.className = 'roomnum';
 
         // Class of the room
         var roomclass = document.createElement('span');
@@ -142,7 +142,7 @@ async function room_div_generate(){
         var price = document.createElement('span');
         price.className = 'price';
 
-        // franchise name and hotel name 
+        // Franchise name and hotel name 
         roomnum.innerText = `${result.room_num}`;
         roomclass.innerText = `${result.class}`;
         price.innerText = `${result.price}`;
