@@ -6,20 +6,20 @@ use routing\Router;
 use accounts\AccountController;
 use map\MapController; 
 use hotel\HotelController;
-use customer\CustomerController;
 use admin\AdminController;
 use sessions\SessionController;  
 use reservation\ResController;
+use customer\CustController; 
 require_once __DIR__ ."/../src/routing/Request.php";
 require_once __DIR__ ."/../src/routing/Router.php";
 require_once __DIR__ ."/../src/accounts/AccountController.php";
 require_once __DIR__ ."/../src/accounts/AccountController.php";
 require_once __DIR__ ."/../src/map/MapController.php";
 require_once __DIR__ ."/../src/hotel/HotelController.php";
-require_once __DIR__ ."/../src/customer/CustomerController.php";
 require_once __DIR__ ."/../src/admin/AdminController.php";
 require_once __DIR__ ."/../src/reservations/ResController.php";
 require_once __DIR__ ."/../src/sessions/SessionController.php";
+require_once __DIR__ ."/../src/customer/CustController.php";
 
 $router = new Router(new Request);
 $uri  = $_SERVER["REQUEST_URI"];
@@ -44,7 +44,7 @@ $uri  = $_SERVER["REQUEST_URI"];
     
     if( isQStr("customer", $uri)){
         $router->get("$uri", function($req) {
-            CustomerController::test();
+            CustController::requestHandler($req);
         });
     } 
     
