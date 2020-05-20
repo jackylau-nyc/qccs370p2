@@ -96,7 +96,6 @@ var getParams = function (url) {
 
 async function getData(x, y){
     return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
-           console.log(response.json());
            return response.json();
           //  return [{
           //   "room_num": "1",
