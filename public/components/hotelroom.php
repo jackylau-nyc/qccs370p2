@@ -86,27 +86,27 @@ async function getData(){
            // console.log(response.json());
            // return response.json();
            return [{
-    "room_num": "1",
-    "class": "Deluxe",
-    "price": "999.00"
-  },
-  {
-    "room_num": "2",
-    "class": "Deluxe",
-    "price": "999.00"
-  },
-  {
-    "room_num": "3",
-    "class": "Deluxe",
-    "price": "999.00"
-  }]
+            "room_num": "1",
+            "class": "Deluxe",
+            "price": "999.00"
+          },
+          {
+            "room_num": "2",
+            "class": "Deluxe",
+            "price": "999.00"
+          },
+          {
+            "room_num": "3",
+            "class": "Deluxe",
+            "price": "999.00"
+          }]
      })
 }
 
 
 async function room_div_generate(){
 
-    var roommodal_container = document.getElementById('id');
+    var roommodal_container = document.getElementById('room-container');
     var result = await getData();  
 
     result.forEach(function (result) {
