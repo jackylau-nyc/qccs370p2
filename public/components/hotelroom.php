@@ -29,6 +29,7 @@
     <div id="room-container">
       <h1 id="hotel-name"></h1>
       <h2 id="location"></h2>
+    </div>
     
     <div id ="reserve">
       <label for="start">Start date:</label>
@@ -90,7 +91,7 @@ var getParams = function (url) {
 
 async function getData(x, y){
     return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
-          return response.json();
+           return response.json();
      })
 }
 
