@@ -42,7 +42,9 @@ class AccountController{
     
     static function logout(){
         session_destroy();
-        $url = $_SERVER['SERVER_NAME'] . '/index.php'; 
+        $url = $_SERVER['SERVER_NAME'] . '/index.php';
+        $url = '/index.php';
+        header( "refresh:2;url=$url" ); 
     }
  
 
