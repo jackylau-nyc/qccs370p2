@@ -15,7 +15,7 @@ async function hotel_div_generate(){
     var result = await getData();
 
     result.forEach(function (result) {
-        var col_div = document.createElement('div');
+        var col_div = document.createElement('form');
         col_div.className = 'col-md-4';
         
         var hotel_div = document.createElement('div');
@@ -44,7 +44,7 @@ async function hotel_div_generate(){
         btn_padding.className ='button-padding';
         var btn = document.createElement('a');
         btn.className ="button button-text";
-        btn.href = "./roomlistings.php?x=" + `${result.x_cord}` + "%26y=" `${result.y_cord}` + "%26franchise=" + `${result.company}`
+        btn.href = `./roomlistings.php?x=${result.x_cord}&y=${result.y_cord}&franchise=${result.company}`
         btn.innerHTML ="Visit Us";
         btn_padding.appendChild(btn);
 
