@@ -120,7 +120,7 @@ function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
     var result = getData();  
-    var params = getParams();
+    var params = getParams(window.location.href );
     console.log(params);
     result.forEach(function (result) {
         var col_div = document.createElement('div');
