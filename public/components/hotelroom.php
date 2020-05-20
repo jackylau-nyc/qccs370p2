@@ -75,10 +75,10 @@ function AdminLogin(){
         })
     }
 
-    window.addEventListener('load', function (){
+    document.addEventListener('load', function (){
     room_div_generate();
 });
-
+}
 
 
 function getData(){
@@ -104,10 +104,10 @@ function getData(){
 }
 
 
-async function room_div_generate(){
+function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
-    var result = await getData();  
+    var result = getData();  
 
     result.forEach(function (result) {
         var col_div = document.createElement('div');
@@ -151,6 +151,5 @@ async function room_div_generate(){
 
         roommodal_container.appendChild(col_div);
     })
-}
 }
 </script>
