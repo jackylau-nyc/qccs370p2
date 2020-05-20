@@ -14,7 +14,7 @@ require_once __DIR__."/../dal/HotelLink.php";
 
 class HotelAccessService{
     private $conn;
-    
+    private CONST ERR_MSG = "Error: Unable to process hotel GET request";
     function __construct(){
         $this->conn = new  HotelLink(); 
     }
@@ -25,34 +25,28 @@ class HotelAccessService{
 
     function getAllRooms($hotelXCord, $hotelYCord){
         $res = $this->conn->getAllRooms($hotelXCord, $hotelYCord);
-        if (!$res){
-            return false;     
-        }
-        return json_encode($res);
+        return (!$res)? $this->ERR_MSG : json_encode($res); 
     }
 
     function getAvailableRooms($hotelXCord, $hotelYCord, $date){
         $res = $this->conn->getAvailClassCount($hotelXCord, $hotelYCord, $date);
-         if(!$res){
-             return false; 
-         }
-         return json_encode($res);
+        return (!$res)? $this->ERR_MSG : json_encode($res); 
     }
 
     function getRoomClasses($hotelXCord,$hotelYCord){
         $res = $this->conn->getRoomClasses($hotelXCord, $hotelYCord);
-         if(!$res){
-             return false; 
-         }
-         return json_encode($res);
+        return (!$res)? $this->ERR_MSG : json_encode($res); 
     }
+
+    function getAvailableRoomRecords($hotelXCord, $hotelYCord, $date){
+       $res = $this->conn->getRoomRecords($hotelXCord, $hotelYCord, $date);
+       return (!$res)? $this->ERR_MSG : json_encode($res); 
+    }
+
 
     function getRoomClassCounts($hotelXCord,$hotelYCord){
         $res = $this->conn->getClassCounts($hotelXCord, $hotelYCord);
-         if(!$res){
-             return false; 
-         }
-         return json_encode($res);
+        return (!$res)? $this->ERR_MSG : json_encode($res); 
     }
     
 

@@ -69,7 +69,7 @@ class HotelLink extends BaseLink {
         return (is_null($result))? false : $result;
     }
 
-
+    
     function getRoomClasses($hotelXCord, $hotelYCord){
         $sql = "SELECT class
                 FROM   room 
@@ -79,6 +79,27 @@ class HotelLink extends BaseLink {
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : $result;
     }
-
+    
+    
+    function getRoomRecords($hotelXCord, $hotelYCord, $date){
+        $sql = "SELECT *
+                FROM  room 
+                WHERE room.room_num NOT IN (           
+                    SELECT room.room_num 
+                    FROM   room 
+                    INNER JOIN room_has_reservation
+                        ON  room.x_cord = ? 
+                        AND room.y_cord = ? 
+                        AND room.x_cord = room_has_reservation.x_cord  
+                        AND room.y_cord = room_has_reservation.y_cord
+                        AND room_has_reservation.room_num =  room.room_num 
+                    INNER JOIN reservation
+                        ON  reservation.res_id = room_has_reservation.res_id
+                        AND  ?  BETWEEN  
+                        reservation.res_start AND reservation.res_end)";
+        $params = array ($hotelXCord, $hotelYCord, $date);
+        $result = $this->query($sql, $params);        
+        return (is_null($result))? false : $result;
+    }
 }
 

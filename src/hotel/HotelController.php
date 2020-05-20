@@ -11,7 +11,7 @@ class HotelController {
      // Array of valid actions for a query string. 
      private const ACTIONS     = array("hotel-page", "res-page",
                                        "rooms", "room-classes", "room-class-counts", "avail-room-class-counts",             
-                                       "company");      
+                                       "company", "avail-room-records");      
     private static $x, $y;          // x and y coordinates that identify a hotel.               
     private static $accessSvc;
     private static $validator;
@@ -49,9 +49,11 @@ class HotelController {
             case "avail-room-class-counts": 
                 self::getAvailRoomClassCounts();
                 break;
-    
             case "company":
                 self::getCompany();
+                break;
+            case "avail-room-records":
+                self::getAvailableRoomRecords();
                 break;
         }
     }
@@ -67,7 +69,10 @@ class HotelController {
             throw new Exception('Hotel Action: Invalid Action Specified !!!!'); 
         }
         self::$x   = $fields["xcord"];
-        self::$y   = $fields["xcord"];
+        self::$y   = $fields["ycord"];
+        if(!empty($fields["date"])){
+            self::$date   = $fields["date"];
+        }
         self::$action = $fields["action"];  
         self::$accessSvc = new HotelAccessService(); 
     }
@@ -110,7 +115,8 @@ class HotelController {
      * Echo json representation of ONLY available {classification:size} pairs present in the specified hotel. 
      */
     private static function getAvailRoomClassCounts(){
-        echo "Under Construction";
+        $response = self::$accessSvc->getAvailableRooms(self::$x, self::$y, self::$date);
+        echo $response;
     }
 
 
@@ -119,6 +125,14 @@ class HotelController {
      */
     private static function getCompany(){
         $response = self::$accessSvc->getCompany(self::$x, self::$y);
+        echo $response;
+    }
+
+    /**
+     * Echo  Available Room Information 
+     */
+    private static function getAvailableRoomRecords(){
+        $response = self::$accessSvc->getAvailableRoomRecords(self::$x, self::$y, self::$date);
         echo $response;
     }
 
