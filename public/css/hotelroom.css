@@ -17,7 +17,7 @@
   margin-left: 5vw;
 }
 
-#rooms {
+.rooms {
   border: 1px solid red;
   margin-top: 15px;
 }
@@ -25,6 +25,8 @@
 #reserve {
   font-family: 'Arapey';
   width: 40vw;
+  height: 50vh;
+  padding: 20px 50px;
   margin-left: 10vw;
   border: 1px solid black;
   background: rgb(228, 228, 228);
