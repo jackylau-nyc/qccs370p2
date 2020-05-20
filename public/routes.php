@@ -73,8 +73,8 @@ $uri  = $_SERVER["REQUEST_URI"];
         require __DIR__."/hotel.php";
     });
 
-    $router->get('/reservation', function() {
-        require __DIR__.'/reservation.php';
+    $router->get('/reservation.php', function() {
+        if (SessionController::protect()) require __DIR__.'/reservation.php'; 
     });
 
     $router->get('/search', function() {
@@ -93,7 +93,6 @@ $uri  = $_SERVER["REQUEST_URI"];
     });
 
     $router->post("/admin", function($req) {
-        SessionController::adminProtect(); 
         AdminController::postRequestHandler($req->getBody());
     });
     $router->post('/signin', function($req){

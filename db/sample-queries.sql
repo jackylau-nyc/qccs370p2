@@ -108,7 +108,7 @@ START TRANSACTION;
 
     SELECT @res := LAST_INSERT_ID();
     
-	INSERT INTO reservation_has_customer(customer_username, reserveration_id) 
+	INSERT INTO reservation_has_customer(customer_username, reservation_id) 
 	VALUES (@username, @res);
     
     INSERT INTO room_has_reservation(res_id, room_num, x_cord, y_cord)
