@@ -130,9 +130,15 @@ async function room_div_generate(){
         var room_div = document.createElement('div');
         room_div.classList.add("rooms");
 
-        var roomnum = document.createElement('h1');
+        // Room number
+        var roomnum = document.createElement('h3');
+        price.className = 'price';
+
+        // Class of the room
         var roomclass = document.createElement('span');
         roomclass.className = 'roomclass';
+
+        // Price of room
         var price = document.createElement('span');
         price.className = 'price';
 
@@ -140,28 +146,18 @@ async function room_div_generate(){
         roomnum.innerText = `${result.room_num}`;
         roomclass.innerText = `${result.class}`;
         price.innerText = `${result.price}`;
-    
-        roomnum.appendChild(roomclass);
-        roomnum.appendChild(price);
+        
+        room_div.appendChild(roomnum);
+        room_div.appendChild(roomclass);
+        room_div.appendChild(price);
 
         // ( i , j ) locations
         var des = document.createElement('p');
         des.className = 'hotel-descript';
         // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
-    
-        // Visit Us button 
-        var btn_padding = document.createElement('div');
-        btn_padding.className ='button-padding';
-        var btn = document.createElement('a');
-        btn.className ="button button-text";
-        btn.href = "./hotel.php"
-        btn.innerHTML ="Visit Us";
-        btn_padding.appendChild(btn);
 
         col_div.appendChild(room_div);
-        room_div.appendChild(roomnum);
         room_div.appendChild(des);
-        room_div.appendChild(btn_padding);
 
         roommodal_container.appendChild(col_div);
     })
