@@ -120,9 +120,10 @@ async function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
     var params = getParams(window.location.href);
-    var result = await getData(params.x, params.y);  
+    var result = await getData(params.x, params.y);
+    console.log(result);  
     document.getElementById('hotel-name').innerText = params.franchise;
-    document.getElementById('location').innerText = `Location: ${params.x}, ${params.y}`;
+    document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
@@ -133,18 +134,16 @@ async function room_div_generate(){
         // Room number
         var roomnum = document.createElement('h3');
         roomnum.className = 'roomnum';
+        roomnum.innerText = `${result.room_num}`;
 
         // Class of the room
         var roomclass = document.createElement('span');
         roomclass.className = 'roomclass';
+        roomclass.innerText = `${result.class}`;
 
         // Price of room
         var price = document.createElement('span');
         price.className = 'price';
-
-        // Franchise name and hotel name 
-        roomnum.innerText = `${result.room_num}`;
-        roomclass.innerText = `${result.class}`;
         price.innerText = `${result.price}`;
         
         room_div.appendChild(roomnum);
