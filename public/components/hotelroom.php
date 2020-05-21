@@ -33,7 +33,7 @@
     
     <div id ="reserve">
       <label for="start">Start date:</label>
-      <input type="date" id="start" name="trip-start">
+      <input type="date" id="start" name="trip-start" min="">
 
       <label for="start">End date:</label>
       <input type="date" id="end" name="trip-end">
@@ -83,6 +83,7 @@ var reserveMin = function (){
           }
         }
         document.getElementById("start").value = date;
+        document.getElementById("start").min = date;
     }
 }
 
