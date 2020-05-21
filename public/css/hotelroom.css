@@ -15,6 +15,7 @@
 
 .sidenav{
     font-family: 'Arapey';
+    list-style-type: none;
     background: rgb(228, 228, 228);
     overflow-x: hidden;
     padding: 8px 0;
