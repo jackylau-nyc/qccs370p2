@@ -16,24 +16,24 @@ class SearchService{
         return json_encode($response);
     }
     function findRoomsLT($price, $date){
-        $response = $this->conn->findRoomsGT($price, $date); 
+        $response = $this->conn->findRoomsLT($price, $date); 
         return json_encode($response);
     }
 
     function findRoomsLE($price, $date){
-        $response = $this->conn->findRoomsGT($price, $date); 
+        $response = $this->conn->findRoomsLE($price, $date); 
         return json_encode($response);
     }
     function findRoomsGE($price, $date){
-        $response = $this->conn->findRoomsGT($price, $date); 
+        $response = $this->conn->findRoomsGE($price, $date); 
         return json_encode($response);
     }
     function findRoomsEQ($price, $date){
-        $response = $this->conn->findRoomsGT($price, $date); 
+        $response = $this->conn->findRoomsEQ($price, $date); 
         return json_encode($response);
     }
     function findRoomsBetween($minPrice, $maxPrice, $date){
-        $response = $this->conn->findRoomsGT($minPrice, $maxPrice,$date); 
+        $response = $this->conn->findRoomsBetween($minPrice, $maxPrice,$date); 
         return json_encode($response);
     }
 

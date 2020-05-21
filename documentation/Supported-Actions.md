@@ -147,7 +147,7 @@
 ### Search Engine
 
 * **Location:** /search
-* 
+  
 * Find hotels having rooms costing more than $x.
   * **Request Type:** GET
   * **Action:** "find-rooms-gt"
