@@ -72,7 +72,7 @@ function keepMin(){
         document.getElementById("logout-btn").onclick = function () {
           location.href = "./index.php";
         };
-
+  window.onload = keepMin;
 
   /*
       var currentDate;
