@@ -38,7 +38,7 @@
       <label for="end">End date:</label>
       <input type="date" id="end" name="trip-end">
 
-       <button id="searchButton">Search for Rooms</button>
+       <button id="searchButton" onclick="room_div_generate('avail-room-records')">Search for Rooms</button>
     </div>
 
 </div>  
@@ -109,11 +109,12 @@ async function getData(x, y, action){
 }
 
 
-async function room_div_generate(){
-
+async function room_div_generate(filter){
+    if(filter == "" || filter == null)
+      filter = "rooms"
     var roommodal_container = document.getElementById('room-container');
     var params = getParams(window.location.href);
-    var result = await getData(params.x, params.y, "rooms");
+    var result = await getData(params.x, params.y, filter);
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     result.forEach(function (result) {
