@@ -14,6 +14,14 @@ function SignUp(){
         data:{ username: signup_user, password:signup_pw },
         })
         .done(function(response){
+          if (response.includes("Success")){
+            location.href = "../../reservation.php";
+          }
+          else{
+            // Replace later 
+            alert(response);
+          }
+          
           console.log(response);
           $('#signup-msg').text("Your account has been successfully created, please wait, you'll be redirected in a few seconds");
         })

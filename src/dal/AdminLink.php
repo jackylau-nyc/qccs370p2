@@ -39,7 +39,7 @@ class AdminLink extends BaseLink {
      * Fetch reservation data from ALL hotels that belong to a specified company. (Past, Future, Present)
      */
     function getAllReservations($companyName){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, rm.room_num
                 FROM hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
@@ -65,7 +65,7 @@ class AdminLink extends BaseLink {
     * Fetch all upcoming reservations active for a given company based around a specified date.
     */
     function getAllUpcomingReservations($companyName, $date){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num 
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, rm.room_num 
                 FROM   hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
@@ -94,7 +94,7 @@ class AdminLink extends BaseLink {
     * And the reservation's end date being on or after the specified date.
     */
     function getAllActiveReservations($companyName, $date){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num 
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, rm.room_num 
                 FROM   hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
