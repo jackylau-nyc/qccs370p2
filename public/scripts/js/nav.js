@@ -45,7 +45,7 @@ function setDate(date) {
   // $x.prop("color", "FF0000");
   // $x.append("The color property: " + $x.prop("color"));
   // $x.removeProp("color");
-  document.cookie = document.cookie + "; path=/; mindate=" + date + "; expires="
+  document.cookie = "path=/; mindate=" + date
   console.log(date);
   // var tomorrow = new Date();
 // tomorrow.setDate(dee + 1);
