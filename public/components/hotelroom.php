@@ -29,6 +29,7 @@
     <div id="room-container">
       <h1 id="hotel-name"></h1>
       <h2 id="location"></h2>
+      <div id="roomlist"></div>
     </div>
     
     <div id ="reserve">
@@ -114,11 +115,12 @@ async function room_div_generate(filter){
       filter = "rooms"
     var roommodal_container = document.getElementById('room-container');
     //reset
-    roommodal_container.innerText = '<h1 id="hotel-name"></h1><h2 id="location"></h2>';
     var params = getParams(window.location.href);
     var result = await getData(params.x, params.y, filter);
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
+    var roomlist = document.getElementById('roomlist').innerText;
+    roomlist = "";
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
@@ -153,7 +155,7 @@ async function room_div_generate(filter){
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
-        roommodal_container.appendChild(col_div);
+        roomlist.appendChild(col_div);
     })
 }
 </script>
