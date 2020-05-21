@@ -47,5 +47,3 @@
 <!-- Scripts --> 
 <script type="text/javascript" src="../scripts/js/admin-account.js"></script>
 <script type="text/javascript" src="../scripts/js/hotel-room.js"></script>
-
-
