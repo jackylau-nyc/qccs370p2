@@ -13,7 +13,7 @@ class BaseLink {
     protected function openConnection() {
         try{
             $connection = new PDO(DSN, DB_USER, DB_PASS);
-            //$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(\PDOException $e){
             $connection = null; 
             print "Error!: " . $e->getMessage();
@@ -131,6 +131,31 @@ class BaseLink {
             error_log ($e->getMessage());
             $$connection->rollBack();
             return null; 
+        }
+    }
+
+    protected function inMultiTransaction($stmnts, $params, $limit){
+        try{
+            $connection = $this->openConnection();   
+            $prepStmnts = []; 
+            $connection->beginTransaction();
+            $count  = count($stmnts);
+            for ($a = 0; $a < $limit; $a++){
+                for ($i = 0; $i < $count; $i++){
+                    $result = $connection->prepare($stmnts[$i]);
+                    $result->execute($params[$i]); 
+                }
+            }
+
+            $connection->commit();
+            $connection = null;    
+            return true;
+        } 
+        catch(Exception $e){
+            echo  "Unable to handle request at this time";
+            error_log ($e->getMessage());
+            $$connection->rollBack();
+            return false; 
         }
     }
 

@@ -135,11 +135,11 @@ class AdminLink extends BaseLink {
         $stmnts[] = "set  @room = -1;";
         $params[] = []; 
         $stmnts[] = "SELECT 
-                       @room := (SELECT room.room_num 
-                       FROM     room 
-                       WHERE    room.x_cord = ? and room.y_cord = ?
-                       ORDER BY room_num desc
-                       LIMIT    1);";
+                       @room := (SELECT count(room.room_num) 
+                                FROM     room 
+                                WHERE    room.x_cord = ? and room.y_cord = ?
+                                ORDER BY room_num desc
+                                LIMIT    1);";
         $params[] = [$hotelXCord, $hotelYCord];
         $stmnts[] = "set @room = @room + '1';";
         $params[] = []; 
@@ -147,7 +147,7 @@ class AdminLink extends BaseLink {
                      INTO   room (room_num, x_cord, y_cord, class, price)
                      VALUES (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
-        $this->transaction($stmnts, $params, $price);
+        $this->inTransaction($stmnts, $params, $price);
     }
 
     /**
@@ -163,7 +163,7 @@ class AdminLink extends BaseLink {
         $stmnts[] = "set  @room = -1;";
         $params[] = []; 
         $stmnts[] = "SELECT 
-                     @room := (SELECT room.room_num 
+                      @room := (SELECT count(room.room_num) 
                        FROM     room 
                        WHERE    room.x_cord = ? and room.y_cord = ?
                        ORDER BY room_num desc
@@ -175,6 +175,6 @@ class AdminLink extends BaseLink {
                      INTO     room (room_num, x_cord, y_cord, class, price)
                      VALUES   (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
-        $this->multiTransaction($stmnts, $params, $amount);
+        $this->inMultiTransaction($stmnts, $params, $amount);
     }
 }

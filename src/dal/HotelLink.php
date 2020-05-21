@@ -88,16 +88,16 @@ class HotelLink extends BaseLink {
                     SELECT room.room_num 
                     FROM   room 
                     INNER JOIN room_has_reservation
-                        ON  room.x_cord = ? 
-                        AND room.y_cord = ? 
-                        AND room.x_cord = room_has_reservation.x_cord  
+                        ON room.x_cord = room_has_reservation.x_cord  
                         AND room.y_cord = room_has_reservation.y_cord
                         AND room_has_reservation.room_num =  room.room_num 
                     INNER JOIN reservation
                         ON  reservation.res_id = room_has_reservation.res_id
                         AND  ?  BETWEEN  
-                        reservation.res_start AND reservation.res_end)";
-        $params = array ($hotelXCord, $hotelYCord, $date);
+                        reservation.res_start AND reservation.res_end)
+                    AND ( room.x_cord = ? 
+                          AND room.y_cord = ? )";
+        $params = array ($date, $hotelXCord, $hotelYCord);
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : $result;
     }
