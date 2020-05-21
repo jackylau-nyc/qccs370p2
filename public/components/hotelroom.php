@@ -151,6 +151,7 @@ async function room_div_generate(filter){
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
+        roommodal_container.innerText = "";
         roommodal_container.appendChild(col_div);
     })
 }
