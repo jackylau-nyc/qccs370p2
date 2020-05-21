@@ -33,9 +33,9 @@
     
     <div id ="reserve">
       <label for="start">Start date:</label>
-      <input type="date" id="start" name="trip-start" min="">
+      <input type="date" id="start" name="trip-start" value="" min="">
 
-      <label for="start">End date:</label>
+      <label for="end">End date:</label>
       <input type="date" id="end" name="trip-end">
 
        <button id="searchButton">Search for Rooms</button>
@@ -82,8 +82,10 @@ var reserveMin = function (){
             break;
           }
         }
-        document.getElementById("start").value = date;
         document.getElementById("start").min = date;
+        if(document.getElementById("start").value < date ||
+          document.getElementById("start").value == "")
+          document.getElementById("start").value = date;
     }
 }
 
