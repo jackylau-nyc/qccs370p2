@@ -14,7 +14,6 @@ class Router{
     function __call($name, $args){
         $this->isInvoked($args);
         list($route, $method) = $args;
-        error_log($route);
         $this->validateVerb($name);
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
     }

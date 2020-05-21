@@ -63,7 +63,7 @@ $uri  = $_SERVER["REQUEST_URI"];
    /****************************************************************************************************
     **************************************** Free Site Mappings ****************************************
     ****************************************************************************************************/
-
+  
     $router->get('/', function() {  
         require __DIR__.'/index.php;';
     });
@@ -76,8 +76,11 @@ $uri  = $_SERVER["REQUEST_URI"];
         require __DIR__."/hotel.php";
     });
 
-    $router->get('/reservation.php', function() {
-        if (SessionController::protect()) require __DIR__.'/reservation.php'; 
+    $router->get('/cust-reservation', function() {
+        if (SessionController::protect()) { 
+            error_log( "i reach a true state");
+            include __DIR__.'/reservation.php';
+        } 
     });
 
     $router->get('/search', function() {

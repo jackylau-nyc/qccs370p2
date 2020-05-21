@@ -5,27 +5,27 @@ namespace sessions;
 class SessionController{
 
     static function protect(){
-        $state = checkSessionVar("username"); 
+        $state = self::checkSessionVar("username"); 
         if($state){
             return true;
         } else{
-            msg();
+            self::msg();
             return  false; 
         }
     }
 
     static function adminProtect(){
-        $state = checkSessionVar("admin"); 
+        $state = self::checkSessionVar("admin"); 
         if($state){
             return true;
         } else{
-            msg();
+            self::msg();
             return  false; 
         }  
     }
 
     private static function checkSessionVar($var){
-        return (!empty($_SESSION["$var"]))? true:false;
+        return (isset($_SESSION["$var"]))? true:false;
     }
     
     private static function msg(){

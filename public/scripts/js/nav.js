@@ -40,6 +40,28 @@ function Signin(){
         })
     }
 }
+
+
+
+function logout(){
+  console.log("i get called");
+    $.ajax({
+      method:"POST",
+      url:"/logout",
+      data:{},
+    })
+      .done(function(response){
+          location.href = "../../index.php";
+      })
+      .fail(function(response){
+  
+      })
+  }
+
+
+
+
+
 function setDate(date) {
   // var $x = $("calendar");
   // $x.prop("color", "FF0000");
