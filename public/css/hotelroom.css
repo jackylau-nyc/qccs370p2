@@ -13,7 +13,7 @@
     font-size: 40px !important;
   }
 
-.sidenav{
+#sn{
     font-family: 'Arapey';
     list-style-type: none;
     background: rgb(228, 228, 228);
@@ -22,15 +22,14 @@
     width: 170px;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
+#sn a {
     text-decoration: none;
     font-size: 20px;
     color: rgb(0, 0, 0);
     display: block;
   }
 
-  .sidenav button {
+  #sn button {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
