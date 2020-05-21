@@ -1,6 +1,6 @@
 <link href="css/search-bar.css" rel="stylesheet" />
     <div class="s002">
-      <form>
+      <form action="./search.php" method="POST">
         <fieldset>
           <legend>SEARCH HOTEL</legend>
         </fieldset>
@@ -9,7 +9,7 @@
             <div class="icon-wrap">
              
             </div>
-            <input id="search" type="text" placeholder="Search Hotel" />
+            <input id="search" type="text" placeholder="Search Hotle" />
           </div>
           <div class="input-field second-wrap">
             <div class="icon-wrap">
@@ -45,7 +45,7 @@
             </select>
           </div>
           <div class="input-field fifth-wrap">
-            <button class="btn-search" type="button">SEARCH</button>
+            <button class="btn-search" type="submit">SEARCH</button>
           </div>
         </div>
       </form>
