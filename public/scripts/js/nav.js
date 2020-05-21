@@ -73,9 +73,6 @@ function keepMin(){
           location.href = "./index.php";
         };
 
-        window.onload(() => {keepMin()});
-        $(document).ready(()=> {keepMin();})
-
 
   /*
       var currentDate;
