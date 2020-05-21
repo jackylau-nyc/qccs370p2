@@ -113,8 +113,8 @@ async function room_div_generate(filter){
     if(filter == "" || filter == null)
       filter = "rooms"
     var roommodal_container = document.getElementById('room-container');
-    if(roommodal_container != null)
-      roommodal_container.innerText = "";
+    //reset
+    roommodal_container.innerText = '<h1 id="hotel-name"></h1><h2 id="location"></h2>';
     var params = getParams(window.location.href);
     var result = await getData(params.x, params.y, filter);
     document.getElementById('hotel-name').innerText = params.franchise;
