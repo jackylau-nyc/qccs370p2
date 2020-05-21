@@ -5,6 +5,7 @@
 
   body{
       background-image: url('../img/hotelroombg.jpg');
+      background-size: cover;
       font-family: personalFont !important;
   }
   
