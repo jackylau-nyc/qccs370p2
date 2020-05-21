@@ -4,7 +4,7 @@
   }
 
   body{
-      background-image: url("public/img/hotelroombg.jpg");
+      background-image: url("/public/img/hotelroombg.jpg");
       font-family: personalFont !important;
   }
   
