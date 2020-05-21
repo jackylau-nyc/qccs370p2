@@ -11,4 +11,7 @@
 		<?php include __DIR__."/components/hotelroom.php"?>
 		<?php include __DIR__."/components/default-scripts.php";?>
 	</body>
+	<script type="text/javascript">
+  		window.onload = keepMin;
+	</script>
 </html>
