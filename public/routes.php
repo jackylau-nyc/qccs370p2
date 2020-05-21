@@ -78,7 +78,6 @@ $uri  = $_SERVER["REQUEST_URI"];
 
     $router->get('/cust-reservation', function() {
         if (SessionController::protect()) { 
-            error_log( "i reach a true state");
             include __DIR__.'/reservation.php';
         } 
     });

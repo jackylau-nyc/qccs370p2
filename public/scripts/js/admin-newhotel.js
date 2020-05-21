@@ -14,16 +14,15 @@
     else {
         $.ajax({
         method:"POST",
-        url:"/add-hotel",
-        processData: false,
-        contentType: false,
-        data:{ x_cord : x_cord , 
-              y_cord : y_cord ,
-              company_name : company_name
-              },
+        url:"/admin",
+        data:{ action: "add-hotel", 
+               x_cord : x_cord , 
+               y_cord : y_cord ,
+               company_name : company_name
+            },
         })
-        .done(function(){
-          document.getElementById('addHotel-err-msg').innerText = `New Hotel at ${x_cord} street , ${y_cord} Ave is Successfully Added !`;
+        .done(function(res){
+          document.getElementById('addHotel-err-msg').innerText = res; // `New Hotel at ${x_cord} street , ${y_cord} Ave is Successfully Added !`;
         })
         .fail(function(){
           document.getElementById('addHotel-err-msg').innerText = "ajax Unknown Errors"
@@ -47,17 +46,16 @@
     else {
         $.ajax({
         method:"POST",
-        url:"/add-room",
-        processData: false,
-        contentType: false,
+        url:"/admin",
         data:{ x_cord : x_cord , 
                y_cord : y_cord ,
                class : room_class,
-               price : price
+               price : price,
+               action: "add-room"
               },
         })
-        .done(function(){
-          document.getElementById('addRoom-err-msg').innerText = `A $${price} ${room_class} Room Successfully Added to Hotel at ${x_cord} street , ${y_cord} Ave`;
+        .done(function(res){
+          document.getElementById('addRoom-err-msg').innerText = res;
         })
         .fail(function(){
           document.getElementById('addRoom-err-msg').innerText = "ajax Unknown Errors"
@@ -82,18 +80,17 @@
       else {
           $.ajax({
           method:"POST",
-          url:"/add-rooms",
-          processData: false,
-          contentType: false,
+          url:"/admin",
           data:{ x_cord : x_cord , 
                  y_cord : y_cord ,
                  class : room_class,
                  price : price,
-                 amount : amount
+                 amount : amount,
+                 action: "add-rooms"
                 },
           })
-          .done(function(){
-            document.getElementById('addRooms-err-msg').innerText = `${amount} $${price} ${room_class} Rooms are successfully added to Hotel at ${x_cord} street , ${y_cord} Ave`;
+          .done(function(res){
+            document.getElementById('addRooms-err-msg').innerText = res;
           })
           .fail(function(){
             document.getElementById('addRooms-err-msg').innerText = "ajax Unknown Errors"

@@ -15,7 +15,7 @@ class AdminLink extends BaseLink {
                 INTO hotel (x_cord, y_cord, company)
                 VALUES (?,?,?)";
         $params = array ($hotelXCord, $hotelYCord, $companyName);
-        $this->query($sql, $params);
+        $this->inQuery($sql, $params);
     }
     /**
      * @param hotelXCord -> x coordinate of the hotel 
@@ -176,5 +176,13 @@ class AdminLink extends BaseLink {
                      VALUES   (@room, ?,?,?,?);";
         $params[] = [$hotelXCord, $hotelYCord, $class, $price]; 
         $this->inMultiTransaction($stmnts, $params, $amount);
+    }
+
+    function getEmployet(){
+        $sql = "SELECT employer
+                FROM admin 
+                where admin.username = ?";
+        $params = [$_SESSION["$admin"]];
+        return $this->query($sql, $params);   
     }
 }

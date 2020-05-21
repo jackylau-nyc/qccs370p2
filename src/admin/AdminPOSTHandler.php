@@ -91,7 +91,7 @@ class AdminPOSTHandler{
         }
         $result = self::$compSvc->addHotel($fields["company_name"], $fields["x_cord"], self::$args["y_cord"]); 
         if (!$result){
-            throw new Exception('Bad Request: Hotel Already Exists!');
+            throw new Exception('Error Bad Request: Hotel Already Exists!');
         }
     }
 
