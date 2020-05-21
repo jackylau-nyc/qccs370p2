@@ -14,16 +14,18 @@ function SignUp(){
         data:{ username: signup_user, password:signup_pw },
         })
         .done(function(response){
+
           if (response.includes("Success")){
-            location.href = "../../reservation.php";
+              $('#signup-msg').text("Your account has been successfully created, please wait, you'll be redirected in a 3 few seconds");
+              
+              setTimeout(function(){
+                window.location.href = "/reservation.php";
+            }, 3000);    
           }
           else{
-            // Replace later 
-            alert(response);
+            $('#signup-msg').text(response);
           }
           
-          console.log(response);
-          $('#signup-msg').text("Your account has been successfully created, please wait, you'll be redirected in a few seconds");
         })
         .fail(function(response){
           $('#signup-msg').text(response);

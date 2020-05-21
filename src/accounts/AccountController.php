@@ -53,19 +53,12 @@ class AccountController{
      ****************************************************************************************************/
     private static function customerResult($result, $username){
         if ($result){
-            // to-do: redirect to customer view.   
             $_SESSION["username"] = $username;
-            echo "Success!";
-        }else{
-            echo "Error: Unable to process action. Please try again!";
         }
     }
     private static function adminResult($result, $username){
         if ($result){
             $_SESSION["admin"] = $username;
-            echo "Success!";
-        }else{
-            echo "Error: Unable to process action. Please try again!";
         }
     }
  /****************************************************************************************************
