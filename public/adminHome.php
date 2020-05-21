@@ -10,4 +10,5 @@
 		<?php include __DIR__."/components/adminHome.html"?>
 		<?php include __DIR__."/components/admin-default-scripts.php";?>		
 	</body>
+	
 </html>

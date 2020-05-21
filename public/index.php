@@ -12,4 +12,12 @@
 		<?php include __DIR__."/components/home.php"?>
 		<?php include __DIR__."/components/default-scripts.php";?>
 	</body>
+		<script type="text/javascript">
+  		// Get this to work when it's in nav.js
+  		window.onload = () => {
+  			keepMin();
+  			reserveMin();
+  		}
+	</script>
+
 </html>

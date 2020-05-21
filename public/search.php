@@ -12,4 +12,12 @@
 
 	
 	</body>
+		<script type="text/javascript">
+  		// Get this to work when it's in nav.js
+  		window.onload = () => {
+  			keepMin();
+  			reserveMin();
+  		}
+	</script>
+
 </html>

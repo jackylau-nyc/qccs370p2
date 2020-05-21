@@ -9,7 +9,7 @@
             <div class="icon-wrap">
              
             </div>
-            <input id="search" type="text" placeholder="Search Hotle" />
+            <input id="search" type="text" placeholder="Search Hotel" />
           </div>
           <div class="input-field second-wrap">
             <div class="icon-wrap">
