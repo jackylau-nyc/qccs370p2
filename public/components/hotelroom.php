@@ -33,13 +33,10 @@
     
     <div id ="reserve">
       <label for="start">Start date:</label>
-
-      <input type="date" id="start" name="trip-start"
-       value=""
-       min="" max="">
+      <input type="date" id="start" name="trip-start">
 
       <label for="start">End date:</label>
-      <input type="date" id="start" name="trip-end">
+      <input type="date" id="end" name="trip-end">
 
        <button id="searchButton">Search for Rooms</button>
     </div>
@@ -75,6 +72,20 @@ window.addEventListener('load', function (){
   room_div_generate();
 });
 
+var reserveMin = function (){
+    if (document.cookie.length > 0) {
+        var str = document.cookie.split(";");
+        var date;
+        for(var i in str){
+          if(str[i].includes("min_date=")){
+            date = str[i].replace("min_date=","").trim()
+            break;
+          }
+        }
+        document.getElementById("start").value = date;
+    }
+}
+
 var getParams = function (url) {
   var params = {};
   var parser = document.createElement('a');
@@ -88,8 +99,8 @@ var getParams = function (url) {
   return params;
 };
 
-async function getData(x, y){
-    return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=rooms`).then((response) => {
+async function getData(x, y, action){
+    return await fetch(`/hotel?xcord=${x}&ycord=${y}&action=${action}`).then((response) => {
            return response.json();
      })
 }
@@ -99,7 +110,7 @@ async function room_div_generate(){
 
     var roommodal_container = document.getElementById('room-container');
     var params = getParams(window.location.href);
-    var result = await getData(params.x, params.y);
+    var result = await getData(params.x, params.y, "rooms");
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     result.forEach(function (result) {

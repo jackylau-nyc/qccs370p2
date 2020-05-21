@@ -72,6 +72,7 @@ function keepMin(){
         document.getElementById("logout-btn").onclick = function () {
           location.href = "./index.php";
         };
+  //should have worked
   window.onload = keepMin;
 
   /*

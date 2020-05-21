@@ -12,6 +12,10 @@
 		<?php include __DIR__."/components/default-scripts.php";?>
 	</body>
 	<script type="text/javascript">
-  		window.onload = keepMin;
+  		// Get this to work when it's in nav.js
+  		window.onload = () => {
+  			keepMin();
+  			reserveMin();
+  		}
 	</script>
 </html>
