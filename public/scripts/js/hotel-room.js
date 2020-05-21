@@ -33,7 +33,7 @@ var getParams = function (url) {
 };
 
 async function createRes(x, y, username, start, end, roomID) {
-  return await fetch(`/hotel?username=${username}&xcord=${x}&ycord=${y}&room=${roomID}&startdate=${start}&enddate=${end}`).then((response) => {
+  return await fetch(`/reservations?username=${username}&x_cord=${x}&y_cord=${y}&room=${roomID}&startDate=${start}&endDate=${end}`).then((response) => {
     return response.json();
   })
 }
