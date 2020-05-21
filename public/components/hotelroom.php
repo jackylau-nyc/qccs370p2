@@ -119,8 +119,8 @@ async function room_div_generate(filter){
     var result = await getData(params.x, params.y, filter);
     document.getElementById('hotel-name').innerText = params.franchise;
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
-    var roomlist = document.getElementById('roomlist').innerText;
-    roomlist = "";
+    var roomlist = document.getElementById('roomlist');
+    roomlist.innerText = "";
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
