@@ -32,22 +32,69 @@ var getParams = function (url) {
   return params;
 };
 
-async function createRes(x, y, username, start, end, roomID) {
-  return await fetch(`/reservations?username=${username}&x_cord=${x}&y_cord=${y}&room=${roomID}&startDate=${start}&endDate=${end}`, {
-    method:'POST'
-  }).then((response) => {
-    return response.json();
-  })
+function createRes(x, y, username, start, end, roomID) {
+
+      var form = document.createElement("form");
+      var element1 = document.createElement("input"); 
+      var element2 = document.createElement("input");
+      var element3 = document.createElement("input"); 
+      var element4 = document.createElement("input"); 
+      var element5 = document.createElement("input"); 
+      var element6 = document.createElement("input");   
+
+      form.method = "POST";
+      form.action = "/reservation";   
+
+      element1.value=username;
+      element1.name="username";
+
+      form.appendChild(element1);  
+
+      element2.value=x;
+      element2.name="x_cord";
+      form.appendChild(element2);
+
+      element3.value=y;
+      element3.name="y_cord";
+      form.appendChild(element3);
+
+      element4.value=start;
+      element4.name="startDate";
+      form.appendChild(element4);
+
+      element5.value=end;
+      element5.name="endDate";
+      form.appendChild(element5);
+
+      element6.value=roomID;
+      element6.name="room";
+      form.appendChild(element6);
+
+      element7.value="create-res";
+      element7.name="action";
+      form.appendChild(element7);
+
+      document.body.appendChild(form);
+
+      form.submit();
+
+      console.log("Room Reserved");
+
+  // return await fetch(`/reservations?username=${username}&x_cord=${x}&y_cord=${y}&room=${roomID}&startDate=${start}&endDate=${end}`, {
+
+  // }).then((response) => {
+  //   return response.json();
+  // })
 }
 
 async function submitRes(roomID) {
   var params = getParams(window.location.href);
-  var start = document.getElementById('start');
-  var end = document.getElementById('end');
+  var start = document.getElementById('start').value;
+  var end = document.getElementById('end').value;
   var username = await fetch('customer?action=get-customer').then((response) => {
             return response.json();
         });
-  return await createRes(params.x, params.y, username, start, end, roomID);
+createRes(params.x, params.y, username, start, end, roomID);
 }
 
 async function getData(x, y, action){
