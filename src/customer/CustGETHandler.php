@@ -9,7 +9,7 @@ require_once __DIR__."/../reservations/ResService.php";
 class CustGETHandler{
 
     // Array of valid actions 
-    private const ACTIONS = array("get-reservations", "cancel-reservation"); 
+    private const ACTIONS = array("get-customer", "get-reservations", "cancel-reservation"); 
     private static $validator = null; 
     private static $resSvc    = null; 
     private static $args      = null;  
@@ -31,6 +31,9 @@ class CustGETHandler{
                     break;
                 case "cancel-reservation":
                     echo self::cancelReservation();  
+                    break;
+                case "get-customer":
+                    echo self::getCustomer();  
                     break;
                 }
         } 
@@ -62,6 +65,8 @@ class CustGETHandler{
     private static function cancelReservation(){
         return self::$resSvc->cancelReservation(self::$args["res"]);
     }
-
+    private static function getCustomer(){
+        return json_encode((isset($_SESSION["username"]))? $_SESSION["username"] : "Error: Customer not signedin"); 
+    }
 
 }
