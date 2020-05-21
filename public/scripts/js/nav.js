@@ -54,17 +54,16 @@ function setDate(date) {
 }
 function keepMin(){
     if (document.cookie.length > 0) {
-        var str = document.cookie.split(";").trim();
+        var str = document.cookie.split(";");
         var date;
         for(var i in str){
-          if(str[i].contains("min_date=")){
-            date = str[i].replace("min_date=","")
+          if(str[i].includes("min_date=")){
+            date = str[i].replace("min_date=","").trim()
             break;
           }
         }
         document.getElementById("currentDate").value = date;
     }
-    return "";
 }
         document.getElementById("signup-btn").onclick = function () {
             location.href = "../../signUp.php";
@@ -73,6 +72,8 @@ function keepMin(){
         document.getElementById("logout-btn").onclick = function () {
           location.href = "./index.php";
         };
+
+        window.load(() => keepMin())
 
 
   /*
