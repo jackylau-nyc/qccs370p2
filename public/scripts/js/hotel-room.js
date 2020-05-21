@@ -40,7 +40,8 @@ function createRes(x, y, username, start, end, roomID) {
       var element3 = document.createElement("input"); 
       var element4 = document.createElement("input"); 
       var element5 = document.createElement("input"); 
-      var element6 = document.createElement("input");   
+      var element6 = document.createElement("input");
+      var element7 = document.createElement("input");     
 
       form.method = "POST";
       form.action = "/reservation";   
