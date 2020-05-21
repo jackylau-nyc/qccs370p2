@@ -33,7 +33,7 @@
     
     <div id ="reserve">
       <label for="start">Start date:</label>
-      <input type="date" id="start" name="trip-start" min="">
+      <input type="date" id="start" name="trip-start" min="" onChange="reserveMin()">
 
       <label for="start">End date:</label>
       <input type="date" id="end" name="trip-end">
