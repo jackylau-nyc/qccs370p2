@@ -1,4 +1,4 @@
-<!-- <?php include __DIR__."/components/session.php";?>	 -->
+<?php include __DIR__."/components/session.php";?>	
 <!DOCTYPE html>
 <html>
 	<head>
