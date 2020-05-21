@@ -21,7 +21,8 @@ class AccountController{
         $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
         $result = self::$accountService->attemptAdminSignin();
-        self::adminResult($result, $fields["username"]);
+        $company = self::$accountService->getAdminCompany($fields["username"]);
+        self::adminResult($result, $fields["username"], $company);
     } 
 
     static function customerSignin($args){ 
@@ -56,9 +57,10 @@ class AccountController{
             $_SESSION["username"] = $username;
         }
     }
-    private static function adminResult($result, $username){
+    private static function adminResult($result, $username, $company){
         if ($result){
-            $_SESSION["admin"] = $username;
+            $_SESSION["admin"]   = $username;
+            $_SESSION["company"] = $company;
         }
     }
  /****************************************************************************************************

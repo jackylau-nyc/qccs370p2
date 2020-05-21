@@ -22,6 +22,10 @@ class SigninService{
         $this->printResult($success);
         return $success; 
     }
+    
+    function getAdminCompany($username){    
+        return $this->conn->getAdminCompany($this->username);
+    }
 
     function attemptAdminSignin(){    
         $hashedPasswd   = $this->conn->getAdminPassword($this->username);

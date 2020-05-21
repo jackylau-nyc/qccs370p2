@@ -1,7 +1,7 @@
 
 async function getData(){
     var company = "Howard Resorts";
-    var date = "1990-01-01";
+    var date = "2019-09-01";
     var data = {
         action: "get-upcoming-res",
         company: company, 
@@ -16,6 +16,7 @@ async function getData(){
 
 }
 
+
 async function allReservations(){
       
     document.getElementById('admin-view').innerHTML = "";
@@ -23,6 +24,11 @@ async function allReservations(){
 
     var cont = document.getElementById('admin-view');
     var result = await getData();
+    
+    if (result.includes("No")){
+        alert("This company has no upccoming reservations");
+        throw new FatalError("Something went badly wrong!");
+    }
 
       result.forEach(function (result) {
       var res_div = document.createElement('div');
@@ -69,23 +75,3 @@ async function allReservations(){
       cont.appendChild(res_div);
   })
   }
-
-
-  /**
-   *  
-   * 
-   *     return [
-            { reserveration_id: '001001',customer_username:'john', company : 'Howard Resorts', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
-            { reserveration_id: '101111',customer_username:'david', company : 'Howard Resorts', x_cord: [0], y_cord: [1] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'}
-        ]
-   **
-       /*
-    return await fetch('/get-upcoming-res').then((response) => {
-        return response.json();
-    })
-    }
-    */
-    // for display testing  only ....
-   

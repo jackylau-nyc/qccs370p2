@@ -50,7 +50,7 @@ class AdminLink extends BaseLink {
                     AND rm.y_cord = hotel.y_cord
                 INNER JOIN room_has_reservation AS rm_junc
                     ON rm_junc.x_cord = hotel.x_cord
-                    AND rm_junc.y_cord = hotel.x_cord
+                    AND rm_junc.y_cord = hotel.y_cord
                     AND rm_junc.room_num = rm.room_num
                 INNER JOIN reservation_has_customer AS rc_junc
                     ON rc_junc.reservation_id = rm_junc.res_id
@@ -76,7 +76,7 @@ class AdminLink extends BaseLink {
                     AND rm.y_cord = hotel.y_cord
                 INNER JOIN room_has_reservation AS rm_junc
                     ON  rm_junc.x_cord = hotel.x_cord
-                    AND rm_junc.y_cord = hotel.x_cord
+                    AND rm_junc.y_cord = hotel.y_cord
                     AND rm_junc.room_num = rm.room_num
                 INNER JOIN reservation_has_customer AS rc_junc
                     ON  rc_junc.reservation_id = rm_junc.res_id
@@ -105,7 +105,7 @@ class AdminLink extends BaseLink {
                     AND rm.y_cord = hotel.y_cord
                 INNER JOIN room_has_reservation AS rm_junc
                     ON  rm_junc.x_cord = hotel.x_cord
-                    AND rm_junc.y_cord = hotel.x_cord
+                    AND rm_junc.y_cord = hotel.y_cord
                     AND rm_junc.room_num = rm.room_num
                 INNER JOIN reservation_has_customer AS rc_junc
                     ON  rc_junc.reservation_id = rm_junc.res_id

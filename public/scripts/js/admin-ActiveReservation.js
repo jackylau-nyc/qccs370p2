@@ -1,18 +1,20 @@
 
+
 async function getData(){
-    /*
-    return await fetch('/get-active-res').then((response) => {
-        return response.json();
-    })
-    }
-    */
-    // for display testing  only ....
-    return [
-            { reserveration_id: '001001',customer_username:'john', company : 'Howard Resorts', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
-            { reserveration_id: '101111',customer_username:'david', company : 'Howard Resorts', x_cord: [0], y_cord: [1] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'}
-        ]
+    var company = "Howard Resorts";
+    var date = "2019-09-01";
+    var data = {
+        action: "get-active-res",
+        company: company, 
+        date: date,
+    };
+    var url = `/admin?action=${data.action}&company=${data.company}&date=${data.date}`;
+    return await fetch(url).then((response) => {
+        var sol = response.json();
+        console.log(sol);
+        return sol;
+    });
+
 }
 
 async function allReservations(){
@@ -22,6 +24,11 @@ async function allReservations(){
 
     var cont = document.getElementById('admin-view');
     var result = await getData();
+    console.log(result);
+    if (result.includes("No")){
+        alert("This company has no active reservations");
+        throw new FatalError("Something went badly wrong!");
+    }
 
       result.forEach(function (result) {
       var res_div = document.createElement('div');

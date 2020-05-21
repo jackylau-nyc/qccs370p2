@@ -29,17 +29,17 @@ class CompanyService{
 
     function getAllReservations($companyName){
         $res = $this->conn->getAllReservations($companyName);
-        return !($res) ? false : json_encode($res);  
+        return !($res) ? json_encode("No Reservations!") : json_encode($res);  
     }
 
     function getAllUpcomingReservations($companyName, $date){
         $res = $this->conn->getAllUpcomingReservations($companyName, $date);
-        return !($res) ? false : json_encode($res);  
+        return !($res) ? json_encode("No Upcoming Reservations!") : json_encode($res);  
     }
 
     function getAllActiveReservations($companyName, $date){
         $res = $this->conn->getAllActiveReservations($companyName, $date);
-        return !($res) ? false : json_encode($res);  
+        return !($res) ? json_encode("No Active Reservations!") : json_encode($res);  
     }
 
     function addRoom($hotelXCord, $hotelYCord, $class, $price){

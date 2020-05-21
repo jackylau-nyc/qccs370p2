@@ -89,6 +89,25 @@ $uri  = $_SERVER["REQUEST_URI"];
     $router->get('/map', function($req){
         MapController::getHotels();
     });
+
+    /****************************************************************************************************
+     ***************************************** Session Accessors ****************************************
+     ****************************************************************************************************/
+    $router->get('/ses-customer', function($req){
+        SessionController::getUser();
+    });
+
+    $router->get('/ses-admin', function($req){
+        SessionController::getAdmin();
+    });
+
+    $router->get('/ses-admin-company', function($req){
+        SessionController::getAdminCompany();
+    });
+
+    $router->get('/ses-glob', function($req){
+        SessionController::getGlob();
+    });
     
    /****************************************************************************************************
     ******************************************* POST Mappings ******************************************

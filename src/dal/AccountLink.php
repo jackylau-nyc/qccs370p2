@@ -29,6 +29,14 @@ class AccountLink extends BaseLink {
         return (is_null($result))? false : true;
     }
 
+    function getAdminCompany($username){
+        $sql = "SELECT employer as company
+                FROM  admin 
+                WHERE admin.username=?";
+        $result = $this->query($sql, array($username));
+        return (is_null($result))? false : $result;
+    }
+
     function createAccount($username, $passwd){
         $sql = "INSERT 
                 INTO customer (username, passwd)
