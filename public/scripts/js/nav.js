@@ -52,6 +52,20 @@ function setDate(date) {
 //   $('#calendar').fullCalendar('gotoDate',new Date('2020-05-05'));
 // });
 }
+function keepMin(){
+    if (document.cookie.length > 0) {
+        var str = document.cookie.split(";").trim();
+        var date;
+        for(var i in str){
+          if(str[i].contains("min_date=")){
+            date = str[i].replace("min_date=","")
+            break;
+          }
+        }
+        document.getElementById("currentDate").value = date;
+    }
+    return "";
+}
         document.getElementById("signup-btn").onclick = function () {
             location.href = "../../signUp.php";
         };   
