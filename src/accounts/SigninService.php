@@ -25,6 +25,7 @@ class SigninService{
 
     function attemptAdminSignin(){    
         $hashedPasswd   = $this->conn->getAdminPassword($this->username);
+
         $success = $this->validPassword($this->passwd, $hashedPasswd)? true :false; 
         $this->printResult($success);
         return $success; 
@@ -38,7 +39,7 @@ class SigninService{
         if($success){
             echo "Success: Successfuly Signed In!";
         } else {
-            echo "Invalid username or password.";
+            echo "Error: Invalid username or password.";
         }
     }
 }

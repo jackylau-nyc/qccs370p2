@@ -20,7 +20,7 @@ class AccountController{
         self::$validator = new Validator($args, self::$reqParams);
         $fields = self::$validator->getSafeData(); 
         self::$accountService = new SigninService($fields["username"], $fields["password"]);
-        $result = self::$accountService->signServce->attemptAdminSignin();
+        $result = self::$accountService->attemptAdminSignin();
         self::adminResult($result, $fields["username"]);
     } 
 
