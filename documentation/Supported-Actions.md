@@ -144,3 +144,41 @@
   * **Action:** "company"
   * **Required Parameters:**  {"xcord", "ycord"}
 
+### Search Engine
+
+* **Location:** /search
+* 
+* Find hotels having rooms costing more than $x.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-gt"
+  * **Required Parameters:**  {"price", "date"}
+
+* Find hotels having rooms costing less than $x.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-lt"
+  * **Required Parameters:**  {"price", "date"}
+
+* Find hotels having rooms costing less than or equal to $x.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-le"
+  * **Required Parameters:**  {"price", "date"}
+
+* Find hotels having rooms costing greater than or equal to $x.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-ge"
+  * **Required Parameters:**  {"price", "date"}
+
+* Find hotels having rooms costing exactly $x.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-eq"
+  * **Required Parameters:**  {"price", "date"}
+
+* Find hotels having rooms costing between $x and $y.
+  * **Request Type:** GET
+  * **Action:** "find-rooms-bet"
+  * **Required Parameters:**  {"minPrice", "maxPrice", "date"}
+
+* Find hotels based on search terms targeting parent companies.
+  * **Request Type:** GET
+  * **Action:** "find-by-company"
+  * **Required Parameters:**  {"term"}

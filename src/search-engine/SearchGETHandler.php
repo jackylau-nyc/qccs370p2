@@ -20,7 +20,7 @@ class SearchGETHandler{
     public static function init($req){
         $action = $req["action"];
         self::validateRequest($action);
-        self::$searchSvc = new ResService();
+        self::$searchSvc = new SearchService();
         self::$args      = $req;
         self::$validator = new Validator();
         self::selectAction($action);
@@ -61,26 +61,25 @@ class SearchGETHandler{
     } 
 
     private static function findRoomsGT(){
-
+        return self::$searchSvc->findRoomsGT(self::$args["price"],self::$args["date"]);
     }
     private static function findRoomsLT(){
-
+        return self::$searchSvc->findRoomsLT(self::$args["price"],self::$args["date"]);
     }
-
     private static function findRoomsLE(){
-
+        return self::$searchSvc->findRoomsLE(self::$args["price"],self::$args["date"]);
     }
     private static function findRoomsGE(){
-
+        return self::$searchSvc->findRoomsGE(self::$args["price"],self::$args["date"]);
     }
     private static function findRoomsEQ(){
-
+        return self::$searchSvc->findRoomsEQ(self::$args["price"],self::$args["date"]);
     }
     private static function findRoomsBetween(){
-
+        return self::$searchSvc->findRoomsGT(self::$args["minPrice"], self::$args["maxPrice"], self::$args["date"]);
     }
     private static function findHotelsByCompany(){
-
+        return self::$searchSvc->findHotelsByCompany(self::$args["term"]);
     }
 
 

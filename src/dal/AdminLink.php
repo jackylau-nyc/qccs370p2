@@ -39,7 +39,7 @@ class AdminLink extends BaseLink {
      * Fetch reservation data from ALL hotels that belong to a specified company. (Past, Future, Present)
      */
     function getAllReservations($companyName){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num
                 FROM hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
@@ -65,7 +65,7 @@ class AdminLink extends BaseLink {
     * Fetch all upcoming reservations active for a given company based around a specified date.
     */
     function getAllUpcomingReservations($companyName, $date){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num 
                 FROM   hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
@@ -82,7 +82,7 @@ class AdminLink extends BaseLink {
                     ON  rc_junc.reservation_id = rm_junc.res_id
                 INNER JOIN reservation AS res
                     ON  res.res_id = rc_junc.reservation_id
-                    AND (res.res_start >= ?;";
+                    AND (res.res_start >= ?);";
         $params = array ($companyName, $date);
         $result = $this->query($sql, $params);
         return (is_null($result))? false : $result;
@@ -94,7 +94,7 @@ class AdminLink extends BaseLink {
     * And the reservation's end date being on or after the specified date.
     */
     function getAllActiveReservations($companyName, $date){
-        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end  
+        $sql = "SELECT rc_junc.customer_username, hotel.x_cord, hotel.y_cord, rc_junc.reservation_id, hotel.company, res.res_start, res.res_end, room.room_num 
                 FROM   hotel
                 INNER JOIN hotel AS hot
                     ON  hot.company = ?
