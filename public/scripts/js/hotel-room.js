@@ -44,7 +44,8 @@ function createRes(x, y, username, start, end, roomID) {
       var element7 = document.createElement("input");     
 
       form.method = "POST";
-      form.action = "/reservation";   
+      form.action = "/reservation";
+      form.target = "_blank";   
 
       element1.value=username;
       element1.name="username";
