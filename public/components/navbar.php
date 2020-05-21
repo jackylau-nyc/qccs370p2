@@ -1,5 +1,5 @@
   <div class="navbar navfont">
-    <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);"/></a>
+    <a href="#home"><input id="currentDate" type="date" value="" onChange="setDate(this.value);reserveMin();"/></a>
     <a class ="loginbtn" href ="./index.php">Home</a>
     <!-- Search Engine -->
     <a class ="loginbtn" href ="../search.php"> Search</a>
