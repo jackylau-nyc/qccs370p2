@@ -45,7 +45,7 @@ function createRes(x, y, username, start, end, roomID) {
 
       form.method = "POST";
       form.action = "/reservation";
-      form.target = "_blank";   
+      form.target = "/reservation.php";
 
       element1.value=username;
       element1.name="username";
