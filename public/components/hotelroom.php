@@ -113,6 +113,7 @@ async function room_div_generate(filter){
     if(filter == "" || filter == null)
       filter = "rooms"
     var roommodal_container = document.getElementById('room-container');
+    roommodal_container.innerText = "";
     var params = getParams(window.location.href);
     var result = await getData(params.x, params.y, filter);
     document.getElementById('hotel-name').innerText = params.franchise;
@@ -151,7 +152,6 @@ async function room_div_generate(filter){
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
-        roommodal_container.innerText = "";
         roommodal_container.appendChild(col_div);
     })
 }
