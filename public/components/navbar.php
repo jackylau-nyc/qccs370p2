@@ -25,5 +25,5 @@
     </div>
   </div>
 <script>
-  window.onload(() => {keepMin()});
+  window.onload = keepMin;
 </script>
