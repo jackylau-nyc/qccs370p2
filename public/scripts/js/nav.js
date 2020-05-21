@@ -73,7 +73,8 @@ function keepMin(){
           location.href = "./index.php";
         };
 
-        keepMin();
+        window.onload(() => {keepMin()});
+        $(document).ready(()=> {keepMin();})
 
 
   /*
