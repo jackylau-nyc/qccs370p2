@@ -1,18 +1,19 @@
 
 async function getData(){
-    /*
-    return await fetch('/get-upcoming-res').then((response) => {
-        return response.json();
-    })
-    }
-    */
-    // for display testing  only ....
-    return [
-            { reserveration_id: '001001',customer_username:'john', company : 'Howard Resorts', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
-            { reserveration_id: '101111',customer_username:'david', company : 'Howard Resorts', x_cord: [0], y_cord: [1] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
-            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'}
-        ]
+    var company = "Howard Resorts";
+    var date = "1990-01-01";
+    var data = {
+        action: "get-upcoming-res",
+        company: company, 
+        date: date,
+    };
+    var url = `/admin?action=${data.action}&company=${data.company}&date=${data.date}`;
+    return await fetch(url).then((response) => {
+        var sol = response.json();
+        console.log(sol);
+        return sol;
+  });
+
 }
 
 async function allReservations(){
@@ -26,9 +27,8 @@ async function allReservations(){
       result.forEach(function (result) {
       var res_div = document.createElement('div');
       res_div.className ='row';
-
       var res_id = document.createElement('h3');
-      res_id.innerText = `Reservation Number : ${result.reserveration_id}`;
+      res_id.innerText = `Reservation Number : ${result.reservation_id}`;
 
       var left_div = document.createElement('div');
       left_div.className ='col-sm-3';
@@ -70,3 +70,22 @@ async function allReservations(){
   })
   }
 
+
+  /**
+   *  
+   * 
+   *     return [
+            { reserveration_id: '001001',customer_username:'john', company : 'Howard Resorts', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
+            { reserveration_id: '101111',customer_username:'david', company : 'Howard Resorts', x_cord: [0], y_cord: [1] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
+            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
+            { reserveration_id: '201222',customer_username:'mike', company : 'Howard Resorts', x_cord: [0], y_cord: [2] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'}
+        ]
+   **
+       /*
+    return await fetch('/get-upcoming-res').then((response) => {
+        return response.json();
+    })
+    }
+    */
+    // for display testing  only ....
+   
