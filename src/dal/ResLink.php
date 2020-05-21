@@ -88,7 +88,7 @@ class ResLink extends BaseLink {
     function getCustRes($username, $date){
         $sql = "SELECT rc_junc.customer_username as username, 
                        hotel.x_cord as xcord, hotel.y_cord as ycord, rc_junc.reservation_id as resID, hotel.company 
-                       as company, res.res_start as startDate, res.res_end  as endDate, rm.class
+                       as company, res.res_start as startDate, res.res_end  as endDate, rm.class, hotel.location
                 FROM hotel
                 INNER JOIN hotel AS hot
                     ON  hot.x_cord = hotel.x_cord

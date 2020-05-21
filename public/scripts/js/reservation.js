@@ -42,7 +42,7 @@
             var hotel_cords = document.createElement('p');
             var room = document.createElement('p');
             hotel_name.innerText = `${result.company}`;
-            hotel_cords.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
+            hotel_cords.innerText = `Location : ${result.location}`;
             room.innerText = `Room Type : ${result.class}`;
             left_div.appendChild(hotel_name);
             left_div.appendChild(hotel_cords);
@@ -72,34 +72,3 @@
             cont.appendChild(res_div);
         });
     }
-
-
-
-    /// From MSDN https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-
-    // Example POST method implementation:
-async function getReq(url = '', data = {}) {
-    const response = await fetch(url, {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
-  
-
-
-
-    /**
- *   // for display testing  only ....
-        return [
-                { res_id: '001001',username:'john', company : 'hoteel name 1', x_cord: [0], y_cord: [0] ,class :'cheap',price:[399],res_start:'2020-04-01',res_end:'2020-04-02'},
-                { res_id: '101111',username:'david', company : 'hoteel naaaaaame 2', x_cord: [1], y_cord: [0] ,class :'deluxe',price:[699],res_start:'2020-05-01',res_end:'2020-05-06'},
-                { res_id: '201222',username:'mike', company : 'hoteel nameaaaa 3', x_cord: [0], y_cord: [1] ,class :'suite',price:[999],res_start:'2020-05-11',res_end:'2020-05-22'},
-            ]
-         async function getData(){
-            return await fetch('/customer').then((response) => {
-                return response.json();
-            })
-        }
- 
-
-*/
