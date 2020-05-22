@@ -45,6 +45,7 @@ function createRes(x, y, username, start, end, roomID) {
 
       form.method = "POST";
       form.action = "/reservation";
+      form.target = "_blank"
       setTimeout("location.href = 'https://mane370p2.herokuapp.com/reservation.php';",500);  
 
       element1.value=username;
