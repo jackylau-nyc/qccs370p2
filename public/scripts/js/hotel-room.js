@@ -130,10 +130,10 @@ async function room_div_generate(filter){
 
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
-        col_div.onclick = openModal();
         
         var room_div = document.createElement('div');
         room_div.classList.add("rooms");
+        room_div.onclick = openModal();
 
         // Room number
         var roomnum = document.createElement('h3');
