@@ -45,6 +45,7 @@ function createRes(x, y, username, start, end, roomID) {
 
       form.method = "POST";
       form.action = "/reservation";
+      form.target = "_blank"
       setTimeout("location.href = 'https://mane370p2.herokuapp.com/reservation.php';",500);  
 
       element1.value=username;
@@ -89,7 +90,12 @@ function createRes(x, y, username, start, end, roomID) {
   // })
 }
 
-async function submitRes(roomID) {
+async function submitRes() {
+  var select = document.getElementById('room-select');
+  if(select.options == null) {
+    return;
+  }
+  var roomID = select.options[select.selectedIndex].innerHTML;
   var params = getParams(window.location.href);
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;
@@ -116,9 +122,9 @@ async function room_div_generate(filter){
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     var roomlist = document.getElementById('roomlist');
     roomlist.innerText = "";
+    document.getElementById('room-select').options.length=0;
     result.forEach(function (result) {
 
-        var a = document.createElement('a');
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
         
@@ -129,6 +135,9 @@ async function room_div_generate(filter){
         var roomnum = document.createElement('h3');
         roomnum.className = 'roomnum';
         roomnum.innerText = `${result.room_num}`;
+        var option = document.createElement('option');
+        option.text = option.value = result.room_num;
+        document.getElementById('room-select').add(option,0);
 
         // Class of the room
         var roomclass = document.createElement('span');
@@ -139,7 +148,7 @@ async function room_div_generate(filter){
         var price = document.createElement('span');
         price.className = 'price';
         price.innerText = " : $" + `${result.price}`;
-        
+
         room_div.appendChild(roomnum);
         room_div.appendChild(roomclass);
         room_div.appendChild(price);
@@ -149,10 +158,9 @@ async function room_div_generate(filter){
         des.className = 'hotel-descript';
         // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
 
-        a.appendChild(col_div);
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
-        roomlist.appendChild(a);
+        roomlist.appendChild(col_div);
     })
 }
