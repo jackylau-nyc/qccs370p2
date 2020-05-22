@@ -118,6 +118,7 @@ async function room_div_generate(filter){
     roomlist.innerText = "";
     result.forEach(function (result) {
 
+        var a = document.createElement('a');
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
         
@@ -148,10 +149,10 @@ async function room_div_generate(filter){
         des.className = 'hotel-descript';
         // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
 
+        a.appendChild(col_div);
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
-        roomlist.appendChild(col_div);
-        roomlist = "<a>" + roomlist + "</a>";
+        roomlist.appendChild(a);
     })
 }
