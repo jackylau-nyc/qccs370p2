@@ -133,7 +133,6 @@ async function room_div_generate(filter){
         
         var room_div = document.createElement('div');
         room_div.classList.add("rooms");
-        room_div.onclick = openModal();
 
         // Room number
         var roomnum = document.createElement('h3');
@@ -150,9 +149,14 @@ async function room_div_generate(filter){
         price.className = 'price';
         price.innerText = " : $" + `${result.price}`;
         
+        var bttn = document.createElement('button');
+        button.innerHTML = "Confirm";
+        bttn.onclick = openModal();
+
         room_div.appendChild(roomnum);
         room_div.appendChild(roomclass);
         room_div.appendChild(price);
+        room_div.appendChild(bttn);
 
         // ( i , j ) locations
         var des = document.createElement('p');
