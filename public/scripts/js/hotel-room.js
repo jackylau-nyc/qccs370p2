@@ -121,7 +121,7 @@ async function room_div_generate(filter){
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     var roomlist = document.getElementById('roomlist');
     roomlist.innerText = "";
-    document.getElementById('roomselect').options.length=0;
+    document.getElementById('room-select').options.length=0;
     result.forEach(function (result) {
 
         var col_div = document.createElement('div');
