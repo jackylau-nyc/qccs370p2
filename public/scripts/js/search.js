@@ -39,6 +39,9 @@ async function searchQuery(){
 
 async function performSearch(action, term, date){
     let results = await performQuery(action, term, date);   
+     $("#results").html(results) ;
+     var html = $(`<div> ${results}</div>`);
+    $("body").append(html)
     //showResults(results); 
 }
 
@@ -85,8 +88,8 @@ async function fetchAsync (url) {
     console.log(url);
     let response = await fetch(url);
     let data = await response;
-    console.log(data.text());
-    return await data;
+//    console.log(data.text());
+    return await data.text();
   }
   
 
