@@ -40,7 +40,7 @@
       <input type="date" id="end" name="trip-end">
 
       <label for="roomselect">Select room:</label>
-      <input type="text" id="roomselect" name="room-select">
+      <select id="roomselect" name="room-select"></select>
 
        <button id="searchButton" onclick="room_div_generate('avail-room-records')">Search for Rooms</button>
     </div>

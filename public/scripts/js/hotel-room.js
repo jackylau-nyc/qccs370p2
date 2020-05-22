@@ -129,7 +129,9 @@ async function room_div_generate(filter){
         var roomnum = document.createElement('h3');
         roomnum.className = 'roomnum';
         roomnum.innerText = `${result.room_num}`;
-        document.getElementById('roomselect').add(result.room_num);
+        var option = document.createElement('option');
+        option.text = option.value = result.room_num;
+        document.getElementById('roomselect').add(option,0);
 
         // Class of the room
         var roomclass = document.createElement('span');
