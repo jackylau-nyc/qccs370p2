@@ -29,19 +29,22 @@ class SearchLink extends BaseLink {
     }
 
     function findRoomsGT($price, $date){
-        $sql = "SELECT class, count(class) as size, x_cord ,y_cord, price
-                FROM  room 
+        $sql = "SELECT class, count(class) as size, room.x_cord ,room.y_cord, price , hotel.company
+                FROM  room , hotel
                 WHERE room.room_num 
                     NOT IN ( SELECT room.room_num 
-                             FROM room 
-                             INNER JOIN room_has_reservation
-                                ON room.x_cord  = room_has_reservation.x_cord  
+                            FROM room 
+                            INNER JOIN room_has_reservation
+                                ON room.x_cord = room_has_reservation.x_cord  
                                 AND room.y_cord = room_has_reservation.y_cord
                                 AND room_has_reservation.room_num =  room.room_num 
-                             INNER JOIN reservation
+                            INNER JOIN reservation
                                 ON  reservation.res_id = room_has_reservation.res_id
-                                AND  ? 
-                                BETWEEN  reservation.res_start AND reservation.res_end)
+                                AND  ?  
+                                BETWEEN  reservation.res_start AND reservation.res_end
+                            INNER JOIN hotel 
+                                ON room.x_cord = hotel.x_cord 
+                                AND room.y_cord= hotel.y_cord)
                 AND room.price > ?
                 GROUP BY room.class";
         $params = array ($date, $price);
@@ -51,19 +54,22 @@ class SearchLink extends BaseLink {
 
 
     function findRoomsLT($price, $date){
-        $sql = "SELECT class, count(class) as size, x_cord ,y_cord, price
-                FROM  room 
+        $sql = "SELECT class, count(class) as size, room.x_cord ,room.y_cord, price , hotel.company
+                FROM  room , hotel
                 WHERE room.room_num 
                     NOT IN ( SELECT room.room_num 
-                             FROM room 
-                             INNER JOIN room_has_reservation
+                            FROM room 
+                            INNER JOIN room_has_reservation
                                 ON room.x_cord = room_has_reservation.x_cord  
                                 AND room.y_cord = room_has_reservation.y_cord
                                 AND room_has_reservation.room_num =  room.room_num 
-                             INNER JOIN reservation
+                            INNER JOIN reservation
                                 ON  reservation.res_id = room_has_reservation.res_id
                                 AND  ?  
-                                BETWEEN  reservation.res_start AND reservation.res_end)
+                                BETWEEN  reservation.res_start AND reservation.res_end
+                            INNER JOIN hotel 
+                                ON room.x_cord = hotel.x_cord 
+                                AND room.y_cord= hotel.y_cord)
                 AND room.price < ?
                 GROUP BY room.class";
         $params = array ($date, $price);
@@ -72,21 +78,24 @@ class SearchLink extends BaseLink {
     }
 
     function findRoomsLE($price, $date){
-        $sql = "SELECT class, count(class) as size, x_cord ,y_cord, price
-                FROM  room 
-                WHERE room.room_num 
-                    NOT IN ( SELECT room.room_num 
-                             FROM room 
-                             INNER JOIN room_has_reservation
-                                ON room.x_cord = room_has_reservation.x_cord  
-                                AND room.y_cord = room_has_reservation.y_cord
-                                AND room_has_reservation.room_num =  room.room_num 
-                             INNER JOIN reservation
-                                ON  reservation.res_id = room_has_reservation.res_id
-                                AND  ?  
-                                BETWEEN  reservation.res_start AND reservation.res_end)
-                AND room.price <= ?
-                GROUP BY room.class";
+        $sql = "SELECT class, count(class) as size, room.x_cord ,room.y_cord, price , hotel.company
+        FROM  room , hotel
+        WHERE room.room_num 
+            NOT IN ( SELECT room.room_num 
+                     FROM room 
+                     INNER JOIN room_has_reservation
+                        ON room.x_cord = room_has_reservation.x_cord  
+                        AND room.y_cord = room_has_reservation.y_cord
+                        AND room_has_reservation.room_num =  room.room_num 
+                     INNER JOIN reservation
+                        ON  reservation.res_id = room_has_reservation.res_id
+                        AND  ?  
+                        BETWEEN  reservation.res_start AND reservation.res_end
+                    INNER JOIN hotel 
+                        ON room.x_cord = hotel.x_cord 
+                        AND room.y_cord= hotel.y_cord)
+        AND room.price <= ?
+        GROUP BY room.class";
         $params = array ($date, $price);
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : $result;                
@@ -94,42 +103,48 @@ class SearchLink extends BaseLink {
 
     
     function findRoomsGE($price, $date){
-        $sql = "SELECT class, count(class) as size, x_cord ,y_cord, price
-                FROM  room 
-                WHERE room.room_num 
-                    NOT IN ( SELECT room.room_num 
-                             FROM room 
-                             INNER JOIN room_has_reservation
-                                ON room.x_cord = room_has_reservation.x_cord  
-                                AND room.y_cord = room_has_reservation.y_cord
-                                AND room_has_reservation.room_num =  room.room_num 
-                             INNER JOIN reservation
-                                ON  reservation.res_id = room_has_reservation.res_id
-                                AND  '2020-01-01'  
-                                BETWEEN  reservation.res_start AND reservation.res_end)
-                AND room.price <= ?
-                GROUP BY room.class";
+        $sql = "SELECT class, count(class) as size, room.x_cord ,room.y_cord, price , hotel.company
+        FROM  room , hotel
+        WHERE room.room_num 
+            NOT IN ( SELECT room.room_num 
+                     FROM room 
+                     INNER JOIN room_has_reservation
+                        ON room.x_cord = room_has_reservation.x_cord  
+                        AND room.y_cord = room_has_reservation.y_cord
+                        AND room_has_reservation.room_num =  room.room_num 
+                     INNER JOIN reservation
+                        ON  reservation.res_id = room_has_reservation.res_id
+                        AND  ?  
+                        BETWEEN  reservation.res_start AND reservation.res_end
+                    INNER JOIN hotel 
+                        ON room.x_cord = hotel.x_cord 
+                        AND room.y_cord= hotel.y_cord)
+        AND room.price >= ?
+        GROUP BY room.class";
         $params = array ($date, $price);
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : $result;
     }
 
     function findRoomsEQ($price, $date){
-        $sql = "SELECT class, count(class) as size, x_cord ,y_cord, price
-                FROM  room 
-                WHERE room.room_num 
-                    NOT IN ( SELECT room.room_num 
-                             FROM room 
-                             INNER JOIN room_has_reservation
-                                ON room.x_cord = room_has_reservation.x_cord  
-                                AND room.y_cord = room_has_reservation.y_cord
-                                AND room_has_reservation.room_num =  room.room_num 
-                             INNER JOIN reservation
-                                ON  reservation.res_id = room_has_reservation.res_id
-                                AND  '2020-01-01'  
-                                BETWEEN  reservation.res_start AND reservation.res_end)
-                AND room.price = ?
-                GROUP BY room.class";
+        $sql = "SELECT class, count(class) as size, room.x_cord ,room.y_cord, price , hotel.company
+        FROM  room , hotel
+        WHERE room.room_num 
+            NOT IN ( SELECT room.room_num 
+                     FROM room 
+                     INNER JOIN room_has_reservation
+                        ON room.x_cord = room_has_reservation.x_cord  
+                        AND room.y_cord = room_has_reservation.y_cord
+                        AND room_has_reservation.room_num =  room.room_num 
+                     INNER JOIN reservation
+                        ON  reservation.res_id = room_has_reservation.res_id
+                        AND  ?  
+                        BETWEEN  reservation.res_start AND reservation.res_end
+                    INNER JOIN hotel 
+                        ON room.x_cord = hotel.x_cord 
+                        AND room.y_cord= hotel.y_cord)
+        AND room.price = ?
+        GROUP BY room.class";
         $params = array ($date, $price);
         $result = $this->query($sql, $params);        
         return (is_null($result))? false : $result;

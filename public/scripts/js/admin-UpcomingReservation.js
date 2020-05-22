@@ -64,7 +64,9 @@ async function getUpcoming(){
     });
 }
 
-  
+var company = await fetch('/ses-admin-company').then((response) => {
+    return response.json().company;
+  });
 
 async function getDate(){
     return await fetch("/ses-admin-company").then((response) => {
