@@ -89,16 +89,6 @@ function createRes(x, y, username, start, end, roomID) {
   // })
 }
 
-function openModal() {
-  var mod = document.getElementById('myModal');
-  if (mod.style.display === "none") {
-    mod.style.display = "block";
-  }
-  else {
-    mod.style.display = "none";
-  }
-}
-
 async function submitRes(roomID) {
   var params = getParams(window.location.href);
   var start = document.getElementById('start').value;
@@ -126,6 +116,7 @@ async function room_div_generate(filter){
     document.getElementById('location').innerText = `Location: ${params.x} street, ${params.y} ave`;
     var roomlist = document.getElementById('roomlist');
     roomlist.innerText = "";
+    document.getElementById('roomselect').options.length=0;
     result.forEach(function (result) {
 
         var col_div = document.createElement('div');
@@ -138,6 +129,7 @@ async function room_div_generate(filter){
         var roomnum = document.createElement('h3');
         roomnum.className = 'roomnum';
         roomnum.innerText = `${result.room_num}`;
+        document.getElementById('roomselect').add(result.room_num);
 
         // Class of the room
         var roomclass = document.createElement('span');
@@ -148,15 +140,10 @@ async function room_div_generate(filter){
         var price = document.createElement('span');
         price.className = 'price';
         price.innerText = " : $" + `${result.price}`;
-        
-        var bttn = document.createElement('button');
-        bttn.innerHTML = "Confirm";
-        bttn.onclick = openModal();
 
         room_div.appendChild(roomnum);
         room_div.appendChild(roomclass);
         room_div.appendChild(price);
-        room_div.appendChild(bttn);
 
         // ( i , j ) locations
         var des = document.createElement('p');
