@@ -89,7 +89,9 @@ function createRes(x, y, username, start, end, roomID) {
   // })
 }
 
-async function submitRes(roomID) {
+async function submitRes() {
+  var select = document.getElementById('room-select');
+  var roomID = select.options[select.selectedIndex].innerHTML;
   var params = getParams(window.location.href);
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;

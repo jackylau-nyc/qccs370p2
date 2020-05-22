@@ -39,10 +39,12 @@
       <label for="end">End date:</label>
       <input type="date" id="end" name="trip-end">
 
-      <label for="roomselect">Select room:</label>
-      <select id="roomselect" name="room-select"></select>
-
        <button id="searchButton" onclick="room_div_generate('avail-room-records')">Search for Rooms</button>
+
+       <label for="room-select">Select room:</label>
+      <select id="room-select" name="room-select"></select>
+
+      <button id="book" onclick="submitRes()">Book Now</button>
     </div>
 
 </div>  
