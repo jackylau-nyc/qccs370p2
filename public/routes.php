@@ -57,6 +57,11 @@ $uri  = $_SERVER["REQUEST_URI"];
         });
     } 
     
+    if( isQStr("reservation", $uri)){
+        $router->get("$uri", function($req) {
+            ResController::requestHandler($req);
+        });
+    } 
 
  } else{ // everything else.
 

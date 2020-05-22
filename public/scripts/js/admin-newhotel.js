@@ -1,11 +1,12 @@
 
   function AddHotel() {
-
+    var company = await fetch('/ses-admin-company').then((response) => {
+      return response.json().company;
+    });
     var x_cord = document.getElementById('x_cord').value;
     var y_cord = document.getElementById('y_cord').value;
-    var company_name = document.getElementById('company_name').value;
 
-    if ( x_cord == "" || y_cord == "" || company_name == "" ) {
+    if ( x_cord == "" || y_cord == "" ||) {
       document.getElementById('addHotel-err-msg').innerText = "Please fill in all fields"
     }
     else if ( x_cord < 0 || x_cord > 100 || y_cord < 0 || y_cord > 100) {
@@ -18,7 +19,7 @@
         data:{ action: "add-hotel", 
                x_cord : x_cord , 
                y_cord : y_cord ,
-               company_name : company_name
+               company_name : company
             },
         })
         .done(function(res){

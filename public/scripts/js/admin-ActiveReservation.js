@@ -1,14 +1,16 @@
 
 
 async function getData(){
-    var company = "Howard Resorts";
+    var company = await fetch('/ses-admin-company').then((response) => {
+        return response.json().company;
+    });
     var date = "2019-09-01";
     var data = {
         action: "get-active-res",
         company: company, 
         date: date,
     };
-    var url = `/admin?action=${data.action}&company=${data.company}&date=${data.date}`;
+    var url = `/admin?action=${encodeURIComponent(data.action)}&company=${encodeURIComponent(data.company)}&date=${encodeURIComponent(data.date)}`;
     return await fetch(url).then((response) => {
         var sol = response.json();
         console.log(sol);
