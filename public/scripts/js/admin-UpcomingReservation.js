@@ -90,9 +90,6 @@ async function mainReq(company){
     return res;
 }
 
-
-
-
 async function fetchAsync (url) {
   console.log(url);
   let response = await fetch(url);

@@ -1,31 +1,15 @@
-
-
-async function getData(){
-    var company = await fetch('/ses-admin-company').then((response) => {
-        return response.json().company;
-    });
-    var date = "2019-09-01";
-    var data = {
-        action: "get-active-res",
-        company: company, 
-        date: date,
-    };
-    var url = `/admin?action=${encodeURIComponent(data.action)}&company=${encodeURIComponent(data.company)}&date=${encodeURIComponent(data.date)}`;
-    return await fetch(url).then((response) => {
-        var sol = response.json();
-        console.log(sol);
-        return sol;
-    });
-
+async function getActive(){
+    const company = await getCompany();
+    const result  = await mainReq(company);
+    getAllActiveReservations(result);
 }
 
-async function allReservations(){
+
+async function getAllActiveReservations(result){
       
     document.getElementById('admin-view').innerHTML = "";
-    var date = document.getElementById('myDate').Value;
 
     var cont = document.getElementById('admin-view');
-    var result = await getData();
     console.log(result);
     if (result.includes("No")){
         alert("This company has no active reservations");
@@ -37,7 +21,7 @@ async function allReservations(){
       res_div.className ='row';
 
       var res_id = document.createElement('h3');
-      res_id.innerText = `Reservation Number : ${result.reserveration_id}`;
+      res_id.innerText = `Reservation Number : ${result.reservation_id}`;
 
       var left_div = document.createElement('div');
       left_div.className ='col-sm-3';
@@ -78,4 +62,38 @@ async function allReservations(){
       cont.appendChild(res_div);
   })
   }
+
+
+  async function getDate(){
+    return await fetch("/ses-admin-company").then((response) => {
+            return response.json().company;
+        });
+}
+
+
+async function getCompany(){
+    var url = "/ses-admin-company";
+    var comp = await fetchAsync(url);
+    return  comp[0].company;
+}
+
+async function mainReq(company){
+    var date = "2019-09-01";
+    var data = {    
+        action: "get-active-res",
+        date: date,
+    };
+    var url = `/admin?action=${encodeURIComponent(data.action)}&company=${encodeURIComponent(company)}&date=${encodeURIComponent(data.date)}`;
+    var res = await fetchAsync(url); 
+    return res;
+}
+
+async function fetchAsync (url) {
+  console.log(url);
+  let response = await fetch(url);
+  let data = await response.json();
+  console.log(data);
+  return await data;
+}
+
 

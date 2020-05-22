@@ -1,25 +1,17 @@
 
 window.addEventListener('load', function (){
-    hotel_div_generate();
+    getData();
 });
 
 async function getData(){
-
-    //return await fetch('/').then((response) => {
-    //       return response.json();
-    // })
-     return [
-            { company : 'Howard Resorts', x_cord: [0], y_cord: [0] },
-            { company : 'Howard Resorts', x_cord: [0], y_cord: [1] },
-            { company : 'Howard Resorts', x_cord: [0], y_cord: [2] },
-            { company : 'Howard Resorts', x_cord: [0], y_cord: [2]}
-            ]
+    const company = await getCompany();
+    const result  = await mainReq(company);
+    hotel_div_generate(result);
 }
-async function hotel_div_generate(){
+
+async function hotel_div_generate(result){
 
     var hotelmodal_container = document.getElementById('id');
-    var result = await getData();
-
     result.forEach(function (result) {
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
@@ -44,4 +36,30 @@ async function hotel_div_generate(){
 
         hotelmodal_container.appendChild(col_div);
     })
+}
+
+
+async function getCompany(){
+    var url = "/ses-admin-company";
+    var comp = await fetchAsync(url);
+    return  comp[0].company;
+}
+
+
+async function fetchAsync (url) {
+    console.log(url);
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+    return await data;
+  }
+  
+
+  async function mainReq(company){
+    var data = {    
+        action: "get-company-hotels",
+    };
+    var url = `/admin?action=${encodeURIComponent(data.action)}&company=${encodeURIComponent(company)}`;
+    var res = await fetchAsync(url); 
+    return res;
 }

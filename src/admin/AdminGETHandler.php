@@ -8,7 +8,7 @@ require_once __DIR__."/CompanyService.php";
 class AdminGETHandler{
     
     // Array of valid actions 
-    private const ACTIONS = array("get-all-res", "get-upcoming-res", "get-active-res"); 
+    private const ACTIONS = array("get-all-res", "get-upcoming-res", "get-active-res", "get-company-hotels"); 
     private static $validator = null; 
     private static $compSvc   = null; 
     private static $args      = null;  
@@ -26,14 +26,17 @@ class AdminGETHandler{
         
         try{ 
             switch ($action) {
-                case "get-all-res":  
-                    echo self::getAllReservations();  
-                    break;
-                case "get-upcoming-res":
-                    echo self::getUpcomingReservations();  
-                    break;
-                case "get-active-res":
-                    echo self::getActiveReservations();  
+                    case "get-all-res":  
+                        echo self::getAllReservations();  
+                        break;
+                    case "get-upcoming-res":
+                        echo self::getUpcomingReservations();  
+                        break;
+                    case "get-active-res":
+                        echo self::getActiveReservations();  
+                        break;
+                    case "get-company-hotels":
+                        echo self::getCompanyHotels();
                     break;
                 }
             } 
@@ -57,7 +60,9 @@ class AdminGETHandler{
         }    
     }
 
-
+    private static function getCompanyHotels(){
+        return self::$compSvc->getCompanyHotels(self::$args["company"]);
+    }
     private static function getAllReservations(){
         return self::$compSvc->getAllReservations(self::$args["company"]);
     }

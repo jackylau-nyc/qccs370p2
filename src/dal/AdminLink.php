@@ -118,6 +118,14 @@ class AdminLink extends BaseLink {
 
     }
 
+    function getCompanyHotels($companyName){
+        $sql = "SELECT * 
+                FROM hotel
+                WHERE hotel.company = ?";
+        $params = array ($companyName);
+        $result = $this->query($sql, $params);
+        return (is_null($result))? false : $result;
+    }
 
     /****************************************************************************************************
      ***************************************** Room Manipulation ****************************************

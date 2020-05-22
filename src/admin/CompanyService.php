@@ -51,7 +51,10 @@ class CompanyService{
         $this->conn->addRooms($hotelXCord, $hotelYCord, $class, $price, $amount);
         return true; 
     }
-    
+
+    function getCompanyHotels($companyName){
+        return json_encode($this->conn->getCompanyHotels($companyName));
+    }
     
 
 }
