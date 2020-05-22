@@ -117,6 +117,7 @@ async function room_div_generate(filter){
     var roomlist = document.getElementById('roomlist');
     roomlist.innerText = "";
     result.forEach(function (result) {
+
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
         
@@ -151,5 +152,6 @@ async function room_div_generate(filter){
         room_div.appendChild(des);
 
         roomlist.appendChild(col_div);
+        roomlist = "<a>" + roomlist + "</a>";
     })
 }
