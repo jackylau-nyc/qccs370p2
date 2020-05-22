@@ -150,7 +150,7 @@ async function room_div_generate(filter){
         price.innerText = " : $" + `${result.price}`;
         
         var bttn = document.createElement('button');
-        button.innerHTML = "Confirm";
+        bttn.innerHTML = "Confirm";
         bttn.onclick = openModal();
 
         room_div.appendChild(roomnum);
