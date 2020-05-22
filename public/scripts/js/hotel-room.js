@@ -89,6 +89,16 @@ function createRes(x, y, username, start, end, roomID) {
   // })
 }
 
+function openModal() {
+  var mod = document.getElementById('myModal');
+  if (mod.style.display === "none") {
+    mod.style.display = "block";
+  }
+  else {
+    mod.style.display = "none";
+  }
+}
+
 async function submitRes(roomID) {
   var params = getParams(window.location.href);
   var start = document.getElementById('start').value;
@@ -118,9 +128,9 @@ async function room_div_generate(filter){
     roomlist.innerText = "";
     result.forEach(function (result) {
 
-        var a = document.createElement('a');
         var col_div = document.createElement('div');
         col_div.className = 'col-md-4';
+        col_div.onclick = openModal();
         
         var room_div = document.createElement('div');
         room_div.classList.add("rooms");
@@ -149,10 +159,9 @@ async function room_div_generate(filter){
         des.className = 'hotel-descript';
         // des.innerText = `Location : ${result.x_cord} street , ${result.y_cord} ave`;
 
-        a.appendChild(col_div);
         col_div.appendChild(room_div);
         room_div.appendChild(des);
 
-        roomlist.appendChild(a);
+        roomlist.appendChild(col_div);
     })
 }
