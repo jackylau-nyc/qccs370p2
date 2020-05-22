@@ -29,7 +29,8 @@
     <div id="room-container">
       <h1 id="hotel-name"></h1>
       <h2 id="location"></h2>
-      <div id="roomlist"></div>
+      <a data-target="#myModal" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
+       href="#myModal"><div id="roomlist"></div></a>
     </div>
     
     <div id ="reserve">
